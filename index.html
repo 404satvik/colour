@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>colurs — A Visual Library of Design Styles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=Playfair+Display:wght@500;700;900&family=Archivo+Black&family=Poppins:wght@400;600;800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07070a;
+  --s1:rgba(255,255,255,0.02);--s2:rgba(255,255,255,0.04);--s3:rgba(255,255,255,0.065);
+  --b1:rgba(255,255,255,0.04);--b2:rgba(255,255,255,0.07);--b3:rgba(255,255,255,0.11);
+  --t1:#f0f0f5;--t2:rgba(255,255,255,0.58);--t3:rgba(255,255,255,0.32);
+  --violet:#818cf8;--violet-bright:#a5b4fc;--violet-soft:rgba(129,140,248,0.08);--violet-border:rgba(129,140,248,0.18);
+  --teal:#5eead4;--teal-soft:rgba(94,234,212,0.08);--teal-border:rgba(94,234,212,0.15);
+  --fd:'Outfit',sans-serif;--fb:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:var(--fb);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* Ambient */
+.ambience{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.ambience .g1{position:absolute;width:1000px;height:600px;top:-200px;left:50%;transform:translateX(-60%);background:radial-gradient(ellipse,rgba(129,140,248,0.07) 0%,transparent 60%);filter:blur(80px)}
+.ambience .g2{position:absolute;width:700px;height:500px;top:200px;right:-100px;background:radial-gradient(ellipse,rgba(94,234,212,0.04) 0%,transparent 60%);filter:blur(100px)}
+.ambience .g3{position:absolute;width:500px;height:400px;bottom:10%;left:5%;background:radial-gradient(ellipse,rgba(129,140,248,0.03) 0%,transparent 65%);filter:blur(120px)}
+.ambience::after{content:'';position:absolute;inset:0;opacity:0.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px}
+
+.wrap{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 28px}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);background:rgba(7,7,10,0.6);border-bottom:1px solid var(--b1)}
+.nav-inner{max-width:1320px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--fd);font-weight:700;font-size:18px;letter-spacing:-0.02em}
+.mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--violet),var(--teal));opacity:0.92;display:grid;place-items:center;font-size:15px}
+.brand small{display:block;font-family:var(--fb);font-weight:400;font-size:10px;letter-spacing:0.14em;color:var(--t3);text-transform:uppercase;margin-top:1px}
+.search{margin-left:auto;display:flex;align-items:center;gap:9px;background:var(--s1);border:1px solid var(--b1);border-radius:11px;padding:9px 15px;width:300px;max-width:42vw;transition:all .25s}
+.search:focus-within{border-color:var(--b3);background:var(--s2)}
+.search svg{flex:none;opacity:.5}
+.search input{background:none;border:none;outline:none;color:var(--t1);font-family:var(--fb);font-size:14px;width:100%}
+.search input::placeholder{color:var(--t3)}
+.count-pill{font-size:12px;color:var(--t3);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* Hero */
+header{padding:78px 0 30px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:6px 16px;background:var(--s1);border:1px solid var(--b2);border-radius:100px;font-size:12.5px;color:var(--t2);backdrop-filter:blur(10px);margin-bottom:26px}
+.eyebrow b{padding:2px 9px;background:var(--violet-soft);border:1px solid var(--violet-border);border-radius:100px;font-size:11px;font-weight:600;color:var(--violet-bright)}
+header h1{font-family:var(--fd);font-weight:800;font-size:clamp(40px,6vw,68px);letter-spacing:-0.04em;line-height:1.02;margin-bottom:20px}
+header h1 .grad{background:linear-gradient(135deg,var(--violet-bright),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+header p{max-width:560px;margin:0 auto;color:var(--t2);font-size:17px;line-height:1.65}
+
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:38px auto 8px;max-width:980px}
+.chip{padding:8px 16px;background:var(--s1);border:1px solid var(--b1);border-radius:100px;font-size:13px;color:var(--t2);cursor:pointer;transition:all .2s;font-weight:500}
+.chip:hover{background:var(--s2);border-color:var(--b2);color:var(--t1)}
+.chip.active{background:var(--violet-soft);border-color:var(--violet-border);color:var(--violet-bright)}
+.toolbar{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+.result-note{font-size:13px;color:var(--t3)}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:34px 0 90px}
+@media(max-width:1080px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.grid{grid-template-columns:1fr}}
+
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .3s,border-color .3s,background .3s;position:relative;animation:up .5s backwards;display:flex;flex-direction:column}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.07),transparent);z-index:5}
+.card:hover{transform:translateY(-3px);border-color:var(--b2);background:var(--s2)}
+.card-body{padding:18px 20px 20px}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:9px}
+.card h3{font-family:var(--fd);font-size:18px;font-weight:700;letter-spacing:-0.02em;line-height:1.15}
+.era{font-size:10.5px;color:var(--t3);font-weight:500;white-space:nowrap;padding-top:3px}
+.card p.blurb{font-size:13px;color:var(--t2);line-height:1.55;margin-bottom:13px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.tag{font-size:10.5px;font-weight:500;color:var(--t2);background:var(--s2);border:1px solid var(--b1);padding:3px 9px;border-radius:6px}
+.palette{display:flex;gap:0;height:22px;border-radius:6px;overflow:hidden;border:1px solid var(--b1)}
+.palette span{flex:1}
+
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============ DEMO BASE ============ */
+.demo{height:172px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:13px}
+/* Optional real-reference image overlay (covers the live demo when a file exists) */
+.demo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:7;opacity:0;transition:opacity .35s}
+.demo-img.loaded{opacity:1}
+
+/* Brutalism */
+.demo--brutalism{background:#fff;color:#000;font-family:'Space Mono',monospace;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:14px;gap:8px}
+.demo--brutalism .bb-h{font-size:22px;font-weight:700;text-transform:uppercase;line-height:.95;letter-spacing:-1px}
+.demo--brutalism .bb-link{text-decoration:underline;font-size:11px}
+.demo--brutalism .bb-btn{border:3px solid #000;background:#fff;padding:6px 12px;font-weight:700;font-size:11px;text-transform:uppercase;box-shadow:5px 5px 0 #000}
+.demo--brutalism .bb-rule{width:100%;height:4px;background:#000}
+
+/* Neubrutalism */
+.demo--neubrutal{background:#ffde59;color:#111;font-family:'Archivo Black',sans-serif;flex-direction:column;gap:12px;padding:16px}
+.demo--neubrutal .nb-card{background:#fff;border:3px solid #111;border-radius:10px;box-shadow:6px 6px 0 #111;padding:10px 14px;font-size:14px}
+.demo--neubrutal .nb-btn{background:#ff5ca2;border:3px solid #111;border-radius:8px;box-shadow:4px 4px 0 #111;padding:7px 16px;font-size:12px;color:#111}
+
+/* Minimalism */
+.demo--minimal{background:#fbfbf9;color:#111;flex-direction:column;gap:14px;font-family:var(--fd)}
+.demo--minimal .mn-h{font-size:24px;font-weight:300;letter-spacing:4px;text-transform:uppercase}
+.demo--minimal .mn-line{width:42px;height:1px;background:#111}
+.demo--minimal .mn-sub{font-size:10px;letter-spacing:3px;color:#999;text-transform:uppercase}
+
+/* Maximalism */
+.demo--maximal{background:repeating-linear-gradient(45deg,#ff006e,#ff006e 14px,#ffbe0b 14px,#ffbe0b 28px);color:#fff;font-family:'Archivo Black',sans-serif;flex-direction:column;gap:8px;text-align:center;padding:10px}
+.demo--maximal .mx-h{font-size:26px;color:#3a86ff;-webkit-text-stroke:2px #000;text-shadow:3px 3px 0 #06d6a0}
+.demo--maximal .mx-b{background:#8338ec;border:3px solid #fff;border-radius:30px;padding:6px 16px;font-size:12px;transform:rotate(-3deg)}
+
+/* Memphis */
+.demo--memphis{background:#f5f0e8;overflow:hidden}
+.demo--memphis .mem-shape{position:absolute}
+.demo--memphis .c1{width:54px;height:54px;border-radius:50%;background:#ff5d73;top:18px;left:22px}
+.demo--memphis .c2{width:0;height:0;border-left:26px solid transparent;border-right:26px solid transparent;border-bottom:46px solid #ffd23f;top:80px;right:40px;transform:rotate(18deg)}
+.demo--memphis .c3{width:48px;height:48px;background:#3bceac;bottom:18px;left:60px;transform:rotate(45deg)}
+.demo--memphis .c4{width:80px;height:80px;border:6px solid #0ead69;border-radius:50%;top:30px;right:24px}
+.demo--memphis .sq{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Poppins';font-weight:800;font-size:20px;color:#22223b}
+.demo--memphis .zig{position:absolute;bottom:30px;right:30px;font-size:24px;color:#ff5d73}
+
+/* Pixel */
+.demo--pixel{background:#1a1c2c;color:#fff;font-family:'Press Start 2P',monospace;flex-direction:column;gap:14px;image-rendering:pixelated;text-align:center;padding:14px}
+.demo--pixel .px-h{font-size:13px;color:#ffcd75;line-height:1.6;text-shadow:2px 2px 0 #5d275d}
+.demo--pixel .px-bar{width:120px;height:14px;border:3px solid #fff;background:#41a6f6;box-shadow:3px 3px 0 #000}
+.demo--pixel .px-btn{font-size:8px;background:#ef7d57;border:3px solid #fff;padding:6px 8px;box-shadow:3px 3px 0 #000}
+
+/* Frutiger Aero */
+.demo--frutiger{background:linear-gradient(180deg,#aee0ff 0%,#e8fff4 55%,#c6f6d5 100%);color:#0a3d62;overflow:hidden;flex-direction:column;gap:12px}
+.demo--frutiger::after{content:'';position:absolute;top:-30px;left:-20px;width:160px;height:90px;background:radial-gradient(ellipse,rgba(255,255,255,.85),transparent 70%);filter:blur(4px)}
+.demo--frutiger .fa-orb{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff,#7fd4ff 45%,#1d9bf0 100%);box-shadow:0 8px 18px rgba(29,155,240,.4),inset 0 -6px 10px rgba(0,60,120,.3);position:relative;z-index:2}
+.demo--frutiger .fa-pill{z-index:2;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(220,245,255,.85));border:1px solid #fff;border-radius:30px;padding:7px 18px;font-weight:600;font-size:12px;box-shadow:0 4px 10px rgba(0,80,160,.2),inset 0 1px 0 #fff;font-family:var(--fd)}
+
+/* Glassmorphism / iOS */
+.demo--glass{background:linear-gradient(135deg,#5b2a86,#3a8ee6 60%,#16c2c2);overflow:hidden;color:#fff;font-family:var(--fd)}
+.demo--glass::before{content:'';position:absolute;width:120px;height:120px;border-radius:50%;background:#ff7eb3;top:-30px;left:-20px;filter:blur(2px)}
+.demo--glass::after{content:'';position:absolute;width:90px;height:90px;border-radius:50%;background:#ffd86f;bottom:-20px;right:30px}
+.demo--glass .gl-card{position:relative;z-index:2;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:18px;padding:16px 22px;backdrop-filter:blur(14px);box-shadow:0 8px 26px rgba(0,0,0,.2);text-align:center}
+.demo--glass .gl-card b{font-size:18px;font-weight:700;display:block}
+.demo--glass .gl-card span{font-size:11px;opacity:.85}
+
+/* Skeuomorphism */
+.demo--skeuo{background:linear-gradient(#d9d4c8,#c2bba8);flex-direction:column;gap:14px}
+.demo--skeuo .sk-note{background:repeating-linear-gradient(#fffdf5,#fffdf5 18px,#dfe7f0 18px,#dfe7f0 19px);border:1px solid #b9b09a;border-radius:6px;width:150px;height:60px;box-shadow:0 6px 12px rgba(0,0,0,.25),inset 0 1px 0 #fff;position:relative}
+.demo--skeuo .sk-note::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:1px;background:#f1a9a0}
+.demo--skeuo .sk-btn{font-family:var(--fd);font-weight:600;font-size:12px;color:#3a3a3a;background:linear-gradient(#fff,#d2d2d2);border:1px solid #9a9a9a;border-radius:8px;padding:8px 18px;box-shadow:0 3px 5px rgba(0,0,0,.25),inset 0 1px 0 #fff;text-shadow:0 1px 0 #fff}
+
+/* Neumorphism */
+.demo--neumorph{background:#e0e5ec;flex-direction:column;gap:16px}
+.demo--neumorph .nm-circle{width:62px;height:62px;border-radius:50%;background:#e0e5ec;box-shadow:8px 8px 16px #a3b1c6,-8px -8px 16px #ffffff}
+.demo--neumorph .nm-btn{font-family:var(--fd);font-weight:600;font-size:12px;color:#5b6b82;background:#e0e5ec;border-radius:14px;padding:10px 22px;box-shadow:6px 6px 12px #a3b1c6,-6px -6px 12px #ffffff}
+
+/* Flat */
+.demo--flat{background:#1abc9c;flex-direction:column;gap:12px;color:#fff;font-family:var(--fd)}
+.demo--flat .ft-h{font-size:20px;font-weight:600}
+.demo--flat .ft-row{display:flex;gap:8px}
+.demo--flat .ft-b{padding:8px 16px;font-size:12px;border-radius:3px;font-weight:600}
+.demo--flat .ft-b.a{background:#16a085}
+.demo--flat .ft-b.b{background:#e74c3c}
+.demo--flat .ft-b.c{background:#f1c40f;color:#333}
+
+/* Material */
+.demo--material{background:#fafafa;flex-direction:column;gap:12px}
+.demo--material .md-bar{position:absolute;top:0;left:0;right:0;height:42px;background:#3f51b5;box-shadow:0 2px 5px rgba(0,0,0,.3)}
+.demo--material .md-fab{width:48px;height:48px;border-radius:50%;background:#ff4081;box-shadow:0 5px 11px rgba(0,0,0,.35);color:#fff;display:grid;place-items:center;font-size:24px;margin-top:30px}
+.demo--material .md-card{background:#fff;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.18);padding:10px 18px;font-family:'Roboto',var(--fd);font-size:12px;color:#444}
+
+/* Swiss */
+.demo--swiss{background:#fff;color:#111;align-items:flex-start;justify-content:flex-start;flex-direction:column;padding:16px;font-family:var(--fd);gap:6px}
+.demo--swiss .sw-red{width:40px;height:40px;background:#e2231a;position:absolute;top:16px;right:16px}
+.demo--swiss .sw-h{font-size:30px;font-weight:700;letter-spacing:-1.5px;line-height:.95;max-width:75%}
+.demo--swiss .sw-grid{position:absolute;bottom:14px;left:16px;display:flex;gap:4px}
+.demo--swiss .sw-grid i{width:18px;height:3px;background:#111;display:block}
+.demo--swiss .sw-meta{font-size:9px;letter-spacing:1px;color:#999;text-transform:uppercase}
+
+/* Bauhaus */
+.demo--bauhaus{background:#f2ede4;overflow:hidden}
+.demo--bauhaus .bh1{position:absolute;width:90px;height:90px;border-radius:50% 50% 0 0;background:#e63946;top:30px;left:30px;transform:rotate(0)}
+.demo--bauhaus .bh2{position:absolute;width:0;height:0;border-left:45px solid transparent;border-right:45px solid transparent;border-bottom:78px solid #1d3557;bottom:0;right:60px}
+.demo--bauhaus .bh3{position:absolute;width:60px;height:60px;background:#ffd23f;bottom:20px;left:80px}
+.demo--bauhaus .bh4{position:absolute;width:120px;height:120px;border:8px solid #1d3557;border-radius:50%;top:20px;right:-20px}
+
+/* Art Deco */
+.demo--artdeco{background:#0d1b2a;color:#e0b973;font-family:'Playfair Display',serif;flex-direction:column;gap:8px;border:none}
+.demo--artdeco::before{content:'';position:absolute;inset:10px;border:2px solid #c9a227;clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px)}
+.demo--artdeco .ad-h{font-size:24px;font-weight:900;letter-spacing:4px;z-index:2}
+.demo--artdeco .ad-fan{z-index:2;font-size:18px;letter-spacing:6px}
+.demo--artdeco .ad-sub{z-index:2;font-size:9px;letter-spacing:5px;text-transform:uppercase;font-family:var(--fd)}
+
+/* Vaporwave */
+.demo--vapor{background:linear-gradient(180deg,#2b1055,#7597de);color:#fff;font-family:var(--fd);overflow:hidden;flex-direction:column;gap:6px}
+.demo--vapor::after{content:'';position:absolute;bottom:0;left:-20%;right:-20%;height:60px;background:repeating-linear-gradient(90deg,#ff71ce,#ff71ce 2px,transparent 2px,transparent 22px),repeating-linear-gradient(0deg,#ff71ce,#ff71ce 2px,transparent 2px,transparent 22px);transform:perspective(120px) rotateX(55deg);opacity:.8}
+.demo--vapor .vp-sun{width:70px;height:70px;border-radius:50%;background:linear-gradient(#fff200,#ff3cac);z-index:2;box-shadow:0 0 30px #ff3cac}
+.demo--vapor .vp-h{z-index:2;font-weight:700;font-size:18px;letter-spacing:6px;text-shadow:2px 2px #ff71ce,-2px -2px #01cdfe}
+
+/* Y2K */
+.demo--y2k{background:radial-gradient(circle at 50% 0,#c9f,#9cf 60%,#cff);overflow:hidden;flex-direction:column;gap:10px;font-family:var(--fd)}
+.demo--y2k .yk-blob{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#ff9ff3,#feca57,#48dbfb);box-shadow:inset -6px -8px 14px rgba(0,0,0,.2),0 6px 14px rgba(0,0,0,.2);position:relative}
+.demo--y2k .yk-blob::after{content:'';position:absolute;top:12px;left:16px;width:22px;height:14px;background:rgba(255,255,255,.8);border-radius:50%;filter:blur(2px)}
+.demo--y2k .yk-h{font-weight:800;font-size:18px;color:#fff;text-shadow:0 0 8px #ff6ad5;font-style:italic}
+
+/* Synthwave */
+.demo--synth{background:linear-gradient(180deg,#0d0221,#290a4f);color:#ff2a6d;font-family:var(--fd);overflow:hidden;flex-direction:column;gap:8px}
+.demo--synth::after{content:'';position:absolute;bottom:0;left:-20%;right:-20%;height:70px;background:repeating-linear-gradient(90deg,#05d9e8,#05d9e8 2px,transparent 2px,transparent 26px);transform:perspective(110px) rotateX(60deg)}
+.demo--synth .sy-h{z-index:2;font-weight:800;font-size:22px;letter-spacing:2px;color:#fff;text-shadow:0 0 10px #ff2a6d,0 0 20px #ff2a6d}
+.demo--synth .sy-sun{position:absolute;top:22px;width:80px;height:80px;border-radius:50%;background:linear-gradient(#ffde59,#ff2a6d);z-index:1}
+
+/* Japandi / Asian store */
+.demo--japandi{background:#ece7df;color:#3d3a34;font-family:var(--fd);flex-direction:column;gap:12px}
+.demo--japandi .jp-circle{width:64px;height:64px;border-radius:50%;background:#b34233;box-shadow:0 6px 16px rgba(140,50,40,.25)}
+.demo--japandi .jp-h{font-size:16px;font-weight:300;letter-spacing:7px;text-transform:uppercase}
+.demo--japandi .jp-line{display:flex;gap:5px}
+.demo--japandi .jp-line i{width:2px;height:20px;background:#8a8170;display:block}
+
+/* Cyberpunk */
+.demo--cyber{background:#05010f;overflow:hidden;font-family:'Space Mono',monospace;color:#f9f002;flex-direction:column;gap:8px}
+.demo--cyber::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,255,255,.04),rgba(0,255,255,.04) 1px,transparent 1px,transparent 3px)}
+.demo--cyber .cy-h{z-index:2;font-size:20px;font-weight:700;color:#00fff5;text-shadow:0 0 8px #00fff5,3px 0 #ff003c}
+.demo--cyber .cy-btn{z-index:2;border:1px solid #f9f002;color:#f9f002;padding:6px 14px;font-size:11px;clip-path:polygon(0 0,100% 0,100% 70%,90% 100%,0 100%);box-shadow:0 0 12px rgba(249,240,2,.4)}
+.demo--cyber .cy-bar{z-index:2;width:130px;height:6px;background:linear-gradient(90deg,#ff003c,#00fff5)}
+
+/* Editorial dark */
+.demo--editorial{background:#101012;color:#ededed;font-family:'Playfair Display',serif;flex-direction:column;align-items:flex-start;justify-content:center;padding:18px;gap:8px}
+.demo--editorial .ed-k{font-family:var(--fb);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#888}
+.demo--editorial .ed-h{font-size:26px;font-weight:700;line-height:1.05;font-style:italic}
+.demo--editorial .ed-rule{width:50px;height:2px;background:#c9a227}
+
+/* Claymorphism */
+.demo--clay{background:#dcd3ff;flex-direction:column;gap:14px;font-family:var(--fd)}
+.demo--clay .cl-blob{width:70px;height:70px;border-radius:42% 58% 60% 40%/45% 45% 55% 55%;background:#a78bfa;box-shadow:inset 6px 6px 12px rgba(255,255,255,.5),inset -6px -8px 12px rgba(90,50,160,.35),0 10px 22px rgba(120,80,200,.3)}
+.demo--clay .cl-btn{background:#ffb4c8;color:#7a2e4a;font-weight:600;font-size:12px;padding:10px 22px;border-radius:18px;box-shadow:inset 3px 3px 6px rgba(255,255,255,.6),inset -3px -4px 6px rgba(180,60,100,.3),0 6px 14px rgba(200,100,140,.3)}
+
+/* Anti-design */
+.demo--anti{background:#00ff66;overflow:hidden;font-family:'Times New Roman',serif;color:#000}
+.demo--anti .an1{position:absolute;top:10px;left:14px;font-size:30px;font-weight:700;transform:rotate(-6deg)}
+.demo--anti .an2{position:absolute;bottom:16px;right:10px;font-size:13px;font-family:'Comic Sans MS','Press Start 2P';color:#ff00ff;transform:rotate(8deg)}
+.demo--anti .an3{position:absolute;top:60px;left:60px;background:#ff0;border:2px dashed #f00;padding:4px 8px;font-size:11px;transform:rotate(3deg)}
+.demo--anti .an4{position:absolute;bottom:40px;left:18px;font-size:11px;text-decoration:underline;color:#00f}
+
+/* Organic / cottagecore */
+.demo--organic{background:#e9e2d0;color:#5a5235;font-family:'Playfair Display',serif;flex-direction:column;gap:12px}
+.demo--organic .og-leaf{width:60px;height:60px;border-radius:0 50% 50% 50%;background:linear-gradient(135deg,#a3b18a,#588157);transform:rotate(45deg)}
+.demo--organic .og-h{font-size:18px;font-style:italic;letter-spacing:1px}
+.demo--organic .og-sub{font-family:var(--fb);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#9a8c6a}
+
+/* Corporate memphis */
+.demo--corpmem{background:#f5f3ff;flex-direction:column;gap:10px}
+.demo--corpmem .cm-fig{display:flex;align-items:flex-end;gap:-4px}
+.demo--corpmem .cm-fig .head{width:26px;height:26px;border-radius:50%;background:#7c3aed}
+.demo--corpmem .cm-fig .body{width:22px;height:40px;border-radius:14px 14px 0 0;background:#f97316;margin-left:-6px}
+.demo--corpmem .cm-fig .body2{width:22px;height:34px;border-radius:14px 14px 0 0;background:#22d3ee;margin-left:6px}
+.demo--corpmem .cm-h{font-family:var(--fd);font-weight:700;font-size:16px;color:#4c1d95}
+
+/* Glitch */
+.demo--glitch{background:#0a0a0a;color:#fff;font-family:'Space Mono',monospace;overflow:hidden}
+.demo--glitch .gt-h{font-size:30px;font-weight:700;position:relative}
+.demo--glitch .gt-h::before,.demo--glitch .gt-h::after{content:'GLITCH';position:absolute;top:0;left:0}
+.demo--glitch .gt-h::before{color:#ff003c;transform:translate(-3px,0);clip-path:inset(0 0 55% 0)}
+.demo--glitch .gt-h::after{color:#00fff5;transform:translate(3px,0);clip-path:inset(55% 0 0 0)}
+
+/* Grunge */
+.demo--grunge{background:#2b2620;color:#d6cab3;font-family:'Space Mono',monospace;overflow:hidden;flex-direction:column;gap:8px}
+.demo--grunge::before{content:'';position:absolute;inset:0;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.7' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.demo--grunge .gr-h{z-index:2;font-size:24px;font-weight:700;text-transform:uppercase;color:#e8dcc0;letter-spacing:1px;transform:rotate(-2deg)}
+.demo--grunge .gr-tape{z-index:2;background:rgba(200,180,120,.3);border:1px dashed #9a8c5a;padding:4px 14px;font-size:10px;transform:rotate(2deg)}
+
+/* Technological geometry */
+.demo--techgeo{background:#0a0e17;overflow:hidden;color:#4ade80;font-family:'Space Mono',monospace}
+.demo--techgeo::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(74,222,128,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,.08) 1px,transparent 1px);background-size:22px 22px}
+.demo--techgeo .tg-hex{width:70px;height:70px;background:linear-gradient(135deg,#0ea5e9,#22c55e);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);z-index:2;box-shadow:0 0 24px rgba(34,197,94,.4)}
+.demo--techgeo .tg-meta{position:absolute;bottom:12px;left:14px;font-size:9px;color:#38bdf8;z-index:2;letter-spacing:1px}
+.demo--techgeo .tg-corner{position:absolute;top:10px;right:10px;width:22px;height:22px;border-top:2px solid #22c55e;border-right:2px solid #22c55e;z-index:2}
+
+/* Aurora gradient */
+.demo--aurora{background:linear-gradient(135deg,#6d28d9,#db2777 40%,#f59e0b 75%,#10b981);color:#fff;font-family:var(--fd);flex-direction:column;gap:8px}
+.demo--aurora .au-h{font-size:24px;font-weight:800;letter-spacing:-1px;mix-blend-mode:overlay}
+.demo--aurora .au-pill{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(6px);padding:6px 16px;border-radius:30px;font-size:12px;font-weight:500}
+
+/* Noir mono */
+.demo--noir{background:#111;color:#fff;font-family:var(--fd);flex-direction:column;gap:10px}
+.demo--noir .no-h{font-size:26px;font-weight:800;letter-spacing:-1px}
+.demo--noir .no-row{display:flex;gap:6px}
+.demo--noir .no-row i{width:30px;height:8px;display:block;background:#fff}
+.demo--noir .no-row i:nth-child(2){background:#777}
+.demo--noir .no-row i:nth-child(3){background:#333;border:1px solid #555}
+.demo--noir .no-btn{border:1px solid #fff;padding:7px 18px;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+
+/* ===== EXTENDED STYLES ===== */
+/* Constructivism */
+.demo--constructivism{background:#e6e0d4;overflow:hidden;font-family:'Archivo Black',sans-serif;color:#111}
+.demo--constructivism::before{content:'';position:absolute;width:220%;height:54px;background:#d62828;top:42%;left:-30%;transform:rotate(-20deg)}
+.cn-h{z-index:2;color:#fff;font-size:22px;transform:rotate(-20deg);letter-spacing:1px}
+.cn-dot{position:absolute;width:46px;height:46px;border-radius:50%;background:#111;top:18px;right:28px;z-index:2}
+.cn-bar{position:absolute;bottom:18px;left:18px;width:70px;height:8px;background:#111;z-index:2}
+
+/* De Stijl / Mondrian */
+.demo--destijl{background:#f7f5ee;overflow:hidden;border:none}
+.demo--destijl .ds-red{position:absolute;top:0;left:0;width:46%;height:56%;background:#e63946}
+.demo--destijl .ds-blue{position:absolute;bottom:0;right:0;width:32%;height:44%;background:#1d3557}
+.demo--destijl .ds-yellow{position:absolute;bottom:0;left:0;width:24%;height:28%;background:#ffd23f}
+.demo--destijl .ds-v{position:absolute;left:46%;top:0;bottom:0;width:8px;background:#111}
+.demo--destijl .ds-h{position:absolute;left:0;right:0;top:56%;height:8px;background:#111}
+.demo--destijl .ds-v2{position:absolute;right:32%;top:56%;bottom:0;width:8px;background:#111}
+
+/* Pop Art */
+.demo--popart{background:radial-gradient(#ff5ca2 22%,transparent 23%) 0 0/15px 15px,#ffde00;overflow:hidden;font-family:'Archivo Black',sans-serif}
+.demo--popart .pa-bubble{background:#fff;border:3px solid #111;border-radius:24px;padding:10px 20px;font-size:20px;color:#d7263d;box-shadow:5px 5px 0 #111;position:relative}
+.demo--popart .pa-bubble::after{content:'';position:absolute;bottom:-14px;left:24px;border:8px solid transparent;border-top-color:#111}
+
+/* Psychedelic */
+.demo--psychedelic{background:conic-gradient(from 0deg,#ff006e,#ffbe0b,#06d6a0,#3a86ff,#8338ec,#ff006e);overflow:hidden;font-family:'Archivo Black',sans-serif;color:#fff}
+.demo--psychedelic .ps-h{font-size:26px;text-shadow:2px 2px #000,-2px -2px #fff;transform:skewY(-5deg);letter-spacing:1px}
+
+/* Art Nouveau */
+.demo--artnouveau{background:#1c3a32;color:#e2c275;font-family:'Playfair Display',serif;flex-direction:column;gap:7px}
+.demo--artnouveau::before{content:'';position:absolute;inset:12px;border:2px solid #b8902f;border-radius:50px 8px 50px 8px}
+.demo--artnouveau .nv-h{z-index:2;font-style:italic;font-size:24px;letter-spacing:1px}
+.demo--artnouveau .nv-sub{z-index:2;font-family:var(--fb);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#9c7d3f}
+
+/* Steampunk */
+.demo--steampunk{background:radial-gradient(circle at 60% 40%,#5a4632,#241b10);color:#e8c98a;font-family:'Playfair Display',serif;overflow:hidden;flex-direction:column;gap:10px}
+.demo--steampunk .sp-gear{width:54px;height:54px;border-radius:50%;border:11px dashed #b8860b;background:#2e2417;box-shadow:inset 0 0 0 4px #3a2e1f}
+.demo--steampunk .sp-h{font-size:20px;letter-spacing:2px;text-shadow:0 1px 0 #000}
+
+/* Risograph */
+.demo--riso{background:#f4f1e6;overflow:hidden}
+.demo--riso .ri-a{position:absolute;width:88px;height:88px;border-radius:50%;background:#ff4d4d;mix-blend-mode:multiply;top:38px;left:55px;opacity:.85}
+.demo--riso .ri-b{position:absolute;width:88px;height:88px;border-radius:50%;background:#3d5afe;mix-blend-mode:multiply;top:58px;left:105px;opacity:.85}
+.demo--riso::after{content:'';position:absolute;inset:0;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.demo--riso .ri-h{z-index:3;font-family:'Space Mono',monospace;font-weight:700;color:#1a1a1a}
+
+/* Kawaii */
+.demo--kawaii{background:#ffe5f0;flex-direction:column;gap:12px;font-family:'Poppins',sans-serif}
+.demo--kawaii .kw-face{width:64px;height:64px;border-radius:50%;background:#ffb6d5;position:relative;box-shadow:0 4px 10px rgba(255,120,170,.4)}
+.demo--kawaii .kw-face i{position:absolute}
+.demo--kawaii .eye{width:9px;height:9px;border-radius:50%;background:#6a3a52;top:26px}
+.demo--kawaii .eye.l{left:16px}.demo--kawaii .eye.r{right:16px}
+.demo--kawaii .cheek{width:13px;height:8px;border-radius:50%;background:#ff7eb3;top:35px}
+.demo--kawaii .cheek.l{left:6px}.demo--kawaii .cheek.r{right:6px}
+.demo--kawaii .mouth{width:14px;height:7px;border:2px solid #6a3a52;border-top:none;border-radius:0 0 14px 14px;left:25px;top:36px}
+.demo--kawaii .kw-h{color:#ff5ca2;font-weight:800;font-size:16px}
+
+/* Streetwear */
+.demo--streetwear{background:#111;flex-direction:column;gap:13px;font-family:'Archivo Black',sans-serif}
+.demo--streetwear .st-box{background:#da291c;color:#fff;font-size:26px;padding:8px 14px;letter-spacing:-1px}
+.demo--streetwear .st-sub{color:#fff;font-size:10px;letter-spacing:4px}
+
+/* Liquid / Metaball */
+.demo--liquid{background:#0b1020;overflow:hidden}
+.demo--liquid i{position:absolute;border-radius:50%;filter:blur(6px);mix-blend-mode:screen}
+.demo--liquid .lq-a{width:84px;height:84px;background:#7c3aed;top:34px;left:58px}
+.demo--liquid .lq-b{width:74px;height:74px;background:#ec4899;top:60px;left:118px}
+.demo--liquid .lq-c{width:64px;height:64px;background:#06b6d4;top:88px;left:92px}
+.demo--liquid .lq-h{position:relative;z-index:2;font-family:var(--fd);font-weight:800;color:#fff;font-size:20px;letter-spacing:3px}
+
+/* Collage / Scrapbook */
+.demo--collage{background:#e9e4d8;overflow:hidden;font-family:'Space Mono',monospace}
+.demo--collage i{position:absolute;box-shadow:0 4px 10px rgba(0,0,0,.22)}
+.demo--collage .co-1{top:22px;left:34px;width:78px;height:52px;background:#ff5d73;transform:rotate(-8deg)}
+.demo--collage .co-2{top:54px;left:120px;width:70px;height:60px;background:#3a86ff;transform:rotate(7deg)}
+.demo--collage .co-3{bottom:18px;left:60px;width:90px;height:30px;background:#fff;transform:rotate(-3deg)}
+.demo--collage .co-tape{top:14px;left:130px;width:48px;height:18px;background:rgba(255,225,120,.75);transform:rotate(-22deg);box-shadow:none}
+.demo--collage .co-txt{position:absolute;bottom:24px;left:74px;z-index:3;font-weight:700;font-size:11px;color:#111;transform:rotate(-3deg)}
+
+/* Dark Academia */
+.demo--darkacademia{background:#2b241b;color:#cbb892;font-family:'Playfair Display',serif;flex-direction:column;gap:8px}
+.demo--darkacademia .da-h{font-style:italic;font-size:24px}
+.demo--darkacademia .da-rule{width:58px;height:1px;background:#8a7a5a}
+.demo--darkacademia .da-sub{font-family:var(--fb);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#8a7a5a}
+
+/* Mid-century Modern */
+.demo--midcentury{background:#ead8b8;overflow:hidden;font-family:'Poppins',sans-serif}
+.demo--midcentury .mc-a{position:absolute;width:60px;height:60px;border-radius:50%;background:#e07a5f;top:28px;left:40px}
+.demo--midcentury .mc-b{position:absolute;width:80px;height:46px;border-radius:50%;background:#3d8c87;bottom:30px;right:34px}
+.demo--midcentury .mc-c{position:absolute;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:52px solid #e6b800;bottom:24px;left:90px}
+.demo--midcentury .mc-h{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:800;font-size:18px;color:#5a3825;z-index:2}
+
+/* Scandinavian */
+.demo--scandi{background:#f3f0eb;color:#3a3a3a;flex-direction:column;gap:13px;font-family:var(--fd)}
+.demo--scandi .sc-row{display:flex;align-items:flex-end;gap:7px}
+.demo--scandi .sc-tri{width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-bottom:42px solid #a8b5c0}
+.demo--scandi .sc-tri.b{border-bottom-color:#d9a89a;border-left-width:18px;border-right-width:18px;border-bottom-width:32px}
+.demo--scandi .sc-h{font-weight:300;letter-spacing:5px;font-size:14px;text-transform:uppercase}
+
+/* Holographic */
+.demo--holo{background:linear-gradient(125deg,#a18cd1,#fbc2eb,#8fd3f4,#a6c1ee,#fbc2eb,#84fab0);background-size:300% 300%;animation:holo 7s ease infinite;color:#fff}
+@keyframes holo{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.demo--holo .ho-h{font-family:var(--fd);font-weight:800;font-size:22px;letter-spacing:2px;mix-blend-mode:overlay}
+
+/* Duotone */
+.demo--duotone{background:linear-gradient(135deg,#2d00f7,#150578);overflow:hidden;font-family:'Archivo Black',sans-serif}
+.demo--duotone .dt-circ{position:absolute;width:96px;height:96px;border-radius:50%;background:#ff006e;mix-blend-mode:screen;top:38px;left:90px}
+.demo--duotone .dt-h{position:relative;z-index:2;color:#ff4dd2;font-size:22px;mix-blend-mode:screen;letter-spacing:1px}
+
+/* Halftone / Comic */
+.demo--comic{background:radial-gradient(#f7c948 18%,transparent 19%) 0 0/13px 13px,#fdf6e3;overflow:hidden;font-family:'Archivo Black',sans-serif}
+.demo--comic .cm-burst{position:absolute;width:90px;height:90px;background:#ffde00;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);top:42px;left:55px}
+.demo--comic .cm-bubble{position:relative;z-index:2;background:#fff;border:3px solid #111;border-radius:20px;padding:8px 18px;font-size:18px;color:#d7263d;box-shadow:4px 4px 0 #111}
+
+/* Bento grid */
+.demo--bento{background:#0e0e12;padding:12px;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:8px}
+.demo--bento i{border-radius:13px;background:#1b1b22;border:1px solid rgba(255,255,255,.05)}
+.demo--bento .bn-a{grid-row:span 2;background:linear-gradient(135deg,#6366f1,#22d3ee)}
+.demo--bento .bn-c{background:#26262e}
+
+/* Deconstructed (Carson) */
+.demo--deconstructed{background:#121212;color:#fff;overflow:hidden;font-family:var(--fd)}
+.demo--deconstructed i{position:absolute}
+.demo--deconstructed .de1{font-size:48px;font-weight:800;top:4px;left:16px;opacity:.22;transform:rotate(-7deg)}
+.demo--deconstructed .de2{font-size:18px;top:64px;left:74px;letter-spacing:9px;color:#ff3b6b}
+.demo--deconstructed .de3{bottom:12px;right:20px;font-size:11px;writing-mode:vertical-rl;letter-spacing:3px;color:#9aa}
+.demo--deconstructed .de4{top:24px;right:24px;font-size:28px;font-weight:300;transform:rotate(6deg);opacity:.6}
+
+/* Terminal / ASCII */
+.demo--terminal{background:#020a02;color:#33ff66;font-family:'Space Mono',monospace;align-items:flex-start;justify-content:center;padding:16px;flex-direction:column;gap:5px;font-size:11px}
+.demo--terminal .tm-l{white-space:nowrap}
+.demo--terminal .tm-dim{color:#1f8f3f}
+.demo--terminal .tm-cursor{display:inline-block;width:7px;height:13px;background:#33ff66;vertical-align:middle;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Solarpunk */
+.demo--solarpunk{background:linear-gradient(180deg,#bdf0c5,#fef9c3);color:#1b5e3a;font-family:var(--fd);flex-direction:column;gap:11px;overflow:hidden}
+.demo--solarpunk .so-sun{width:48px;height:48px;border-radius:50%;background:#fcd34d;box-shadow:0 0 28px #fde68a}
+.demo--solarpunk .so-h{font-weight:700;font-size:17px;letter-spacing:2px}
+.demo--solarpunk .so-leaf{position:absolute;width:50px;height:50px;border-radius:0 50% 50% 50%;background:#34a06a;bottom:-6px;right:30px;transform:rotate(35deg)}
+
+/* Afrofuturism */
+.demo--afro{background:radial-gradient(circle at 50% 35%,#3a0ca3,#10002b);overflow:hidden;color:#ffd60a;font-family:'Archivo Black',sans-serif}
+.demo--afro::before{content:'';position:absolute;bottom:0;left:-10%;right:-10%;height:46px;background:repeating-linear-gradient(90deg,transparent,transparent 16px,#ffd60a 16px,#ffd60a 18px) }
+.demo--afro .af-h{z-index:2;font-size:22px;text-shadow:0 0 14px rgba(255,214,10,.6);letter-spacing:1px}
+.demo--afro .af-tri{position:absolute;top:20px;left:30px;width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:30px solid #e0479e}
+.demo--afro .af-tri2{position:absolute;top:24px;right:34px;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid #00f5d4}
+
+/* Guochao (Chinese) */
+.demo--guochao{background:#b8252a;color:#ffd86b;font-family:'Playfair Display',serif;flex-direction:column;gap:8px;overflow:hidden}
+.demo--guochao::before{content:'';position:absolute;width:140px;height:140px;border:2px solid rgba(255,216,107,.25);border-radius:50%;top:-50px;right:-40px}
+.demo--guochao .gc-h{z-index:2;font-size:30px;font-weight:700}
+.demo--guochao .gc-seal{z-index:2;width:42px;height:42px;background:#ffd86b;color:#b8252a;display:grid;place-items:center;font-size:22px;font-weight:700;border-radius:6px}
+
+/* Ukiyo-e */
+.demo--ukiyoe{background:#e8dcc4;overflow:hidden}
+.demo--ukiyoe .uk-wave{position:absolute;width:130px;height:130px;border-radius:50%;border:15px solid #284b63;border-right-color:transparent;border-bottom-color:transparent;bottom:-46px;left:-26px;transform:rotate(40deg)}
+.demo--ukiyoe .uk-wave2{position:absolute;width:80px;height:80px;border-radius:50%;border:10px solid #5a8fb0;border-right-color:transparent;border-bottom-color:transparent;bottom:-20px;left:80px;transform:rotate(40deg)}
+.demo--ukiyoe .uk-sun{position:absolute;top:28px;right:48px;width:42px;height:42px;border-radius:50%;background:#c1502e}
+
+/* Blackletter / Gothic */
+.demo--blackletter{background:#0d0d0d;color:#ededed;flex-direction:column;gap:8px}
+.demo--blackletter .bl-h{font-family:'UnifrakturMaguntia',serif;font-size:38px;line-height:1}
+.demo--blackletter .bl-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:4px;color:#888;text-transform:uppercase}
+
+/* Atompunk / Retro-futurism */
+.demo--atompunk{background:#f4e3c1;overflow:hidden;font-family:'Poppins',sans-serif}
+.demo--atompunk .at-star{position:absolute;width:70px;height:70px;background:#e0479e;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);top:20px;right:34px}
+.demo--atompunk .at-boom{position:absolute;width:70px;height:30px;border-radius:50%;background:#2a9d8f;bottom:28px;left:34px;transform:rotate(-18deg)}
+.demo--atompunk .at-h{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:800;font-size:18px;color:#264653;z-index:2}
+
+/* Wabi-sabi */
+.demo--wabisabi{background:#d8d0c3;color:#4a4337;font-family:'Playfair Display',serif;flex-direction:column;gap:11px}
+.demo--wabisabi .ws-enso{width:62px;height:62px;border-radius:50%;border:6px solid #3a352c;border-right-color:transparent;transform:rotate(-35deg)}
+.demo--wabisabi .ws-h{font-style:italic;letter-spacing:2px;font-size:18px}
+
+/* Fluent / Acrylic */
+.demo--fluent{background:linear-gradient(135deg,#0078d4,#5b2a86);overflow:hidden;color:#fff;font-family:'Poppins',sans-serif}
+.demo--fluent::before{content:'';position:absolute;width:120px;height:120px;border-radius:50%;background:#00b7c3;top:-30px;left:-20px;opacity:.6}
+.demo--fluent .fl-card{position:relative;z-index:2;background:rgba(255,255,255,.16);backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:14px 22px;box-shadow:0 8px 22px rgba(0,0,0,.35);font-weight:600;font-size:15px}
+
+/* Material You */
+.demo--materialyou{background:#f3e9ff;flex-direction:column;gap:11px;font-family:'Poppins',sans-serif}
+.demo--materialyou .my-fab{width:50px;height:50px;border-radius:18px;background:#7c5cff;color:#fff;display:grid;place-items:center;font-size:24px}
+.demo--materialyou .my-pill{background:#d0bcff;color:#21005d;border-radius:30px;padding:9px 22px;font-size:13px;font-weight:600}
+
+/* Sticker / Doodle */
+.demo--sticker{background:#fff7e6;overflow:hidden;font-family:'Poppins',sans-serif}
+.demo--sticker i{position:absolute;border:3px solid #fff;box-shadow:0 3px 7px rgba(0,0,0,.2)}
+.demo--sticker .sk-a{width:42px;height:42px;border-radius:50%;background:#4dd599;top:24px;left:40px}
+.demo--sticker .sk-b{width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-bottom:42px solid #ffb703;border-top:none;box-shadow:none;border-radius:0;bottom:26px;right:46px}
+.demo--sticker .sk-c{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-6deg);background:#ff5d8f;color:#fff;border:3px solid #fff;border-radius:18px;padding:7px 16px;font-weight:700;font-size:14px;box-shadow:0 3px 7px rgba(0,0,0,.2);z-index:2}
+
+/* Typographic poster */
+.demo--typographic{background:#111;color:#fff;align-items:flex-start;justify-content:center;padding:16px;flex-direction:column;font-family:var(--fd)}
+.demo--typographic .ty-h{font-size:38px;font-weight:800;line-height:.86;letter-spacing:-2px}
+.demo--typographic .ty-h em{font-style:normal;color:#818cf8}
+
+/* Favorite button */
+.fav-btn{position:absolute;top:10px;right:10px;z-index:8;width:34px;height:34px;border-radius:50%;background:rgba(8,8,12,.45);border:1px solid rgba(255,255,255,.22);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:16px;line-height:1;backdrop-filter:blur(8px);transition:transform .15s,background .2s;-webkit-tap-highlight-color:transparent}
+.fav-btn:hover{transform:scale(1.12);background:rgba(8,8,12,.7)}
+.fav-btn .star{color:rgba(255,255,255,.7)}
+.fav-btn.on{background:rgba(245,200,90,.22);border-color:rgba(245,200,90,.55)}
+.fav-btn.on .star{color:#ffd25e}
+.fav-chip{display:inline-flex;align-items:center;gap:7px}
+.fav-chip.active{background:rgba(245,200,90,.1);border-color:rgba(245,200,90,.4);color:#ffd25e}
+.fav-chip .fc-star{font-size:13px}
+
+/* Modal favorite + reference actions */
+.modal-fav{display:inline-flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--b2);color:var(--t1);border-radius:11px;padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--fb);transition:all .2s}
+.modal-fav:hover{background:var(--s3);border-color:var(--b3)}
+.modal-fav.on{background:rgba(245,200,90,.12);border-color:rgba(245,200,90,.4);color:#ffd25e}
+.ref-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.ref-link{display:inline-flex;align-items:center;gap:7px;text-decoration:none;background:var(--violet-soft);border:1px solid var(--violet-border);color:var(--violet-bright);border-radius:11px;padding:9px 16px;font-size:13px;font-weight:600;transition:all .2s}
+.ref-link:hover{background:rgba(129,140,248,.16)}
+.ref-link.alt{background:var(--teal-soft);border-color:var(--teal-border);color:var(--teal)}
+.ref-link.alt:hover{background:rgba(94,234,212,.16)}
+.modal-actions{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 22px}
+
+/* Modal */
+.modal-bg{position:fixed;inset:0;z-index:200;background:rgba(5,5,8,.78);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding:50px 20px;overflow-y:auto}
+.modal-bg.open{display:flex}
+.modal{background:#0c0c11;border:1px solid var(--b2);border-radius:22px;max-width:680px;width:100%;overflow:hidden;position:relative;animation:up .4s}
+.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);z-index:10}
+.modal .demo{height:230px}
+.modal-x{position:absolute;top:14px;right:14px;z-index:20;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.4);border:1px solid var(--b2);color:#fff;cursor:pointer;font-size:18px;display:grid;place-items:center;backdrop-filter:blur(8px)}
+.modal-body{padding:26px 30px 30px}
+.modal-body .mhead{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:6px}
+.modal-body h2{font-family:var(--fd);font-size:26px;font-weight:700;letter-spacing:-0.03em}
+.modal-body .mera{font-size:12px;color:var(--violet-bright);background:var(--violet-soft);border:1px solid var(--violet-border);padding:4px 12px;border-radius:100px;white-space:nowrap}
+.modal-body .mdesc{color:var(--t2);font-size:15px;line-height:1.65;margin:14px 0 20px}
+.msec{margin-bottom:18px}
+.msec h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:10px;font-weight:600}
+.mtags{display:flex;flex-wrap:wrap;gap:7px}
+.mtags .tag{font-size:12px;padding:5px 12px}
+.mpalette{display:flex;gap:10px;flex-wrap:wrap}
+.mswatch{display:flex;flex-direction:column;gap:5px;align-items:center}
+.mswatch span{width:54px;height:40px;border-radius:9px;border:1px solid var(--b2)}
+.mswatch small{font-size:10px;color:var(--t3);font-family:'Space Mono',monospace}
+.minfo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.minfo-grid .k{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.minfo-grid .v{font-size:14px;color:var(--t1)}
+.empty{grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--t3)}
+
+/* Enlarge hint (shown only when a real reference image is loaded, in the modal) */
+.enlarge-hint{position:absolute;bottom:10px;right:10px;z-index:8;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.5);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:5px 10px;font-size:11px;font-weight:500;font-family:var(--fb);backdrop-filter:blur(6px);pointer-events:none;opacity:0;transition:opacity .25s}
+.demo:has(.demo-img.loaded) .enlarge-hint{opacity:1}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:300;background:rgba(3,3,5,.93);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:32px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 24px 70px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1)}
+.lightbox-x{position:absolute;top:18px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;font-size:20px;display:grid;place-items:center;backdrop-filter:blur(8px)}
+
+footer{border-top:1px solid var(--b1);padding:30px 0;text-align:center;color:var(--t3);font-size:13px;position:relative;z-index:1}
+footer b{color:var(--t2);font-weight:600}
+
+/* ===== Mobile (placed last so it overrides base component rules) ===== */
+@media(max-width:760px){
+  .nav-inner{flex-wrap:wrap;gap:10px;padding:11px 16px}
+  .search{order:3;width:100%;max-width:100%;margin-left:0}
+  .count-pill{margin-left:auto}
+  .wrap{padding:0 15px}
+  header{padding:44px 0 16px}
+  header h1{margin-bottom:16px}
+  header p{font-size:15px}
+  .filters{margin:26px auto 6px}
+  .chip{padding:7px 13px;font-size:12.5px}
+  .grid{gap:14px;padding:24px 0 60px}
+  .modal-bg{padding:0;align-items:stretch}
+  .modal{border-radius:0;max-width:100%;min-height:100%}
+  .modal .demo{height:200px}
+  .modal-body{padding:22px 20px 36px}
+  .modal-body h2{font-size:22px}
+  .minfo-grid{grid-template-columns:1fr;gap:14px}
+}
+@media(max-width:420px){
+  .demo{height:150px}
+  .card-body{padding:15px 16px 17px}
+}
+</style>
+</head>
+<body>
+<div class="ambience"><div class="g1"></div><div class="g2"></div><div class="g3"></div></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="mark">◆</div>
+      <div>colurs<small>Design Style Library</small></div>
+    </div>
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="Search styles, eras, traits…" autocomplete="off">
+    </div>
+    <span class="count-pill" id="count"></span>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="eyebrow"><b>NEW</b> A growing reference of visual design languages</div>
+  <h1>Every design style,<br><span class="grad">seen at a glance</span></h1>
+  <p>A curated library of design aesthetics — each one rendered live in its own visual language, so you can actually <em>see</em> the look before you pick it.</p>
+  <div class="filters" id="filters"></div>
+  <div class="toolbar"><span class="result-note" id="note"></span></div>
+</header>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer class="wrap">
+  <p>Showing <b id="footcount"></b> design styles · Click any card for palette, typography & usage · Built as a designer's pick-list</p>
+</footer>
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modal"></div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-x" aria-label="Close">✕</button>
+  <img alt="Enlarged reference">
+</div>
+
+<script>
+const STYLES = [
+  {id:'brutalism',name:'Web Brutalism',era:'2014–present',cat:['Experimental','Maximal'],demo:'brutalism',
+   demoHTML:`<div class="bb-rule"></div><div class="bb-h">RAW<br>HTML</div><a class="bb-link">read more →</a><div class="bb-btn">CLICK</div>`,
+   blurb:'Deliberately raw, unpolished, system-default. Rejects decoration in favor of honesty and structure.',
+   tags:['Monospace','High contrast','No frills','Honest'],
+   palette:[['#ffffff','#FFF'],['#000000','#000'],['#0000ee','#LINK'],['#ff0000','#RED']],
+   fonts:'System / Times / monospace',mood:'Rebellious, anti-corporate',use:'Portfolios, art sites, indie web'},
+
+  {id:'neubrutalism',name:'Neubrutalism',era:'2020–present',cat:['Maximal','UI Style'],demo:'neubrutal',
+   demoHTML:`<div class="nb-card">Bold blocks</div><div class="nb-btn">GET IT →</div>`,
+   blurb:'Brutalism softened for product UI: thick black borders, hard offset shadows, candy colours.',
+   tags:['Hard shadows','Thick borders','Bright fills','Playful'],
+   palette:[['#ffde59','SUN'],['#ff5ca2','PINK'],['#111111','INK'],['#ffffff','PAPER']],
+   fonts:'Archivo Black / Satoshi',mood:'Confident, fun, loud',use:'SaaS landing pages, startups, Gumroad'},
+
+  {id:'minimalism',name:'Minimalism',era:'Timeless',cat:['Minimal','UI Style'],demo:'minimal',
+   demoHTML:`<div class="mn-h">Less</div><div class="mn-line"></div><div class="mn-sub">is more</div>`,
+   blurb:'Maximum impact from minimum elements. Whitespace, restraint, and typographic hierarchy do the work.',
+   tags:['Whitespace','Restraint','Light weights','Calm'],
+   palette:[['#fbfbf9','PAPER'],['#111111','INK'],['#999999','GREY'],['#e5e5e5','LINE']],
+   fonts:'Helvetica / Outfit / Inter',mood:'Calm, premium, focused',use:'Luxury brands, agencies, photography'},
+
+  {id:'maximalism',name:'Maximalism',era:'Cyclical',cat:['Maximal','Experimental'],demo:'maximal',
+   demoHTML:`<div class="mx-h">MORE!</div><div class="mx-b">everything everywhere</div>`,
+   blurb:'More is more. Clashing colour, dense pattern, layered type — abundance as a statement.',
+   tags:['Clash','Dense','Patterned','Bold'],
+   palette:[['#ff006e','MAGENTA'],['#ffbe0b','AMBER'],['#3a86ff','BLUE'],['#8338ec','VIOLET']],
+   fonts:'Mixed display faces',mood:'Energetic, expressive, loud',use:'Fashion, music, festivals, editorial'},
+
+  {id:'memphis',name:'Memphis Design',era:'1980s revival',cat:['Retro','Maximal'],demo:'memphis',
+   demoHTML:`<div class="mem-shape c1"></div><div class="mem-shape c2"></div><div class="mem-shape c3"></div><div class="mem-shape c4"></div><div class="sq">POP</div>`,
+   blurb:'Milan, 1981. Squiggles, confetti, primary shapes and zig-zags — playful postmodern chaos.',
+   tags:['Geometric confetti','Squiggles','Primary colors','80s'],
+   palette:[['#ff5d73','CORAL'],['#ffd23f','YELLOW'],['#3bceac','MINT'],['#22223b','NAVY']],
+   fonts:'Poppins / geometric sans',mood:'Playful, nostalgic, youthful',use:'Kids brands, events, retro products'},
+
+  {id:'pixel',name:'Pixel Art / 8-bit',era:'1980s revival',cat:['Retro','Experimental'],demo:'pixel',
+   demoHTML:`<div class="px-h">LEVEL 1</div><div class="px-bar"></div><div class="px-btn">START</div>`,
+   blurb:'Low-resolution, grid-aligned graphics from the arcade era. Every pixel placed by hand.',
+   tags:['Low-res','Crisp edges','Limited palette','Retro gaming'],
+   palette:[['#1a1c2c','BG'],['#ffcd75','GOLD'],['#41a6f6','BLUE'],['#ef7d57','RED']],
+   fonts:'Press Start 2P / pixel fonts',mood:'Nostalgic, playful, indie',use:'Games, dev brands, NFT, crypto'},
+
+  {id:'frutiger',name:'Frutiger Aero',era:'2004–2013',cat:['Retro','UI Style'],demo:'frutiger',
+   demoHTML:`<div class="fa-orb"></div><div class="fa-pill">Glossy & fresh</div>`,
+   blurb:'The Windows Vista / Wii era: glossy bubbles, water, skies, nature and humanist sans.',
+   tags:['Glossy','Skeuomorphic','Nature','Aqua'],
+   palette:[['#aee0ff','SKY'],['#1d9bf0','AQUA'],['#c6f6d5','LEAF'],['#ffffff','GLOSS']],
+   fonts:'Frutiger / Myriad / Outfit',mood:'Optimistic, clean, techno-natural',use:'Nostalgic tech, eco brands, wellness'},
+
+  {id:'glass',name:'Glassmorphism (iOS)',era:'2020–present',cat:['UI Style','Modern'],demo:'glass',
+   demoHTML:`<div class="gl-card"><b>Frosted</b><span>blur · translucency · depth</span></div>`,
+   blurb:'Frosted, translucent panels over colourful backgrounds. Apple’s Liquid Glass language.',
+   tags:['Blur','Translucent','Layered','Depth'],
+   palette:[['#5b2a86','PURPLE'],['#3a8ee6','BLUE'],['#16c2c2','TEAL'],['#ff7eb3','PINK']],
+   fonts:'SF Pro / Outfit / Inter',mood:'Modern, premium, airy',use:'iOS/macOS apps, dashboards, fintech'},
+
+  {id:'skeuo',name:'Skeuomorphism',era:'2007–2013',cat:['Retro','UI Style'],demo:'skeuo',
+   demoHTML:`<div class="sk-note"></div><div class="sk-btn">Save</div>`,
+   blurb:'Digital objects mimic real-world materials — leather, paper, brushed metal, stitching.',
+   tags:['Realistic textures','Shadows','Gradients','Tactile'],
+   palette:[['#d9d4c8','LINEN'],['#fffdf5','PAPER'],['#9a9a9a','METAL'],['#f1a9a0','MARGIN']],
+   fonts:'Helvetica Neue / Outfit',mood:'Familiar, tactile, warm',use:'Early iOS, note apps, retro UI'},
+
+  {id:'neumorph',name:'Neumorphism (Soft UI)',era:'2019–2021',cat:['UI Style','Minimal'],demo:'neumorph',
+   demoHTML:`<div class="nm-circle"></div><div class="nm-btn">Soft</div>`,
+   blurb:'Elements extrude from a single-tone surface using paired light/dark soft shadows.',
+   tags:['Soft shadows','Monochrome','Extruded','Subtle'],
+   palette:[['#e0e5ec','BASE'],['#a3b1c6','SHADOW'],['#ffffff','LIGHT'],['#5b6b82','TEXT']],
+   fonts:'Montserrat / Outfit',mood:'Soft, calm, minimal',use:'Concept UI, smart-home, audio apps'},
+
+  {id:'flat',name:'Flat Design',era:'2012–present',cat:['UI Style','Minimal'],demo:'flat',
+   demoHTML:`<div class="ft-h">Flat & clean</div><div class="ft-row"><div class="ft-b a">OK</div><div class="ft-b b">No</div><div class="ft-b c">More</div></div>`,
+   blurb:'No gradients, no shadows. Solid colour, simple shapes, clear hierarchy. Born with iOS 7.',
+   tags:['No depth','Solid color','Simple','Functional'],
+   palette:[['#1abc9c','TURQUOISE'],['#e74c3c','RED'],['#f1c40f','YELLOW'],['#2c3e50','SLATE']],
+   fonts:'Helvetica / Lato / Open Sans',mood:'Clean, modern, approachable',use:'Web apps, icons, infographics'},
+
+  {id:'material',name:'Material Design',era:'2014–present',cat:['UI Style','Modern'],demo:'material',
+   demoHTML:`<div class="md-bar"></div><div class="md-fab">+</div><div class="md-card">Elevation & ink</div>`,
+   blurb:'Google’s system: paper-and-ink metaphor with meaningful elevation, motion and bold colour.',
+   tags:['Elevation','Grid','Motion','Bold color'],
+   palette:[['#3f51b5','INDIGO'],['#ff4081','PINK'],['#fafafa','SURFACE'],['#212121','INK']],
+   fonts:'Roboto / Product Sans',mood:'Systematic, friendly, bold',use:'Android, Google products, web apps'},
+
+  {id:'swiss',name:'Swiss / International',era:'1950s–present',cat:['Minimal','Retro'],demo:'swiss',
+   demoHTML:`<div class="sw-red"></div><div class="sw-meta">GRID · 1957</div><div class="sw-h">Form follows the grid</div><div class="sw-grid"><i></i><i></i><i></i></div>`,
+   blurb:'The Swiss Style: rigorous grids, Helvetica, asymmetric layout and absolute clarity.',
+   tags:['Grid system','Sans-serif','Asymmetry','Objective'],
+   palette:[['#ffffff','WHITE'],['#111111','BLACK'],['#e2231a','RED'],['#999999','GREY']],
+   fonts:'Helvetica / Akzidenz-Grotesk',mood:'Rational, clean, authoritative',use:'Editorial, posters, corporate, wayfinding'},
+
+  {id:'bauhaus',name:'Bauhaus',era:'1919–1933',cat:['Retro','Minimal'],demo:'bauhaus',
+   demoHTML:`<div class="bh1"></div><div class="bh2"></div><div class="bh3"></div><div class="bh4"></div>`,
+   blurb:'Primary colours and pure geometry — circle, square, triangle. Form follows function.',
+   tags:['Primary colors','Geometric','Functional','Modernist'],
+   palette:[['#e63946','RED'],['#ffd23f','YELLOW'],['#1d3557','BLUE'],['#f2ede4','PAPER']],
+   fonts:'Futura / geometric sans',mood:'Bold, rational, foundational',use:'Posters, branding, architecture'},
+
+  {id:'artdeco',name:'Art Deco',era:'1920s–1930s',cat:['Retro','Maximal'],demo:'artdeco',
+   demoHTML:`<div class="ad-fan">▲ ▲ ▲</div><div class="ad-h">GATSBY</div><div class="ad-sub">est. 1925</div>`,
+   blurb:'Gilded geometry, symmetry, sunbursts and luxury. The glamour of the Jazz Age.',
+   tags:['Gold','Symmetry','Geometric luxe','Elegant'],
+   palette:[['#0d1b2a','MIDNIGHT'],['#c9a227','GOLD'],['#e0b973','BRASS'],['#1b263b','NAVY']],
+   fonts:'Poiret / Playfair / Broadway',mood:'Glamorous, opulent, refined',use:'Luxury, hotels, spirits, weddings'},
+
+  {id:'vapor',name:'Vaporwave',era:'2010s',cat:['Retro','Experimental'],demo:'vapor',
+   demoHTML:`<div class="vp-sun"></div><div class="vp-h">A E S T H E T I C</div>`,
+   blurb:'Glitchy 80s/90s nostalgia: pastel neon, Roman busts, grids and Japanese type.',
+   tags:['Pastel neon','Grids','Nostalgia','Surreal'],
+   palette:[['#ff71ce','PINK'],['#01cdfe','CYAN'],['#b967ff','PURPLE'],['#2b1055','NIGHT']],
+   fonts:'Wide sans / katakana',mood:'Dreamy, ironic, nostalgic',use:'Music, art, fashion, album art'},
+
+  {id:'y2k',name:'Y2K Futurism',era:'1998–2004 revival',cat:['Retro','Maximal'],demo:'y2k',
+   demoHTML:`<div class="yk-blob"></div><div class="yk-h">techno baby</div>`,
+   blurb:'Chrome, blobs, frosted gradients and optimistic millennium tech-shine.',
+   tags:['Chrome','Blobs','Glossy','Optimistic'],
+   palette:[['#ff9ff3','BUBBLE'],['#48dbfb','AQUA'],['#feca57','GOLD'],['#c8a2ff','LILAC']],
+   fonts:'Squada / chrome display',mood:'Playful, futuristic, glossy',use:'Gen-Z brands, fashion, music'},
+
+  {id:'synth',name:'Synthwave / Retrowave',era:'2010s',cat:['Retro','Experimental'],demo:'synth',
+   demoHTML:`<div class="sy-sun"></div><div class="sy-h">OUTRUN</div>`,
+   blurb:'Neon-drenched 80s sci-fi: sunset gradients, perspective grids and glowing type.',
+   tags:['Neon glow','Perspective grid','Sunset','80s sci-fi'],
+   palette:[['#ff2a6d','HOT PINK'],['#05d9e8','CYAN'],['#ffde59','SUN'],['#0d0221','VOID']],
+   fonts:'Outrun / wide neon sans',mood:'Cinematic, energetic, nostalgic',use:'Gaming, music, film, gym brands'},
+
+  {id:'japandi',name:'Japandi / Asian Store',era:'Contemporary',cat:['Minimal','Cultural'],demo:'japandi',
+   demoHTML:`<div class="jp-circle"></div><div class="jp-h">和</div><div class="jp-line"><i></i><i></i><i></i></div>`,
+   blurb:'Japanese minimalism meets Scandinavian warmth — natural tones, negative space, a single bold accent.',
+   tags:['Negative space','Earth tones','Calm','Crafted'],
+   palette:[['#ece7df','SAND'],['#b34233','VERMILION'],['#3d3a34','SUMI'],['#8a8170','CLAY']],
+   fonts:'Noto Sans JP / light geometric',mood:'Serene, balanced, premium',use:'Lifestyle, ceramics, retail, wellness'},
+
+  {id:'cyber',name:'Cyberpunk',era:'1980s–present',cat:['Experimental','Maximal'],demo:'cyber',
+   demoHTML:`<div class="cy-h">NIGHT//CITY</div><div class="cy-bar"></div><div class="cy-btn">JACK IN</div>`,
+   blurb:'High tech, low life. Neon on black, scanlines, glitch type and aggressive HUD geometry.',
+   tags:['Neon','Scanlines','HUD','Dystopian'],
+   palette:[['#00fff5','CYAN'],['#ff003c','RED'],['#f9f002','ACID'],['#05010f','VOID']],
+   fonts:'Orbitron / Rajdhani / mono',mood:'Edgy, futuristic, intense',use:'Gaming, crypto, music, streetwear'},
+
+  {id:'editorial',name:'Editorial / Dark Luxe',era:'Contemporary',cat:['Minimal','Modern'],demo:'editorial',
+   demoHTML:`<div class="ed-k">FEATURE</div><div class="ed-h">The Long<br>Read.</div><div class="ed-rule"></div>`,
+   blurb:'Magazine-grade typography: large serif headlines, generous leading, restrained accents.',
+   tags:['Serif display','Typographic','Refined','Contrast'],
+   palette:[['#101012','INK'],['#ededed','PAPER'],['#c9a227','GOLD'],['#888888','GREY']],
+   fonts:'Playfair / Canela / GT Sectra',mood:'Sophisticated, literary, premium',use:'Magazines, fashion, agencies, blogs'},
+
+  {id:'clay',name:'Claymorphism',era:'2021–present',cat:['UI Style','Modern'],demo:'clay',
+   demoHTML:`<div class="cl-blob"></div><div class="cl-btn">Squishy</div>`,
+   blurb:'Soft, puffy 3D shapes with inner shadows — like friendly modelling clay.',
+   tags:['Puffy 3D','Inner shadow','Pastel','Friendly'],
+   palette:[['#dcd3ff','LILAC'],['#a78bfa','VIOLET'],['#ffb4c8','BLUSH'],['#7a2e4a','PLUM']],
+   fonts:'Nunito / Quicksand / Outfit',mood:'Friendly, soft, playful',use:'Apps, onboarding, kids, 3D illustration'},
+
+  {id:'anti',name:'Anti-Design',era:'2017–present',cat:['Experimental','Maximal'],demo:'anti',
+   demoHTML:`<div class="an1">UGLY?</div><div class="an3">on purpose</div><div class="an4">default link</div><div class="an2">~vibes~</div>`,
+   blurb:'Breaks every rule on purpose — clashing fonts, default styles, intentional “ugliness”.',
+   tags:['Rule-breaking','Clashing','Ironic','Default styles'],
+   palette:[['#00ff66','SLIME'],['#ff00ff','MAGENTA'],['#ffff00','YELLOW'],['#0000ff','BLUE']],
+   fonts:'Times + Comic Sans + system',mood:'Ironic, rebellious, raw',use:'Art, music, Gen-Z, counter-culture'},
+
+  {id:'organic',name:'Organic / Cottagecore',era:'Contemporary',cat:['Cultural','Minimal'],demo:'organic',
+   demoHTML:`<div class="og-leaf"></div><div class="og-h">Homegrown</div><div class="og-sub">slow living</div>`,
+   blurb:'Natural, hand-crafted warmth: botanical shapes, muted earth tones and soft serifs.',
+   tags:['Botanical','Earthy','Hand-crafted','Soft'],
+   palette:[['#e9e2d0','CREAM'],['#588157','SAGE'],['#a3b18a','MOSS'],['#5a5235','BARK']],
+   fonts:'Cormorant / soft serifs',mood:'Cozy, natural, nostalgic',use:'Food, crafts, wellness, weddings'},
+
+  {id:'corpmem',name:'Corporate Memphis',era:'2017–present',cat:['UI Style','Modern'],demo:'corpmem',
+   demoHTML:`<div class="cm-fig"><div class="head"></div><div class="body"></div><div class="body2"></div></div><div class="cm-h">We grow together</div>`,
+   blurb:'Flat “Alegria” illustration: bendy, big-handed characters in bright duotone palettes.',
+   tags:['Flat illustration','Bendy figures','Friendly','Tech'],
+   palette:[['#7c3aed','VIOLET'],['#f97316','ORANGE'],['#22d3ee','SKY'],['#f5f3ff','BG']],
+   fonts:'Circular / geometric sans',mood:'Approachable, corporate, upbeat',use:'Big Tech, fintech, SaaS marketing'},
+
+  {id:'glitch',name:'Glitch / Datamosh',era:'Contemporary',cat:['Experimental'],demo:'glitch',
+   demoHTML:`<div class="gt-h">GLITCH</div>`,
+   blurb:'Digital error as aesthetic: RGB channel splits, corruption artefacts and broken signal.',
+   tags:['RGB split','Distortion','Error','Digital'],
+   palette:[['#ff003c','RED'],['#00fff5','CYAN'],['#ffffff','WHITE'],['#0a0a0a','BLACK']],
+   fonts:'Mono / distorted display',mood:'Chaotic, edgy, digital',use:'Music, streetwear, tech, posters'},
+
+  {id:'grunge',name:'Grunge',era:'1990s revival',cat:['Retro','Experimental'],demo:'grunge',
+   demoHTML:`<div class="gr-h">Distorted</div><div class="gr-tape">lo-fi · torn · raw</div>`,
+   blurb:'Dirty textures, torn edges, photocopied type and 90s zine energy.',
+   tags:['Texture','Torn','Distressed','Lo-fi'],
+   palette:[['#2b2620','DIRT'],['#d6cab3','BONE'],['#9a8c5a','MOSS'],['#e8dcc0','PAPER']],
+   fonts:'Stencil / distressed type',mood:'Raw, rebellious, gritty',use:'Music, skate, posters, zines'},
+
+  {id:'techgeo',name:'Technological Geometry',era:'Contemporary',cat:['Modern','Experimental'],demo:'techgeo',
+   demoHTML:`<div class="tg-corner"></div><div class="tg-hex"></div><div class="tg-meta">SYS // 0xA4 · ONLINE</div>`,
+   blurb:'Precision grids, hexagons, wireframes and mono labels — an engineered, high-tech feel.',
+   tags:['Grid','Hexagons','Wireframe','Mono labels'],
+   palette:[['#0a0e17','VOID'],['#22c55e','GREEN'],['#0ea5e9','BLUE'],['#38bdf8','SKY']],
+   fonts:'Space Mono / Rajdhani',mood:'Precise, futuristic, technical',use:'Dev tools, hardware, AI, crypto'},
+
+  {id:'aurora',name:'Aurora Gradient',era:'2020–present',cat:['Modern','UI Style'],demo:'aurora',
+   demoHTML:`<div class="au-h">Spectrum</div><div class="au-pill">smooth · vivid · soft</div>`,
+   blurb:'Soft, flowing multi-colour gradients (à la Stripe / Linear) as immersive backdrops.',
+   tags:['Gradient mesh','Vivid','Smooth','Ambient'],
+   palette:[['#6d28d9','VIOLET'],['#db2777','PINK'],['#f59e0b','AMBER'],['#10b981','EMERALD']],
+   fonts:'Inter / Outfit / SF Pro',mood:'Modern, vibrant, premium',use:'SaaS, fintech, dev tools, AI'},
+
+  {id:'noir',name:'Monochrome Noir',era:'Timeless',cat:['Minimal','Modern'],demo:'noir',
+   demoHTML:`<div class="no-h">B / W</div><div class="no-row"><i></i><i></i><i></i></div><div class="no-btn">Explore</div>`,
+   blurb:'Pure black-and-white systems: contrast, texture and typography carry all the weight.',
+   tags:['Greyscale','High contrast','Typographic','Bold'],
+   palette:[['#000000','BLACK'],['#777777','GREY'],['#cccccc','SILVER'],['#ffffff','WHITE']],
+   fonts:'Helvetica / Outfit / Druk',mood:'Bold, timeless, dramatic',use:'Fashion, photography, agencies'},
+
+  {id:'constructivism',name:'Constructivism',era:'1920s',cat:['Retro','Maximal'],demo:'constructivism',ref:'russian constructivism graphic design',
+   demoHTML:`<div class="cn-dot"></div><div class="cn-h">BUILD</div><div class="cn-bar"></div>`,
+   blurb:'Soviet-era propaganda design: bold diagonals, red & black, heavy sans and photomontage.',
+   tags:['Diagonals','Red & black','Bold sans','Agitprop'],
+   palette:[['#d62828','RED'],['#111111','BLACK'],['#e6e0d4','PAPER'],['#ffffff','WHITE']],
+   fonts:'Heavy grotesque / Archivo',mood:'Bold, political, dynamic',use:'Posters, editorial, activism'},
+
+  {id:'destijl',name:'De Stijl / Mondrian',era:'1917–1931',cat:['Retro','Minimal'],demo:'destijl',ref:'de stijl mondrian neoplasticism',
+   demoHTML:`<div class="ds-red"></div><div class="ds-yellow"></div><div class="ds-blue"></div><div class="ds-v"></div><div class="ds-h"></div><div class="ds-v2"></div>`,
+   blurb:'Neoplasticism: pure primaries blocked by thick black lines on white. Order from grids.',
+   tags:['Primary blocks','Black grid','Asymmetry','Pure'],
+   palette:[['#e63946','RED'],['#ffd23f','YELLOW'],['#1d3557','BLUE'],['#f7f5ee','WHITE']],
+   fonts:'Geometric sans',mood:'Rational, balanced, abstract',use:'Branding, posters, architecture'},
+
+  {id:'popart',name:'Pop Art',era:'1950s–60s',cat:['Retro','Maximal'],demo:'popart',ref:'pop art lichtenstein design',
+   demoHTML:`<div class="pa-bubble">POW!</div>`,
+   blurb:'Lichtenstein-style comic energy: Ben-Day dots, bold outlines and saturated primaries.',
+   tags:['Ben-Day dots','Comic','Saturated','Bold outline'],
+   palette:[['#ffde00','YELLOW'],['#d7263d','RED'],['#1d3557','BLUE'],['#ffffff','WHITE']],
+   fonts:'Comic / heavy sans',mood:'Loud, ironic, fun',use:'Posters, merch, advertising'},
+
+  {id:'psychedelic',name:'Psychedelic',era:'1960s–70s',cat:['Retro','Experimental'],demo:'psychedelic',ref:'1960s psychedelic poster art',
+   demoHTML:`<div class="ps-h">GROOVY</div>`,
+   blurb:'Trippy 60s counterculture: swirling rainbow colour, warped type and high vibration.',
+   tags:['Swirls','Warped type','Rainbow','Trippy'],
+   palette:[['#ff006e','PINK'],['#ffbe0b','GOLD'],['#06d6a0','MINT'],['#8338ec','VIOLET']],
+   fonts:'Liquid display / Cooper',mood:'Wild, expressive, hypnotic',use:'Music, festivals, posters'},
+
+  {id:'artnouveau',name:'Art Nouveau',era:'1890–1910',cat:['Retro','Cultural'],demo:'artnouveau',ref:'art nouveau mucha poster',
+   demoHTML:`<div class="nv-h">Maison</div><div class="nv-sub">belle époque</div>`,
+   blurb:'Mucha-era elegance: flowing organic curves, whiplash lines, florals and ornate frames.',
+   tags:['Organic curves','Florals','Ornate','Elegant'],
+   palette:[['#1c3a32','FOREST'],['#e2c275','GOLD'],['#b8902f','BRASS'],['#9c7d3f','BRONZE']],
+   fonts:'Ornate serif / display',mood:'Romantic, decorative, refined',use:'Luxury, beauty, packaging'},
+
+  {id:'steampunk',name:'Steampunk',era:'Contemporary',cat:['Retro','Experimental'],demo:'steampunk',ref:'steampunk design brass gears',
+   demoHTML:`<div class="sp-gear"></div><div class="sp-h">CLOCKWORK</div>`,
+   blurb:'Victorian sci-fi: brass, cogs, leather and sepia — the future as imagined in 1890.',
+   tags:['Brass','Gears','Sepia','Victorian'],
+   palette:[['#241b10','LEATHER'],['#b8860b','BRASS'],['#e8c98a','GOLD'],['#5a4632','WOOD']],
+   fonts:'Ornate serif / slab',mood:'Vintage, mechanical, adventurous',use:'Games, events, fiction, props'},
+
+  {id:'riso',name:'Risograph',era:'Contemporary',cat:['Modern','Experimental'],demo:'riso',ref:'risograph print design',
+   demoHTML:`<div class="ri-a"></div><div class="ri-b"></div><div class="ri-h">OVERPRINT</div>`,
+   blurb:'The riso print look: limited spot inks that overprint and multiply, with grainy texture.',
+   tags:['Overprint','Spot inks','Grain','Limited palette'],
+   palette:[['#ff4d4d','FLAT RED'],['#3d5afe','BLUE'],['#f4f1e6','PAPER'],['#1a1a1a','BLACK']],
+   fonts:'Grotesque / mono',mood:'Crafty, indie, tactile',use:'Zines, posters, indie print'},
+
+  {id:'kawaii',name:'Kawaii',era:'1970s–present',cat:['Cultural','Maximal'],demo:'kawaii',ref:'kawaii cute japanese design',
+   demoHTML:`<div class="kw-face"><i class="eye l"></i><i class="eye r"></i><i class="cheek l"></i><i class="cheek r"></i><i class="mouth"></i></div><div class="kw-h">so cute!</div>`,
+   blurb:'Japanese "cute culture": rounded mascots, pastel palettes and friendly faces everywhere.',
+   tags:['Mascots','Pastel','Rounded','Cute'],
+   palette:[['#ffe5f0','BLUSH'],['#ffb6d5','PINK'],['#ff5ca2','ROSE'],['#6a3a52','PLUM']],
+   fonts:'Rounded sans / Poppins',mood:'Sweet, playful, friendly',use:'Mascots, kids, stationery, apps'},
+
+  {id:'streetwear',name:'Streetwear / Hypebeast',era:'Contemporary',cat:['Modern','Maximal'],demo:'streetwear',ref:'streetwear hypebeast box logo design',
+   demoHTML:`<div class="st-box">HYPE</div><div class="st-sub">DROP 001</div>`,
+   blurb:'Supreme-era hype: bold box logos, heavy condensed type and limited-drop exclusivity.',
+   tags:['Box logo','Condensed','Bold','Hype'],
+   palette:[['#da291c','RED'],['#111111','BLACK'],['#ffffff','WHITE'],['#f5f5f5','OFF-WHITE']],
+   fonts:'Helvetica Bold / Futura',mood:'Bold, exclusive, urban',use:'Fashion, drops, merch, music'},
+
+  {id:'liquid',name:'Liquid / Metaball',era:'2020–present',cat:['Modern','Experimental'],demo:'liquid',ref:'liquid metaball gooey 3d design',
+   demoHTML:`<i class="lq-a"></i><i class="lq-b"></i><i class="lq-c"></i><div class="lq-h">FLOW</div>`,
+   blurb:'Gooey, merging organic blobs and fluid 3D forms that feel alive and morphing.',
+   tags:['Blobs','Gooey','Fluid','3D'],
+   palette:[['#7c3aed','VIOLET'],['#ec4899','PINK'],['#06b6d4','CYAN'],['#0b1020','VOID']],
+   fonts:'Geometric sans / Outfit',mood:'Dynamic, modern, organic',use:'3D, motion, tech brands'},
+
+  {id:'collage',name:'Collage / Scrapbook',era:'Contemporary',cat:['Experimental','Maximal'],demo:'collage',ref:'collage scrapbook cutout design',
+   demoHTML:`<i class="co-1"></i><i class="co-2"></i><i class="co-3"></i><i class="co-tape"></i><div class="co-txt">CUT &amp; PASTE</div>`,
+   blurb:'Cut-and-paste energy: torn paper, tape, mixed media and intentional handmade layering.',
+   tags:['Torn paper','Tape','Mixed media','Layered'],
+   palette:[['#e9e4d8','PAPER'],['#ff5d73','CORAL'],['#3a86ff','BLUE'],['#111111','INK']],
+   fonts:'Mono + handwritten mix',mood:'Handmade, raw, expressive',use:'Music, zines, editorial, social'},
+
+  {id:'darkacademia',name:'Dark Academia',era:'Contemporary',cat:['Cultural','Minimal'],demo:'darkacademia',ref:'dark academia aesthetic design',
+   demoHTML:`<div class="da-h">Scholar</div><div class="da-rule"></div><div class="da-sub">sapere aude</div>`,
+   blurb:'Old-library scholarship: deep browns, classic serifs, Latin and moody intellectualism.',
+   tags:['Serif','Moody','Scholarly','Vintage'],
+   palette:[['#2b241b','OAK'],['#cbb892','PARCHMENT'],['#8a7a5a','TAUPE'],['#4a3f2e','UMBER']],
+   fonts:'Garamond / Playfair',mood:'Moody, intellectual, classic',use:'Books, editorial, education'},
+
+  {id:'midcentury',name:'Mid-Century Modern',era:'1945–1969',cat:['Retro','Modern'],demo:'midcentury',ref:'mid century modern design',
+   demoHTML:`<div class="mc-a"></div><div class="mc-b"></div><div class="mc-c"></div><div class="mc-h">ATOMIC</div>`,
+   blurb:'Post-war optimism: warm mustard & teal, simple organic shapes and clean geometry.',
+   tags:['Warm tones','Organic shapes','Geometric','Retro'],
+   palette:[['#e07a5f','TERRACOTTA'],['#3d8c87','TEAL'],['#e6b800','MUSTARD'],['#5a3825','WALNUT']],
+   fonts:'Futura / geometric sans',mood:'Warm, optimistic, refined',use:'Furniture, branding, interiors'},
+
+  {id:'scandi',name:'Scandinavian',era:'Contemporary',cat:['Minimal','Cultural'],demo:'scandi',ref:'scandinavian minimal design',
+   demoHTML:`<div class="sc-row"><div class="sc-tri"></div><div class="sc-tri b"></div></div><div class="sc-h">hygge</div>`,
+   blurb:'Nordic calm: muted dusty tones, simple forms, light wood feel and functional warmth.',
+   tags:['Muted tones','Simple','Functional','Cozy'],
+   palette:[['#f3f0eb','LINEN'],['#a8b5c0','DUSTY BLUE'],['#d9a89a','BLUSH'],['#3a3a3a','CHARCOAL']],
+   fonts:'Light geometric sans',mood:'Calm, cozy, functional',use:'Lifestyle, home, retail'},
+
+  {id:'holo',name:'Holographic / Iridescent',era:'2017–present',cat:['Modern','Experimental'],demo:'holo',ref:'holographic iridescent design',
+   demoHTML:`<div class="ho-h">IRIDESCENT</div>`,
+   blurb:'Shifting rainbow chrome and oil-slick sheens that change with the light.',
+   tags:['Iridescent','Chrome','Shifting','Sheen'],
+   palette:[['#a18cd1','LILAC'],['#fbc2eb','PINK'],['#8fd3f4','SKY'],['#84fab0','MINT']],
+   fonts:'Sleek sans / Outfit',mood:'Futuristic, glossy, premium',use:'Beauty, music, tech, packaging'},
+
+  {id:'duotone',name:'Duotone',era:'Contemporary',cat:['Modern','UI Style'],demo:'duotone',ref:'duotone design spotify',
+   demoHTML:`<div class="dt-circ"></div><div class="dt-h">DUOTONE</div>`,
+   blurb:'Two-tone colour mapping (Spotify-style) — images reduced to a bold colour duo.',
+   tags:['Two-tone','High contrast','Bold','Photographic'],
+   palette:[['#2d00f7','BLUE'],['#ff006e','PINK'],['#ff4dd2','MAGENTA'],['#150578','NAVY']],
+   fonts:'Bold sans / Archivo',mood:'Bold, modern, punchy',use:'Music, campaigns, posters'},
+
+  {id:'comic',name:'Halftone / Comic',era:'Retro revival',cat:['Retro','Maximal'],demo:'comic',ref:'comic book halftone design',
+   demoHTML:`<div class="cm-burst"></div><div class="cm-bubble">BAM!</div>`,
+   blurb:'Newsprint comic energy: halftone dots, action bursts, speech bubbles and thick ink.',
+   tags:['Halftone','Bursts','Speech bubbles','Ink'],
+   palette:[['#ffde00','YELLOW'],['#d7263d','RED'],['#111111','INK'],['#fdf6e3','NEWSPRINT']],
+   fonts:'Comic / heavy display',mood:'Energetic, punchy, fun',use:'Posters, merch, games, kids'},
+
+  {id:'bento',name:'Bento Grid',era:'2022–present',cat:['UI Style','Modern'],demo:'bento',ref:'bento grid ui design',
+   demoHTML:`<i class="bn-a"></i><i></i><i class="bn-c"></i>`,
+   blurb:'Apple-style modular layout: rounded tiles of varying sizes, each holding one idea.',
+   tags:['Modular tiles','Rounded','Organized','Clean'],
+   palette:[['#0e0e12','BG'],['#1b1b22','TILE'],['#6366f1','VIOLET'],['#22d3ee','CYAN']],
+   fonts:'SF Pro / Outfit / Inter',mood:'Organized, modern, premium',use:'Landing pages, dashboards, decks'},
+
+  {id:'deconstructed',name:'Deconstructed Type',era:'1990s',cat:['Experimental','Maximal'],demo:'deconstructed',ref:'david carson deconstructed typography',
+   demoHTML:`<i class="de1">TYPE</i><i class="de2">CHAOS</i><i class="de3">deconstruct</i><i class="de4">Aa</i>`,
+   blurb:'David Carson grunge-typography: broken grids, overlapping type, legibility be damned.',
+   tags:['Broken grid','Overlap','Expressive','Chaotic'],
+   palette:[['#121212','BLACK'],['#ffffff','WHITE'],['#ff3b6b','RED'],['#99aaaa','GREY']],
+   fonts:'Mixed, distressed type',mood:'Raw, expressive, rebellious',use:'Music, art, editorial, fashion'},
+
+  {id:'terminal',name:'Terminal / ASCII',era:'Timeless',cat:['Experimental','Retro'],demo:'terminal',ref:'terminal cli interface design',
+   demoHTML:`<div class="tm-l"><span class="tm-dim">$</span> npm run build</div><div class="tm-l tm-dim">✓ compiled in 1.2s</div><div class="tm-l"><span class="tm-dim">$</span> deploy <span class="tm-cursor"></span></div>`,
+   blurb:'Command-line aesthetic: monospace, green-on-black, cursors and pure text interfaces.',
+   tags:['Monospace','Green on black','CLI','Text-only'],
+   palette:[['#020a02','BG'],['#33ff66','GREEN'],['#1f8f3f','DIM'],['#0a160a','PANEL']],
+   fonts:'Monospace / Space Mono',mood:'Technical, hacker, retro',use:'Dev tools, hacker brands, CTF'},
+
+  {id:'solarpunk',name:'Solarpunk',era:'Contemporary',cat:['Cultural','Modern'],demo:'solarpunk',ref:'solarpunk design aesthetic',
+   demoHTML:`<div class="so-sun"></div><div class="so-h">SOLARPUNK</div><div class="so-leaf"></div>`,
+   blurb:'Optimistic eco-futurism: greens & gold, sunlight, plants and sustainable technology.',
+   tags:['Eco','Green & gold','Optimistic','Organic'],
+   palette:[['#34a06a','GREEN'],['#fcd34d','SUN'],['#bdf0c5','LEAF'],['#1b5e3a','FOREST']],
+   fonts:'Humanist sans / Outfit',mood:'Hopeful, natural, bright',use:'Climate, energy, community'},
+
+  {id:'afro',name:'Afrofuturism',era:'Contemporary',cat:['Cultural','Maximal'],demo:'afro',ref:'afrofuturism design aesthetic',
+   demoHTML:`<div class="af-tri"></div><div class="af-tri2"></div><div class="af-h">COSMIC</div>`,
+   blurb:'Black culture meets cosmic sci-fi: gold, deep space, bold pattern and ancestral motifs.',
+   tags:['Cosmic','Gold','Pattern','Bold'],
+   palette:[['#10002b','SPACE'],['#ffd60a','GOLD'],['#e0479e','MAGENTA'],['#00f5d4','AQUA']],
+   fonts:'Bold display / geometric',mood:'Visionary, bold, cosmic',use:'Music, film, art, fashion'},
+
+  {id:'guochao',name:'Guochao (国潮)',era:'2018–present',cat:['Cultural','Maximal'],demo:'guochao',ref:'guochao chinese national tide design',
+   demoHTML:`<div class="gc-h">国潮</div><div class="gc-seal">福</div>`,
+   blurb:'Chinese "national tide": traditional motifs, seals, ink and red-gold reimagined modern.',
+   tags:['Traditional motifs','Red & gold','Seals','Modern fusion'],
+   palette:[['#b8252a','RED'],['#ffd86b','GOLD'],['#1a1a1a','INK'],['#e8c87a','BRASS']],
+   fonts:'Brush serif / Song',mood:'Proud, ornate, contemporary',use:'F&B, fashion, packaging (China)'},
+
+  {id:'ukiyoe',name:'Ukiyo-e',era:'Edo period',cat:['Cultural','Retro'],demo:'ukiyoe',ref:'ukiyo-e japanese woodblock print',
+   demoHTML:`<div class="uk-wave"></div><div class="uk-wave2"></div><div class="uk-sun"></div>`,
+   blurb:'Japanese woodblock prints: flat colour, bold outlines, waves, and Hokusai-era nature.',
+   tags:['Woodblock','Flat color','Nature','Bold line'],
+   palette:[['#e8dcc4','PAPER'],['#284b63','INDIGO'],['#5a8fb0','WAVE'],['#c1502e','SUN']],
+   fonts:'Brush / classic serif',mood:'Serene, traditional, graphic',use:'Art, packaging, fashion, prints'},
+
+  {id:'blackletter',name:'Blackletter / Gothic',era:'Medieval revival',cat:['Retro','Experimental'],demo:'blackletter',ref:'blackletter gothic typography design',
+   demoHTML:`<div class="bl-h">Gothik</div><div class="bl-sub">anno domini</div>`,
+   blurb:'Medieval Gothic script weight — ornate, dense, heavy. From manuscripts to metal & merch.',
+   tags:['Gothic script','Ornate','Heavy','Dramatic'],
+   palette:[['#0d0d0d','BLACK'],['#ededed','BONE'],['#888888','GREY'],['#7a1f1f','BLOOD']],
+   fonts:'Fraktur / Blackletter',mood:'Dark, dramatic, historic',use:'Music, fashion, tattoos, logos'},
+
+  {id:'atompunk',name:'Atompunk / 50s Retro-future',era:'1950s revival',cat:['Retro','Maximal'],demo:'atompunk',ref:'atompunk 1950s retro futurism design',
+   demoHTML:`<div class="at-star"></div><div class="at-boom"></div><div class="at-h">TOMORROW</div>`,
+   blurb:'The Atomic Age "World of Tomorrow": starbursts, boomerangs and space-age optimism.',
+   tags:['Starbursts','Boomerangs','Atomic','Optimistic'],
+   palette:[['#f4e3c1','CREAM'],['#e0479e','PINK'],['#2a9d8f','TEAL'],['#264653','NAVY']],
+   fonts:'Retro script / fat sans',mood:'Optimistic, kitschy, retro',use:'Diners, events, branding, games'},
+
+  {id:'wabisabi',name:'Wabi-Sabi',era:'Timeless (Japan)',cat:['Minimal','Cultural'],demo:'wabisabi',ref:'wabi sabi japanese design aesthetic',
+   demoHTML:`<div class="ws-enso"></div><div class="ws-h">wabi-sabi</div>`,
+   blurb:'Beauty in imperfection: muted earth tones, raw texture, ink brushwork and quiet space.',
+   tags:['Imperfect','Earthy','Textured','Quiet'],
+   palette:[['#d8d0c3','CLAY'],['#4a4337','SUMI'],['#a89c88','STONE'],['#3a352c','INK']],
+   fonts:'Serif / brush accents',mood:'Quiet, humble, contemplative',use:'Ceramics, wellness, craft, tea'},
+
+  {id:'fluent',name:'Fluent / Acrylic',era:'2017–present',cat:['UI Style','Modern'],demo:'fluent',ref:'microsoft fluent acrylic design',
+   demoHTML:`<div class="fl-card">Fluent</div>`,
+   blurb:'Microsoft’s Fluent system: acrylic translucency, depth, light and reveal highlights.',
+   tags:['Acrylic','Depth','Light','Reveal'],
+   palette:[['#0078d4','BLUE'],['#5b2a86','PURPLE'],['#00b7c3','CYAN'],['#ffffff','LIGHT']],
+   fonts:'Segoe UI / Poppins',mood:'Modern, deep, polished',use:'Windows apps, productivity UI'},
+
+  {id:'materialyou',name:'Material You',era:'2021–present',cat:['UI Style','Modern'],demo:'materialyou',ref:'material you android design',
+   demoHTML:`<div class="my-fab">+</div><div class="my-pill">Dynamic color</div>`,
+   blurb:'Android 12’s personal system: dynamic colour from wallpaper, big rounds and soft pastels.',
+   tags:['Dynamic color','Rounded','Pastel','Personal'],
+   palette:[['#7c5cff','PRIMARY'],['#d0bcff','TONAL'],['#f3e9ff','SURFACE'],['#21005d','ON'],],
+   fonts:'Roboto / Google Sans',mood:'Friendly, personal, soft',use:'Android apps, modern UI'},
+
+  {id:'sticker',name:'Sticker / Doodle',era:'Contemporary',cat:['Maximal','Modern'],demo:'sticker',ref:'sticker doodle illustration design',
+   demoHTML:`<i class="sk-a"></i><i class="sk-b"></i><div class="sk-c">COOL ✦</div>`,
+   blurb:'Playful sticker-sheet vibe: white-bordered cut-outs, doodles and drop shadows everywhere.',
+   tags:['Stickers','White border','Doodles','Playful'],
+   palette:[['#fff7e6','BG'],['#ff5d8f','PINK'],['#4dd599','GREEN'],['#ffb703','AMBER']],
+   fonts:'Rounded sans / hand-drawn',mood:'Fun, youthful, energetic',use:'Apps, Gen-Z brands, events, merch'},
+
+  {id:'typographic',name:'Typographic Poster',era:'Timeless',cat:['Minimal','Modern'],demo:'typographic',ref:'typographic poster type as image',
+   demoHTML:`<div class="ty-h">TYPE<br>IS THE<br><em>IMAGE</em></div>`,
+   blurb:'Type as the hero: oversized words fill the frame, no images needed — letterforms do it all.',
+   tags:['Big type','No imagery','Bold','Editorial'],
+   palette:[['#111111','BLACK'],['#ffffff','WHITE'],['#818cf8','ACCENT'],['#222222','GREY']],
+   fonts:'Druk / Outfit / heavy sans',mood:'Bold, confident, editorial',use:'Posters, covers, hero sections'},
+];
+
+const CATS = ['All','Minimal','Maximal','Retro','Modern','UI Style','Experimental','Cultural'];
+let activeCat = 'All';
+let query = '';
+let showFavs = false;
+
+const grid = document.getElementById('grid');
+const filtersEl = document.getElementById('filters');
+const searchEl = document.getElementById('search');
+const noteEl = document.getElementById('note');
+const countEl = document.getElementById('count');
+const footcount = document.getElementById('footcount');
+const toolbarEl = document.querySelector('.toolbar');
+
+/* ---- Favorites (persisted) ---- */
+let favs = [];
+try{ favs = JSON.parse(localStorage.getItem('colurs_favs')||'[]'); }catch(e){ favs = []; }
+const isFav = id => favs.includes(id);
+function toggleFav(id){
+  const i = favs.indexOf(id);
+  if(i>=0) favs.splice(i,1); else favs.push(id);
+  try{ localStorage.setItem('colurs_favs', JSON.stringify(favs)); }catch(e){}
+  updateFavChip();
+  render();
+}
+
+CATS.forEach(c=>{
+  const b=document.createElement('button');
+  b.className='chip'+(c==='All'?' active':'');
+  b.textContent=c;
+  b.onclick=()=>{activeCat=c;[...filtersEl.children].forEach(x=>x.classList.remove('active'));b.classList.add('active');render();};
+  filtersEl.appendChild(b);
+});
+
+/* Shortlist toggle chip (separate from category chips) */
+const favChip=document.createElement('button');
+favChip.className='chip fav-chip';
+favChip.onclick=()=>{showFavs=!showFavs;favChip.classList.toggle('active',showFavs);render();};
+toolbarEl.insertBefore(favChip, toolbarEl.firstChild);
+function updateFavChip(){ favChip.innerHTML=`<span class="fc-star">★</span> Shortlist (${favs.length})`; }
+updateFavChip();
+
+/* ---- Optional reference images ----
+   Drop a file named after the style id into the /images folder, e.g. images/brutalism.jpg
+   Supported extensions are tried in order; if none exist, the live CSS demo shows instead. */
+const IMG_EXT=['jpg','png','jpeg','webp','avif'];
+function imgNext(img){
+  const ei=+img.dataset.ei+1;
+  if(ei<IMG_EXT.length){ img.dataset.ei=ei; img.src='images/'+img.dataset.id+'.'+IMG_EXT[ei]; }
+  else { img.remove(); }
+}
+function demoImg(s){
+  return `<img class="demo-img" alt="${s.name} examples" loading="lazy" data-id="${s.id}" data-ei="0" src="images/${s.id}.jpg" onload="this.classList.add('loaded')" onerror="imgNext(this)">`;
+}
+
+function match(s){
+  if(showFavs && !isFav(s.id)) return false;
+  if(activeCat!=='All' && !s.cat.includes(activeCat)) return false;
+  if(!query) return true;
+  const hay=(s.name+' '+s.era+' '+s.cat.join(' ')+' '+s.tags.join(' ')+' '+s.blurb+' '+s.mood+' '+s.use+' '+s.fonts).toLowerCase();
+  return hay.includes(query);
+}
+
+function render(){
+  const list=STYLES.filter(match);
+  grid.innerHTML='';
+  countEl.textContent=`${STYLES.length} styles`;
+  footcount.textContent=list.length;
+  noteEl.textContent = showFavs
+    ? `${list.length} in your shortlist`
+    : (activeCat==='All'&&!query) ? `${list.length} styles in the library` : `${list.length} match${list.length===1?'':'es'}`;
+  if(!list.length){
+    grid.innerHTML = showFavs
+      ? '<div class="empty">Your shortlist is empty — tap the ★ on any style to save it here.</div>'
+      : '<div class="empty">No styles match — try another search or category.</div>';
+    return;
+  }
+  list.forEach((s,i)=>{
+    const card=document.createElement('div');
+    card.className='card';
+    card.style.animationDelay=(i*0.03)+'s';
+    const on=isFav(s.id);
+    card.innerHTML=`
+      <button class="fav-btn${on?' on':''}" data-fav="${s.id}" aria-label="Save to shortlist" title="${on?'Remove from shortlist':'Add to shortlist'}"><span class="star">★</span></button>
+      <div class="demo demo--${s.demo}">${s.demoHTML}${demoImg(s)}</div>
+      <div class="card-body">
+        <div class="card-head"><h3>${s.name}</h3><span class="era">${s.era}</span></div>
+        <p class="blurb">${s.blurb}</p>
+        <div class="tags">${s.tags.slice(0,4).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="palette">${s.palette.map(p=>`<span style="background:${p[0]}"></span>`).join('')}</div>
+      </div>`;
+    card.querySelector('.fav-btn').onclick=e=>{e.stopPropagation();toggleFav(s.id);};
+    card.onclick=()=>openModal(s);
+    grid.appendChild(card);
+  });
+}
+
+const modalBg=document.getElementById('modalBg');
+const modal=document.getElementById('modal');
+function openModal(s){
+  const term=s.ref||s.name;
+  const gimg='https://www.google.com/search?tbm=isch&q='+encodeURIComponent(term+' design');
+  const dribbble='https://dribbble.com/search/shots/popular?q='+encodeURIComponent(term);
+  const pin='https://www.pinterest.com/search/pins/?q='+encodeURIComponent(term+' design');
+  const on=isFav(s.id);
+  modal.innerHTML=`
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div class="demo demo--${s.demo}">${s.demoHTML}${demoImg(s)}<span class="enlarge-hint">⤢ Click to enlarge</span></div>
+    <div class="modal-body">
+      <div class="mhead"><h2>${s.name}</h2><span class="mera">${s.era}</span></div>
+      <p class="mdesc">${s.blurb}</p>
+      <div class="modal-actions">
+        <button class="modal-fav${on?' on':''}" id="modalFav"><span>★</span> ${on?'Saved to shortlist':'Add to shortlist'}</button>
+        <a class="ref-link" target="_blank" rel="noopener" href="${gimg}">🔍 Real examples</a>
+        <a class="ref-link alt" target="_blank" rel="noopener" href="${dribbble}">Dribbble ↗</a>
+        <a class="ref-link alt" target="_blank" rel="noopener" href="${pin}">Pinterest ↗</a>
+      </div>
+      <div class="msec"><h4>Characteristics</h4><div class="mtags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>
+      <div class="msec"><h4>Palette</h4><div class="mpalette">${s.palette.map(p=>`<div class="mswatch"><span style="background:${p[0]}"></span><small>${p[0]}</small></div>`).join('')}</div></div>
+      <div class="msec minfo-grid">
+        <div><div class="k">Typography</div><div class="v">${s.fonts}</div></div>
+        <div><div class="k">Mood</div><div class="v">${s.mood}</div></div>
+        <div><div class="k">Categories</div><div class="v">${s.cat.join(' · ')}</div></div>
+        <div><div class="k">Best for</div><div class="v">${s.use}</div></div>
+      </div>
+    </div>`;
+  const mf=modal.querySelector('#modalFav');
+  mf.onclick=()=>{ toggleFav(s.id); const now=isFav(s.id); mf.classList.toggle('on',now); mf.innerHTML=`<span>★</span> ${now?'Saved to shortlist':'Add to shortlist'}`; };
+  // Click the reference image (if one is supplied) to view it full-size
+  const dimg=modal.querySelector('.demo-img');
+  if(dimg){ dimg.style.cursor='zoom-in'; dimg.addEventListener('click',e=>{ e.stopPropagation(); if(!dimg.classList.contains('loaded'))return; openLightbox(dimg.currentSrc||dimg.src); }); }
+  modalBg.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){modalBg.classList.remove('open');if(!lightbox.classList.contains('open'))document.body.style.overflow='';}
+modalBg.onclick=e=>{if(e.target===modalBg)closeModal();};
+
+/* Lightbox */
+const lightbox=document.getElementById('lightbox');
+const lightboxImg=lightbox.querySelector('img');
+function openLightbox(src){ lightboxImg.src=src; lightbox.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.removeAttribute('src'); document.body.style.overflow=modalBg.classList.contains('open')?'hidden':''; }
+lightbox.onclick=closeLightbox;
+
+document.addEventListener('keydown',e=>{ if(e.key!=='Escape')return; if(lightbox.classList.contains('open'))closeLightbox(); else if(modalBg.classList.contains('open'))closeModal(); });
+
+searchEl.addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();render();});
+render();
+</script>
+</body>
+</html>
