@@ -1,4 +1,4 @@
-# colurs
+# colours
 
 A visual reference library of **61 design styles** — each one rendered *live in its own aesthetic*, so you can actually see the look before you pick it. Built for designers who need to browse and shortlist visual languages quickly.
 
