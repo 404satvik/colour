@@ -54,7 +54,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-fo
 
 /* Masthead */
 nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1.5px solid var(--ink)}
-.nav-inner{max-width:1280px;margin:0 auto;padding:13px 32px;display:flex;align-items:baseline;gap:22px}
+.nav-inner{max-width:1280px;margin:0 auto;padding:13px 32px;display:flex;align-items:center;gap:18px}
 .brand{display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:-0.02em;color:var(--ink);line-height:1}
 .brand .dot{color:var(--accent)}
 .brand small{font-family:var(--mono);font-weight:400;font-size:9.5px;letter-spacing:0.16em;color:var(--ink-3);text-transform:uppercase}
@@ -98,15 +98,18 @@ header p b{color:var(--ink);font-weight:600}
 .card:hover .idx{color:var(--accent)}
 .card .demo{border-bottom:1px solid var(--line)}
 .card-body{padding:14px 16px 17px;display:flex;flex-direction:column;gap:9px;flex:1}
-.card-top{display:flex;align-items:baseline;gap:9px}
-.idx{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:0.02em;transition:color .2s;flex:none}
-.card h3{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:-0.01em;line-height:1.05;flex:1}
+.card-top{display:flex;align-items:flex-start;gap:9px}
+.idx{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:0.02em;transition:color .2s;flex:none;padding-top:3px}
+.card-top .era{padding-top:4px}
+.card h3{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:-0.01em;line-height:1.08;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .era{font-family:var(--mono);font-size:10px;color:var(--ink-3);white-space:nowrap;flex:none}
-.cat-line{font-family:var(--mono);font-size:9.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--accent)}
-.card p.blurb{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);line-height:1.5}
+.cat-line{font-family:var(--mono);font-size:9.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card p.blurb{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);line-height:1.5;min-height:3em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-lower{margin-top:auto;display:flex;flex-direction:column;gap:9px}
+.card-foot{display:flex;flex-direction:column;gap:9px}
 .palette{display:flex;height:13px;border:1px solid var(--line);overflow:hidden}
 .palette span{flex:1;box-shadow:inset -1px 0 0 rgba(255,255,255,0.18)}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
 .tag{font-family:var(--mono);font-size:9px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-2);background:none;border:1px solid var(--line);padding:3px 7px}
 
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -1186,10 +1189,14 @@ function render(){
       <div class="demo demo--${s.demo}">${s.demoHTML}${demoImg(s)}</div>
       <div class="card-body">
         <div class="card-top"><span class="idx">${s.n}</span><h3>${s.name}</h3><span class="era">${s.era}</span></div>
-        <div class="cat-line">${s.cat.join(' / ')}</div>
-        <p class="blurb">${s.blurb}</p>
-        <div class="palette">${s.palette.map(p=>`<span style="background:${p[0]}"></span>`).join('')}</div>
-        <div class="tags">${s.tags.slice(0,4).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="card-lower">
+          <div class="cat-line">${s.cat.join(' / ')}</div>
+          <p class="blurb">${s.blurb}</p>
+          <div class="card-foot">
+            <div class="palette">${s.palette.map(p=>`<span style="background:${p[0]}"></span>`).join('')}</div>
+            <div class="tags">${s.tags.slice(0,4).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          </div>
+        </div>
       </div>`;
     card.querySelector('.fav-btn').onclick=e=>{e.stopPropagation();toggleFav(s.id);};
     card.onclick=()=>openModal(s);
