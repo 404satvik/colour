@@ -517,6 +517,98 @@ header p b{color:var(--ink);font-weight:600}
 .demo--typographic .ty-h{font-size:38px;font-weight:800;line-height:.86;letter-spacing:-2px}
 .demo--typographic .ty-h em{font-style:normal;color:#818cf8}
 
+/* ===== MORE STYLES ===== */
+/* Op Art */
+.demo--opart{background:repeating-radial-gradient(circle at 50% 44%,#141414 0 11px,#fafafa 11px 22px);overflow:hidden}
+.demo--opart .op-l{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:#fafafa;color:#141414;font-family:'Archivo Black',sans-serif;font-size:13px;padding:4px 12px;letter-spacing:2px}
+
+/* Blueprint */
+.demo--blueprint{background:#0b3d91;overflow:hidden;font-family:'Space Mono',monospace;color:#dbe7ff}
+.demo--blueprint::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);background-size:20px 20px}
+.demo--blueprint .bp-circle{position:relative;z-index:2;width:70px;height:70px;border:1.5px solid #dbe7ff;border-radius:50%}
+.demo--blueprint .bp-circle::after{content:'';position:absolute;inset:14px;border:1.5px solid #dbe7ff;border-radius:50%}
+.demo--blueprint .bp-label{position:absolute;bottom:12px;left:14px;z-index:2;font-size:9px;letter-spacing:1px}
+
+/* Acid / Rave */
+.demo--acid{background:#0a0a0a;overflow:hidden;font-family:'Archivo Black',sans-serif}
+.demo--acid .ac-h{font-size:32px;letter-spacing:-1px;transform:scaleY(1.25) skewX(-8deg);background:linear-gradient(180deg,#eaffb0,#7cff00 45%,#2a8a00 56%,#caffa0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.demo--acid .ac-sub{position:absolute;bottom:14px;font-family:'Space Mono',monospace;color:#7cff00;font-size:10px;letter-spacing:3px}
+
+/* Chrome / Liquid Metal */
+.demo--chrome{background:radial-gradient(circle at 50% 28%,#2a2f3a,#0c0e12);overflow:hidden;font-family:'Archivo Black',sans-serif}
+.demo--chrome .ch-h{font-size:32px;letter-spacing:-1px;background:linear-gradient(180deg,#ffffff 0%,#cfd8e3 30%,#7d8794 49%,#eef3f9 52%,#9aa4b2 70%,#5b636e 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 1px rgba(0,0,0,.55))}
+
+/* Geocities / Old Web */
+.demo--geocities{background:repeating-linear-gradient(45deg,#000 0 11px,#0a0033 11px 22px);overflow:hidden;font-family:'Comic Sans MS','Poppins',cursive;color:#0f0;text-align:center;flex-direction:column;gap:7px}
+.demo--geocities .gc-h{font-size:18px;font-weight:700;background:linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#ff00ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.demo--geocities .gc-con{font-size:11px;color:#ffff00;background:#000;border:1px dashed #ff0;padding:3px 8px}
+.demo--geocities .gc-count{position:absolute;bottom:10px;font-family:'Space Mono',monospace;background:#000;color:#0f0;border:1px solid #0f0;font-size:9px;padding:2px 6px}
+
+/* Cyber Sigilism */
+.demo--sigilism{background:#050505;overflow:hidden;font-family:'UnifrakturMaguntia',serif;color:#fff;flex-direction:column;gap:6px}
+.demo--sigilism .sg-star{width:88px;height:88px;background:#fff;clip-path:polygon(50% 0,55% 45%,100% 50%,55% 55%,50% 100%,45% 55%,0 50%,45% 45%);filter:drop-shadow(0 0 9px rgba(255,255,255,.6))}
+.demo--sigilism .sg-h{position:absolute;bottom:12px;font-size:24px;letter-spacing:2px}
+
+/* Western / Wood Type */
+.demo--western{background:#e7d3a1;overflow:hidden;font-family:'Playfair Display',serif;color:#4a2c10;text-align:center;flex-direction:column;gap:6px}
+.demo--western::before{content:'';position:absolute;inset:8px;border:3px double #4a2c10}
+.demo--western .we-h{z-index:2;font-size:28px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.demo--western .we-sub{z-index:2;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase}
+
+/* Vintage Circus */
+.demo--circus{background:#a4161a;overflow:hidden;font-family:'Playfair Display',serif;color:#ffd60a;text-align:center;flex-direction:column;gap:5px}
+.demo--circus::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,#a4161a 0 18px,#7a1015 18px 36px)}
+.demo--circus .ci-h{z-index:2;font-size:25px;font-weight:900;text-transform:uppercase;letter-spacing:1px;text-shadow:2px 2px 0 #4a0a0c}
+.demo--circus .ci-sub{z-index:2;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#fff8e1}
+
+/* Newspaper / Broadsheet */
+.demo--newspaper{background:#f4f1e8;overflow:hidden;color:#1a1a1a;font-family:'Playfair Display',serif;align-items:stretch;justify-content:flex-start;flex-direction:column;padding:12px;gap:5px}
+.demo--newspaper .np-h{font-size:26px;font-weight:900;text-align:center;letter-spacing:1px;border-bottom:2px solid #1a1a1a;padding-bottom:4px}
+.demo--newspaper .np-sub{font-family:'Space Mono',monospace;font-size:7px;letter-spacing:2px;text-transform:uppercase;text-align:center;color:#555}
+.demo--newspaper .np-cols{display:flex;gap:8px;margin-top:4px}
+.demo--newspaper .np-cols i{flex:1;height:46px;background:repeating-linear-gradient(#9a9a9a 0 1px,transparent 1px 4px);opacity:.5}
+
+/* Punk / Ransom Note */
+.demo--punk{background:#0d0d0d;overflow:hidden}
+.demo--punk .pk-row{display:flex;gap:4px;align-items:center}
+.demo--punk .l{font-family:'Archivo Black',sans-serif;font-size:24px;padding:3px 7px;background:#fff;color:#000;display:inline-block}
+.demo--punk .l.a{background:#ffde59;transform:rotate(-8deg)}
+.demo--punk .l.b{background:#ff2e63;color:#fff;transform:rotate(6deg)}
+.demo--punk .l.c{background:#000;color:#fff;border:1px solid #fff;transform:rotate(-4deg)}
+.demo--punk .l.d{background:#fff;transform:rotate(7deg)}
+
+/* Tropical / Botanical */
+.demo--tropical{background:#0b6e4f;overflow:hidden;font-family:'Poppins',sans-serif}
+.demo--tropical .tr-leaf{position:absolute;width:74px;height:74px;border-radius:0 50% 50% 50%}
+.demo--tropical .tr-leaf.a{top:-12px;left:-12px;transform:rotate(20deg);background:#1f7a52}
+.demo--tropical .tr-leaf.b{bottom:-16px;right:-8px;transform:rotate(200deg);background:#27c285}
+.demo--tropical .tr-flower{width:48px;height:48px;border-radius:50%;background:radial-gradient(circle,#ffd000 30%,#ff5d8f 32%);z-index:2}
+.demo--tropical .tr-h{position:absolute;bottom:14px;z-index:2;color:#fff;font-weight:800;font-size:18px;letter-spacing:1px}
+
+/* Mediterranean / Coastal */
+.demo--mediterranean{background:#f0e6d6;overflow:hidden;font-family:'Playfair Display',serif}
+.demo--mediterranean .me-arch{width:84px;height:92px;background:#2e86ab;border-radius:42px 42px 0 0;position:relative}
+.demo--mediterranean .me-arch::after{content:'';position:absolute;inset:10px 10px 0;background:#f0e6d6;border-radius:32px 32px 0 0}
+.demo--mediterranean .me-h{position:absolute;bottom:16px;z-index:2;font-style:italic;font-size:21px;color:#c75b39}
+
+/* Barbiecore */
+.demo--barbiecore{background:#ff1f8e;overflow:hidden;font-family:'Archivo Black',sans-serif;color:#fff;flex-direction:column;gap:8px}
+.demo--barbiecore .bc-h{font-size:32px;letter-spacing:-1px;color:#fff;text-shadow:3px 3px 0 #d10071;font-style:italic}
+.demo--barbiecore .bc-heart{font-size:32px;color:#fff;line-height:1}
+
+/* Neo-Tokyo / Anime */
+.demo--anime{background:#fff;overflow:hidden;font-family:'Archivo Black',sans-serif;color:#111}
+.demo--anime::before{content:'';position:absolute;inset:0;background:repeating-radial-gradient(circle at 28% 38%,#111 0 1.5px,transparent 1.5px 6px);opacity:.22}
+.demo--anime .an-speed{position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 80% 50%,transparent 0 4deg,rgba(0,0,0,.5) 4deg 5deg)}
+.demo--anime .an-h{position:relative;z-index:2;font-size:28px;letter-spacing:-1px;transform:skewX(-6deg)}
+.demo--anime .an-jp{position:absolute;bottom:12px;left:14px;z-index:2;font-size:12px;color:#e60012;font-family:'Space Mono',monospace}
+
+/* Light Academia */
+.demo--lightacademia{background:#efe7d6;color:#6b5d44;font-family:'Playfair Display',serif;flex-direction:column;gap:8px}
+.demo--lightacademia .la-h{font-style:italic;font-size:24px;color:#5a4a32}
+.demo--lightacademia .la-rule{width:56px;height:1px;background:#b3a684}
+.demo--lightacademia .la-sub{font-family:var(--fb);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#a3956f}
+
 /* Favorite button */
 .fav-btn{position:absolute;top:9px;right:9px;z-index:8;width:30px;height:30px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:13px;line-height:1;padding:0;transition:transform .15s,background .2s,color .2s;-webkit-tap-highlight-color:transparent}
 .fav-btn:hover{transform:scale(1.1);background:var(--ink);color:var(--paper)}
@@ -646,7 +738,7 @@ try{var _t=localStorage.getItem('colours_theme')||((window.matchMedia&&matchMedi
 <footer class="wrap">
   <div class="foot-inner">
     <span class="fi-brand">colours<span class="dot">.</span> — a designer's pick-list</span>
-    <span><b id="footcount"></b> of 61 plates shown · click any for details</span>
+    <span><b id="footcount"></b> of <span id="foottotal"></span> plates shown · click any for details</span>
   </div>
 </footer>
 
@@ -1087,6 +1179,111 @@ const STYLES = [
    tags:['Big type','No imagery','Bold','Editorial'],
    palette:[['#111111','BLACK'],['#ffffff','WHITE'],['#818cf8','ACCENT'],['#222222','GREY']],
    fonts:'Druk / Outfit / heavy sans',mood:'Bold, confident, editorial',use:'Posters, covers, hero sections'},
+
+  {id:'opart',name:'Op Art',era:'1960s',cat:['Retro','Experimental'],demo:'opart',ref:'op art bridget riley optical',
+   demoHTML:`<div class="op-l">OP ART</div>`,
+   blurb:'Optical illusion as design: high-contrast black & white patterns that vibrate and bend the eye.',
+   tags:['Optical','Black & white','Pattern','Movement'],
+   palette:[['#141414','BLACK'],['#fafafa','WHITE'],['#777777','GREY'],['#cccccc','SILVER']],
+   fonts:'Heavy grotesque / Archivo',mood:'Hypnotic, sharp, kinetic',use:'Posters, fashion, album art'},
+
+  {id:'blueprint',name:'Blueprint / Technical',era:'Timeless',cat:['Modern','Experimental'],demo:'blueprint',ref:'blueprint technical drawing design',
+   demoHTML:`<div class="bp-circle"></div><div class="bp-label">FIG.01 — Ø 70mm</div>`,
+   blurb:'Engineering drawing aesthetic: cyan ground, white grid and precise line work with mono annotations.',
+   tags:['Grid','Line work','Annotations','Technical'],
+   palette:[['#0b3d91','BLUEPRINT'],['#dbe7ff','CHALK'],['#5a82d6','STEEL'],['#08306b','DEEP']],
+   fonts:'Space Mono / technical sans',mood:'Precise, analytical, crafted',use:'Engineering, architecture, dev tools'},
+
+  {id:'acid',name:'Acid / Rave',era:'1990s revival',cat:['Experimental','Maximal'],demo:'acid',ref:'acid graphics rave flyer design',
+   demoHTML:`<div class="ac-h">ACID</div><div class="ac-sub">▲ RAVE ▲</div>`,
+   blurb:'Warped, melting type in toxic greens — the distorted chrome energy of 90s rave flyers.',
+   tags:['Warped type','Toxic green','Distortion','Rave'],
+   palette:[['#7cff00','ACID'],['#0a0a0a','BLACK'],['#caffa0','LIME'],['#2a8a00','DEEP']],
+   fonts:'Distorted display / Archivo',mood:'Loud, hypnotic, underground',use:'Music, flyers, fashion, posters'},
+
+  {id:'chrome',name:'Chrome / Liquid Metal',era:'Contemporary',cat:['Modern','Experimental'],demo:'chrome',ref:'chrome liquid metal 3d type design',
+   demoHTML:`<div class="ch-h">CHROME</div>`,
+   blurb:'Polished liquid-metal type: mirror gradients and reflections for a heavy, premium tech sheen.',
+   tags:['Metallic','Reflective','3D type','Glossy'],
+   palette:[['#eef3f9','SHINE'],['#9aa4b2','STEEL'],['#5b636e','SHADOW'],['#0c0e12','VOID']],
+   fonts:'Heavy display / Archivo',mood:'Premium, futuristic, heavy',use:'Music, sneakers, tech, posters'},
+
+  {id:'geocities',name:'Geocities / Old Web',era:'1996–2001',cat:['Retro','Experimental'],demo:'geocities',ref:'geocities 90s old web design',
+   demoHTML:`<div class="gc-h">~ My Homepage ~</div><div class="gc-con">🚧 UNDER CONSTRUCTION 🚧</div><div class="gc-count">visitors: 000142</div>`,
+   blurb:'90s personal-web chaos: tiled backgrounds, rainbow WordArt, hit counters and "under construction" GIFs.',
+   tags:['Tiled bg','Rainbow text','Hit counter','Nostalgic'],
+   palette:[['#000000','VOID'],['#00ff00','LIME'],['#ffff00','YELLOW'],['#ff00ff','MAGENTA']],
+   fonts:'Comic Sans / Times',mood:'Chaotic, nostalgic, earnest',use:'Nostalgia, art, indie, parody'},
+
+  {id:'sigilism',name:'Cyber Sigilism',era:'2020s',cat:['Experimental','Maximal'],demo:'sigilism',ref:'cyber sigilism tattoo design',
+   demoHTML:`<div class="sg-star"></div><div class="sg-h">sigil</div>`,
+   blurb:'Spiky, tribal-meets-gothic line work: barbed stars, sigils and Y2K tattoo flash gone digital.',
+   tags:['Spiky','Tribal','Gothic','Y2K'],
+   palette:[['#050505','BLACK'],['#ffffff','WHITE'],['#9a9a9a','STEEL'],['#c0c0c0','SILVER']],
+   fonts:'Blackletter / sharp display',mood:'Edgy, occult, futuristic',use:'Fashion, music, tattoos, merch'},
+
+  {id:'western',name:'Western / Wood Type',era:'1800s revival',cat:['Retro','Cultural'],demo:'western',ref:'western wood type wanted poster',
+   demoHTML:`<div class="we-h">Wanted</div><div class="we-sub">$500 reward</div>`,
+   blurb:'Old West letterpress: fat slab and wood type, ornamental rules and weathered saloon swagger.',
+   tags:['Wood type','Slab serif','Ornamental','Weathered'],
+   palette:[['#e7d3a1','PARCHMENT'],['#4a2c10','LEATHER'],['#8a5a2b','TAN'],['#2a1808','INK']],
+   fonts:'Slab / wood type / Playfair',mood:'Rugged, vintage, bold',use:'Whiskey, BBQ, branding, posters'},
+
+  {id:'circus',name:'Vintage Circus',era:'1900s revival',cat:['Retro','Maximal'],demo:'circus',ref:'vintage circus poster design',
+   demoHTML:`<div class="ci-h">The Greatest</div><div class="ci-sub">✶ show on earth ✶</div>`,
+   blurb:'Big-top showmanship: red & gold, ornate banners, drop shadows and theatrical display type.',
+   tags:['Ornate','Red & gold','Banners','Theatrical'],
+   palette:[['#a4161a','CIRCUS RED'],['#ffd60a','GOLD'],['#fff8e1','CREAM'],['#4a0a0c','MAROON']],
+   fonts:'Ornate display / Playfair',mood:'Theatrical, nostalgic, loud',use:'Events, packaging, branding'},
+
+  {id:'newspaper',name:'Newspaper / Broadsheet',era:'Timeless',cat:['Retro','Cultural'],demo:'newspaper',ref:'newspaper broadsheet editorial design',
+   demoHTML:`<div class="np-h">The Daily</div><div class="np-sub">est. 1887 · vol. xii · no. 4</div><div class="np-cols"><i></i><i></i><i></i></div>`,
+   blurb:'Old-press editorial: a serif masthead, hairline rules and tight justified columns on newsprint.',
+   tags:['Masthead','Columns','Serif','Newsprint'],
+   palette:[['#f4f1e8','NEWSPRINT'],['#1a1a1a','INK'],['#555555','GREY'],['#b9b09a','AGED']],
+   fonts:'Old serif / Playfair',mood:'Authoritative, classic, dense',use:'Editorial, blogs, print, branding'},
+
+  {id:'punk',name:'Punk / Ransom Note',era:'1970s',cat:['Retro','Experimental'],demo:'punk',ref:'punk ransom note zine design',
+   demoHTML:`<div class="pk-row"><span class="l a">P</span><span class="l b">U</span><span class="l c">N</span><span class="l d">K</span></div>`,
+   blurb:'Cut-and-paste anarchy: mismatched cut-out letters, clashing angles and photocopied DIY energy.',
+   tags:['Cut-out letters','Clashing','DIY','Anarchic'],
+   palette:[['#0d0d0d','BLACK'],['#ffde59','YELLOW'],['#ff2e63','PINK'],['#ffffff','WHITE']],
+   fonts:'Mixed cut-out type',mood:'Rebellious, raw, aggressive',use:'Music, zines, posters, fashion'},
+
+  {id:'tropical',name:'Tropical / Botanical',era:'Contemporary',cat:['Maximal','Cultural'],demo:'tropical',ref:'tropical botanical maximalist design',
+   demoHTML:`<div class="tr-leaf a"></div><div class="tr-leaf b"></div><div class="tr-flower"></div><div class="tr-h">PARADISE</div>`,
+   blurb:'Lush jungle maximalism: deep greens, oversized leaves and vivid hibiscus-bright florals.',
+   tags:['Lush','Leaves','Vivid','Botanical'],
+   palette:[['#0b6e4f','JUNGLE'],['#27c285','PALM'],['#ffd000','SUN'],['#ff5d8f','HIBISCUS']],
+   fonts:'Rounded sans / Poppins',mood:'Lush, vibrant, escapist',use:'Travel, drinks, summer, hospitality'},
+
+  {id:'mediterranean',name:'Mediterranean / Coastal',era:'Contemporary',cat:['Cultural','Minimal'],demo:'mediterranean',ref:'mediterranean coastal design aesthetic',
+   demoHTML:`<div class="me-arch"></div><div class="me-h">Costa</div>`,
+   blurb:'Sun-warmed coast: terracotta and azure, arches and a relaxed, hand-touched European elegance.',
+   tags:['Arches','Terracotta','Azure','Warm'],
+   palette:[['#f0e6d6','SAND'],['#2e86ab','AZURE'],['#c75b39','TERRACOTTA'],['#e3b04b','OCHRE']],
+   fonts:'Elegant serif / Playfair',mood:'Warm, relaxed, elegant',use:'Hospitality, food, travel, beauty'},
+
+  {id:'barbiecore',name:'Barbiecore',era:'2020s',cat:['Maximal','Modern'],demo:'barbiecore',ref:'barbiecore hot pink maximalist design',
+   demoHTML:`<div class="bc-h">PINK!</div><div class="bc-heart">♥</div>`,
+   blurb:'Unapologetic hot-pink maximalism — glossy, girly, playful and turned all the way up.',
+   tags:['Hot pink','Glossy','Playful','Bold'],
+   palette:[['#ff1f8e','BARBIE'],['#ffffff','WHITE'],['#d10071','MAGENTA'],['#ffd1e8','BLUSH']],
+   fonts:'Bold italic display',mood:'Playful, bold, fun',use:'Fashion, beauty, events, pop'},
+
+  {id:'anime',name:'Neo-Tokyo / Anime',era:'Contemporary',cat:['Cultural','Maximal'],demo:'anime',ref:'anime manga screentone speed lines design',
+   demoHTML:`<div class="an-speed"></div><div class="an-h">TOKYO</div><div class="an-jp">ネオ東京</div>`,
+   blurb:'Manga energy: screentone dots, radiating speed lines, bold action type and katakana accents.',
+   tags:['Screentone','Speed lines','Manga','Katakana'],
+   palette:[['#ffffff','PAPER'],['#111111','INK'],['#e60012','MANGA RED'],['#888888','TONE']],
+   fonts:'Heavy sans / brush accents',mood:'Dynamic, energetic, cinematic',use:'Gaming, streetwear, music, anime'},
+
+  {id:'lightacademia',name:'Light Academia',era:'Contemporary',cat:['Cultural','Minimal'],demo:'lightacademia',ref:'light academia aesthetic design',
+   demoHTML:`<div class="la-h">Belle Lettres</div><div class="la-rule"></div><div class="la-sub">litterae humanae</div>`,
+   blurb:'The sunlit counterpart to dark academia: cream tones, soft serifs and gentle scholarly calm.',
+   tags:['Cream','Soft serif','Scholarly','Calm'],
+   palette:[['#efe7d6','CREAM'],['#6b5d44','SEPIA'],['#b3a684','LINEN'],['#5a4a32','OAK']],
+   fonts:'Garamond / Playfair',mood:'Gentle, literary, warm',use:'Books, education, lifestyle, editorial'},
 ];
 
 const CATS = ['All','Minimal','Maximal','Retro','Modern','UI Style','Experimental','Cultural'];
@@ -1137,6 +1334,8 @@ CATS.forEach(c=>{
 STYLES.forEach((s,i)=>{ s.n=String(i+1).padStart(2,'0'); });
 const metacount=document.getElementById('metacount');
 if(metacount) metacount.textContent=String(STYLES.length).padStart(3,'0')+' entries';
+const foottotal=document.getElementById('foottotal');
+if(foottotal) foottotal.textContent=STYLES.length;
 
 /* Shortlist toggle chip (separate from category chips) */
 const favChip=document.createElement('button');
