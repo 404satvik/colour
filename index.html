@@ -24,7 +24,24 @@
   --mono:'Space Mono',ui-monospace,monospace;
   /* demo type (used by the 61 style demos — do not remove) */
   --fd:'Outfit',sans-serif;--fb:'DM Sans',sans-serif;
+  color-scheme:light;
 }
+/* ===== Dark mode (warm ink-paper) ===== */
+[data-theme="dark"]{
+  --paper:#191611;        /* warm near-black */
+  --paper-2:#231f18;      /* hover / panel */
+  --ink:#ece4d2;          /* warm off-white text */
+  --ink-2:#a8a08c;        /* secondary text */
+  --ink-3:#746c5c;        /* muted labels */
+  --line:rgba(236,228,210,0.14);
+  --line-2:rgba(236,228,210,0.32);
+  --accent:#f0502f;       /* vermillion, brightened for dark */
+  --accent-deep:#cf3f22;
+  color-scheme:dark;
+}
+[data-theme="dark"] .ambience{mix-blend-mode:screen;opacity:0.05}
+[data-theme="dark"] .modal{box-shadow:12px 12px 0 rgba(0,0,0,0.5)}
+[data-theme="dark"] .lightbox img{border-color:rgba(255,255,255,0.5)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 ::selection{background:var(--accent);color:#fff}
@@ -47,6 +64,9 @@ nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1.5px
 .search input{background:none;border:none;outline:none;color:var(--ink);font-family:var(--mono);font-size:12.5px;width:100%}
 .search input::placeholder{color:var(--ink-3)}
 .count-pill{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:0.04em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.theme-toggle{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-2);background:none;border:1.5px solid var(--line-2);padding:6px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .18s;white-space:nowrap;line-height:1}
+.theme-toggle:hover{border-color:var(--ink);color:var(--ink)}
+.theme-toggle span{font-size:12px;line-height:1}
 
 /* Masthead block */
 header{padding:46px 0 0}
@@ -583,6 +603,10 @@ footer{border-top:1.5px solid var(--ink);padding:24px 0 56px;position:relative;z
   .minfo-grid{grid-template-columns:1fr}
 }
 </style>
+<script>
+/* Apply saved/system theme before paint to avoid a flash */
+try{var _t=localStorage.getItem('colours_theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',_t);}catch(e){}
+</script>
 </head>
 <body>
 <div class="ambience"></div>
@@ -594,6 +618,7 @@ footer{border-top:1.5px solid var(--ink);padding:24px 0 56px;position:relative;z
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       <input id="search" type="text" placeholder="search styles, eras, traits…" autocomplete="off">
     </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
     <span class="count-pill" id="count"></span>
   </div>
 </nav>
@@ -1071,6 +1096,17 @@ const noteEl = document.getElementById('note');
 const countEl = document.getElementById('count');
 const footcount = document.getElementById('footcount');
 const toolbarEl = document.querySelector('.toolbar');
+
+/* ---- Theme (light / dark), persisted + respects OS preference ---- */
+const themeToggle=document.getElementById('themeToggle');
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  if(themeToggle) themeToggle.innerHTML = (t==='dark') ? '<span>☀</span> Light' : '<span>☾</span> Dark';
+}
+let theme = (function(){ try{ return localStorage.getItem('colours_theme'); }catch(e){ return null; } })()
+            || ((window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+applyTheme(theme);
+if(themeToggle) themeToggle.onclick=()=>{ theme=(theme==='dark'?'light':'dark'); try{localStorage.setItem('colours_theme',theme);}catch(e){} applyTheme(theme); };
 
 /* ---- Favorites (persisted) ---- */
 let favs = [];
