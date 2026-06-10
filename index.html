@@ -668,6 +668,59 @@ header p b{color:var(--ink);font-weight:600}
 .lightbox img{max-width:100%;max-height:100%;border:1.5px solid var(--paper)}
 .lightbox-x{position:absolute;top:18px;right:20px;width:40px;height:40px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);color:var(--ink);cursor:pointer;font-size:18px;display:grid;place-items:center}
 
+/* Toast */
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);z-index:400;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;letter-spacing:0.04em;text-transform:uppercase;padding:11px 18px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.palette span{cursor:copy}
+.mswatch{cursor:copy}
+
+/* Compare button on cards */
+.cmp-btn{position:absolute;top:9px;left:9px;z-index:8;height:28px;padding:0 9px;background:var(--paper);border:1.5px solid var(--ink);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;line-height:1;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.cmp-btn:hover{background:var(--ink);color:var(--paper)}
+.cmp-btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* Compare tray */
+.cmp-tray{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(160%);z-index:180;display:flex;align-items:center;gap:14px;background:var(--ink);color:var(--paper);padding:11px 13px 11px 18px;max-width:calc(100vw - 32px);transition:transform .28s ease;box-shadow:0 12px 34px rgba(0,0,0,.32)}
+.cmp-tray.show{transform:translateX(-50%) translateY(0)}
+.cmp-tray .ct-label{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;opacity:.65}
+.cmp-tray .ct-items{display:flex;gap:8px;flex-wrap:wrap}
+.cmp-chip{font-family:var(--mono);font-size:11px;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.28);padding:5px 9px}
+.cmp-chip b{font-family:var(--sans);font-weight:500;text-transform:none;letter-spacing:0}
+.cmp-chip button{background:none;border:none;color:var(--paper);cursor:pointer;font-size:13px;line-height:1;opacity:.65;padding:0}
+.cmp-chip button:hover{opacity:1;color:var(--accent)}
+.cmp-go{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:9px 15px;cursor:pointer;white-space:nowrap}
+.cmp-go:disabled{background:rgba(255,255,255,.14);color:rgba(255,255,255,.4);cursor:not-allowed}
+
+/* Compare overlay */
+.cmp-bg{position:fixed;inset:0;z-index:260;background:rgba(23,20,17,.6);display:none;align-items:flex-start;justify-content:center;padding:40px 22px;overflow-y:auto}
+.cmp-bg.open{display:flex}
+.cmp-panel{background:var(--paper);border:1.5px solid var(--ink);max-width:1040px;width:100%;position:relative;animation:up .35s;box-shadow:13px 13px 0 rgba(23,20,17,.16)}
+.cmp-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1.5px solid var(--ink)}
+.cmp-head h2{font-family:var(--serif);font-size:24px;font-weight:600}
+.cmp-x{width:34px;height:34px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);color:var(--ink);cursor:pointer;font-size:15px;display:grid;place-items:center}
+.cmp-x:hover{background:var(--ink);color:var(--paper)}
+.cmp-cols{display:grid}
+.cmp-col{border-right:1px solid var(--line)}
+.cmp-col:last-child{border-right:none}
+.cmp-col .demo{height:150px;border-bottom:1.5px solid var(--ink)}
+.cc-body{padding:16px 18px 20px}
+.cmp-col h3{font-family:var(--serif);font-size:18px;font-weight:600;line-height:1.1}
+.cc-era{font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-top:3px}
+.cc-cat{font-family:var(--mono);font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin:9px 0}
+.cc-row{margin-top:13px}
+.cc-k{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.cc-v{font-family:var(--sans);font-size:12.5px;color:var(--ink);line-height:1.45}
+.cc-pal{display:flex;flex-wrap:wrap;gap:6px}
+.cc-sw{display:flex;flex-direction:column;gap:3px;cursor:copy}
+.cc-sw span{width:38px;height:30px;border:1px solid var(--line)}
+.cc-sw small{font-family:var(--mono);font-size:8px;color:var(--ink-2)}
+.cc-tags{display:flex;flex-wrap:wrap;gap:5px}
+.cc-tag{font-family:var(--mono);font-size:9px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line);padding:3px 6px}
+
+/* Export button */
+.export-btn{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;background:none;border:1.5px solid var(--ink);color:var(--ink);padding:7px 13px;cursor:pointer;display:none;align-items:center;gap:7px;transition:all .18s}
+.export-btn:hover{background:var(--ink);color:var(--paper)}
+
 footer{padding:0 0 56px;position:relative;z-index:1}
 .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1.5px solid var(--ink);padding-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3)}
 .foot-inner b{color:var(--ink);font-weight:400}
@@ -698,6 +751,13 @@ footer{padding:0 0 56px;position:relative;z-index:1}
   .demo{height:150px}
   .card-body{padding:13px 14px 16px}
   .minfo-grid{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .cmp-cols{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .cmp-col{flex:0 0 80%}
+  .cmp-col .demo{height:130px}
+  .cmp-tray{left:16px;right:16px;max-width:none;flex-wrap:wrap;transform:translateY(180%)}
+  .cmp-tray.show{transform:translateY(0)}
 }
 </style>
 <script>
@@ -750,6 +810,16 @@ try{var _t=localStorage.getItem('colours_theme')||((window.matchMedia&&matchMedi
   <button class="lightbox-x" aria-label="Close">✕</button>
   <img alt="Enlarged reference">
 </div>
+
+<div class="cmp-tray" id="cmpTray">
+  <span class="ct-label">Compare</span>
+  <div class="ct-items" id="cmpItems"></div>
+  <button class="cmp-go" id="cmpGo">Compare →</button>
+</div>
+
+<div class="cmp-bg" id="cmpBg"><div class="cmp-panel" id="cmpPanel"></div></div>
+
+<div class="toast" id="toast"></div>
 
 <script>
 const STYLES = [
@@ -1342,7 +1412,13 @@ const favChip=document.createElement('button');
 favChip.className='fav-chip';
 favChip.onclick=()=>{showFavs=!showFavs;favChip.classList.toggle('active',showFavs);render();};
 toolbarEl.insertBefore(favChip, toolbarEl.firstChild);
-function updateFavChip(){ favChip.innerHTML=`<span class="fc-star">★</span> Shortlist (${favs.length})`; }
+/* Export shortlist button (appears when the shortlist has items) */
+const exportBtn=document.createElement('button');
+exportBtn.className='export-btn';
+exportBtn.innerHTML='<span>⇩</span> Export';
+exportBtn.onclick=exportMoodboard;
+toolbarEl.insertBefore(exportBtn, favChip.nextSibling);
+function updateFavChip(){ favChip.innerHTML=`<span class="fc-star">★</span> Shortlist (${favs.length})`; exportBtn.style.display = favs.length ? 'inline-flex' : 'none'; }
 updateFavChip();
 
 /* ---- Optional reference images ----
@@ -1356,6 +1432,97 @@ function imgNext(img){
 }
 function demoImg(s){
   return `<img class="demo-img" alt="${s.name} examples" loading="lazy" data-id="${s.id}" data-ei="0" src="images/${s.id}.jpg" onload="this.classList.add('loaded')" onerror="imgNext(this)">`;
+}
+
+/* ---- Toast + click-to-copy palette hex ---- */
+const toastEl=document.getElementById('toast');
+let toastTimer;
+function toast(msg){ if(!toastEl)return; toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>toastEl.classList.remove('show'),1600); }
+function fallbackCopy(t){ try{ const ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); toast('Copied '+t); }catch(e){ toast(t); } }
+function copyHex(hex){ const t=String(hex).toUpperCase(); if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(()=>toast('Copied '+t),()=>fallbackCopy(t)); } else fallbackCopy(t); }
+
+/* ---- Compare (pin up to 3 styles, view side by side) ---- */
+const CMP_MAX=3;
+let compare=[];
+const inCompare=id=>compare.includes(id);
+const cmpTray=document.getElementById('cmpTray');
+const cmpItems=document.getElementById('cmpItems');
+const cmpGo=document.getElementById('cmpGo');
+const cmpBg=document.getElementById('cmpBg');
+const cmpPanel=document.getElementById('cmpPanel');
+function toggleCompare(id){
+  const i=compare.indexOf(id);
+  if(i>=0) compare.splice(i,1);
+  else { if(compare.length>=CMP_MAX){ toast('Compare holds '+CMP_MAX); return; } compare.push(id); }
+  renderCompareTray(); render();
+}
+function removeCompare(id){ const i=compare.indexOf(id); if(i<0)return; compare.splice(i,1); renderCompareTray(); render(); if(compare.length<2 && cmpBg.classList.contains('open')) closeCompare(); }
+function renderCompareTray(){
+  cmpItems.innerHTML = compare.map(id=>{ const s=STYLES.find(x=>x.id===id); return `<span class="cmp-chip"><b>${s.name}</b><button onclick="removeCompare('${id}')" aria-label="Remove">✕</button></span>`; }).join('');
+  cmpGo.disabled = compare.length<2;
+  cmpGo.textContent = compare.length ? `Compare (${compare.length}) →` : 'Compare →';
+  cmpTray.classList.toggle('show', compare.length>0);
+}
+cmpGo.onclick=openCompare;
+function openCompare(){
+  if(compare.length<2) return;
+  const items=compare.map(id=>STYLES.find(x=>x.id===id));
+  cmpPanel.innerHTML = `
+    <div class="cmp-head"><h2>Compare</h2><button class="cmp-x" onclick="closeCompare()" aria-label="Close">✕</button></div>
+    <div class="cmp-cols" style="grid-template-columns:repeat(${items.length},minmax(0,1fr))">
+      ${items.map(s=>`
+        <div class="cmp-col">
+          <div class="demo demo--${s.demo}">${s.demoHTML}</div>
+          <div class="cc-body">
+            <h3>${s.name}</h3>
+            <div class="cc-era">${s.era}</div>
+            <div class="cc-cat">${s.cat.join(' / ')}</div>
+            <div class="cc-row"><div class="cc-k">Palette</div><div class="cc-pal">${s.palette.map(p=>`<div class="cc-sw" title="Copy ${p[0]}" onclick="copyHex('${p[0]}')"><span style="background:${p[0]}"></span><small>${p[0]}</small></div>`).join('')}</div></div>
+            <div class="cc-row"><div class="cc-k">Traits</div><div class="cc-tags">${s.tags.map(t=>`<span class="cc-tag">${t}</span>`).join('')}</div></div>
+            <div class="cc-row"><div class="cc-k">Typography</div><div class="cc-v">${s.fonts}</div></div>
+            <div class="cc-row"><div class="cc-k">Mood</div><div class="cc-v">${s.mood}</div></div>
+            <div class="cc-row"><div class="cc-k">Best for</div><div class="cc-v">${s.use}</div></div>
+          </div>
+        </div>`).join('')}
+    </div>`;
+  cmpBg.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCompare(){ cmpBg.classList.remove('open'); if(!modalBg.classList.contains('open') && !lightbox.classList.contains('open')) document.body.style.overflow=''; }
+cmpBg.onclick=e=>{ if(e.target===cmpBg) closeCompare(); };
+
+/* ---- Export shortlist as a moodboard PNG ---- */
+async function exportMoodboard(){
+  const items=STYLES.filter(s=>isFav(s.id));
+  if(!items.length){ toast('Shortlist is empty'); return; }
+  toast('Building moodboard…');
+  try{ if(document.fonts && document.fonts.ready) await document.fonts.ready; }catch(e){}
+  const W=1100, padX=64, headH=150, rowH=178, footH=66;
+  const H=headH + items.length*rowH + footH;
+  const scale=2;
+  const cv=document.createElement('canvas'); cv.width=W*scale; cv.height=H*scale;
+  const ctx=cv.getContext('2d'); ctx.scale(scale,scale);
+  const ink='#171411', ink2='#544d40', ink3='#938b79', accent='#df3b22', paper='#e6dfcd', line='rgba(23,20,17,0.18)';
+  ctx.fillStyle=paper; ctx.fillRect(0,0,W,H);
+  ctx.textBaseline='alphabetic';
+  ctx.fillStyle=ink; ctx.font='600 40px Fraunces, Georgia, serif'; ctx.fillText('colours', padX, 74);
+  const cw=ctx.measureText('colours').width;
+  ctx.fillStyle=accent; ctx.fillText('.', padX+cw+2, 74);
+  ctx.fillStyle=ink3; ctx.font='12px "Space Mono", monospace';
+  ctx.fillText('SHORTLIST MOODBOARD · '+items.length+' STYLES · '+new Date().toISOString().slice(0,10), padX, 100);
+  ctx.strokeStyle=ink; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(padX,124); ctx.lineTo(W-padX,124); ctx.stroke();
+  items.forEach((s,i)=>{
+    const y=headH + i*rowH;
+    ctx.fillStyle=ink; ctx.font='600 26px Fraunces, Georgia, serif'; ctx.fillText(s.name, padX, y+30);
+    ctx.fillStyle=ink3; ctx.font='12px "Space Mono", monospace'; ctx.textAlign='right'; ctx.fillText(s.era.toUpperCase(), W-padX, y+28); ctx.textAlign='left';
+    ctx.fillStyle=accent; ctx.font='11px "Space Mono", monospace'; ctx.fillText(s.cat.join('  /  ').toUpperCase(), padX, y+50);
+    const sw=92, sh=46, gap=12, py=y+66;
+    s.palette.forEach((p,j)=>{ const x=padX + j*(sw+gap); ctx.fillStyle=p[0]; ctx.fillRect(x,py,sw,sh); ctx.strokeStyle=line; ctx.lineWidth=1; ctx.strokeRect(x+.5,py+.5,sw-1,sh-1); ctx.fillStyle=ink2; ctx.font='10px "Space Mono", monospace'; ctx.fillText(String(p[0]).toUpperCase(), x, py+sh+15); });
+    ctx.fillStyle=ink2; ctx.font='11px "Space Mono", monospace'; ctx.fillText(s.tags.join('   ·   ').toUpperCase(), padX, y+rowH-22);
+    ctx.strokeStyle=line; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(padX,y+rowH-6); ctx.lineTo(W-padX,y+rowH-6); ctx.stroke();
+  });
+  ctx.fillStyle=ink3; ctx.font='11px "Space Mono", monospace'; ctx.fillText('COLOURS — A VISUAL INDEX OF DESIGN LANGUAGES', padX, H-26);
+  cv.toBlob(blob=>{ if(!blob){ toast('Export failed'); return; } const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='colours-shortlist.png'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); toast('Moodboard downloaded'); },'image/png');
 }
 
 function match(s){
@@ -1384,8 +1551,9 @@ function render(){
     const card=document.createElement('div');
     card.className='card';
     card.style.animationDelay=(i*0.025)+'s';
-    const on=isFav(s.id);
+    const on=isFav(s.id), cmped=inCompare(s.id);
     card.innerHTML=`
+      <button class="cmp-btn${cmped?' on':''}" aria-label="Add to compare" title="${cmped?'Remove from compare':'Add to compare'}">${cmped?'✓ Added':'+ Compare'}</button>
       <button class="fav-btn${on?' on':''}" data-fav="${s.id}" aria-label="Save to shortlist" title="${on?'Remove from shortlist':'Add to shortlist'}"><span class="star">★</span></button>
       <div class="demo demo--${s.demo}">${s.demoHTML}${demoImg(s)}</div>
       <div class="card-body">
@@ -1394,12 +1562,13 @@ function render(){
           <div class="cat-line">${s.cat.join(' / ')}</div>
           <p class="blurb">${s.blurb}</p>
           <div class="card-foot">
-            <div class="palette">${s.palette.map(p=>`<span style="background:${p[0]}"></span>`).join('')}</div>
+            <div class="palette">${s.palette.map(p=>`<span style="background:${p[0]}" title="Copy ${p[0]}" onclick="event.stopPropagation();copyHex('${p[0]}')"></span>`).join('')}</div>
             <div class="tags">${s.tags.slice(0,4).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
           </div>
         </div>
       </div>`;
     card.querySelector('.fav-btn').onclick=e=>{e.stopPropagation();toggleFav(s.id);};
+    card.querySelector('.cmp-btn').onclick=e=>{e.stopPropagation();toggleCompare(s.id);};
     card.onclick=()=>openModal(s);
     grid.appendChild(card);
   });
@@ -1427,7 +1596,7 @@ function openModal(s){
         <a class="ref-link alt" target="_blank" rel="noopener" href="${pin}">Pinterest ↗</a>
       </div>
       <div class="msec"><h4>Characteristics</h4><div class="mtags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>
-      <div class="msec"><h4>Palette</h4><div class="mpalette">${s.palette.map(p=>`<div class="mswatch"><span style="background:${p[0]}"></span><small>${p[0]}</small></div>`).join('')}</div></div>
+      <div class="msec"><h4>Palette <span style="text-transform:none;letter-spacing:0;color:var(--ink-3)">— click to copy</span></h4><div class="mpalette">${s.palette.map(p=>`<div class="mswatch" title="Copy ${p[0]}" onclick="copyHex('${p[0]}')"><span style="background:${p[0]}"></span><small>${p[0]}</small></div>`).join('')}</div></div>
       <div class="msec minfo-grid">
         <div><div class="k">Typography</div><div class="v">${s.fonts}</div></div>
         <div><div class="k">Mood</div><div class="v">${s.mood}</div></div>
@@ -1453,7 +1622,7 @@ function openLightbox(src){ lightboxImg.src=src; lightbox.classList.add('open');
 function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.removeAttribute('src'); document.body.style.overflow=modalBg.classList.contains('open')?'hidden':''; }
 lightbox.onclick=closeLightbox;
 
-document.addEventListener('keydown',e=>{ if(e.key!=='Escape')return; if(lightbox.classList.contains('open'))closeLightbox(); else if(modalBg.classList.contains('open'))closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key!=='Escape')return; if(lightbox.classList.contains('open'))closeLightbox(); else if(cmpBg.classList.contains('open'))closeCompare(); else if(modalBg.classList.contains('open'))closeModal(); });
 
 searchEl.addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();render();});
 render();
