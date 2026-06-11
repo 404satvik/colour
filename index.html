@@ -721,6 +721,15 @@ header p b{color:var(--ink);font-weight:600}
 .export-btn{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;background:none;border:1.5px solid var(--ink);color:var(--ink);padding:7px 13px;cursor:pointer;display:none;align-items:center;gap:7px;transition:all .18s}
 .export-btn:hover{background:var(--ink);color:var(--paper)}
 
+/* Tone filter (light / dark designs) */
+.tone-filter{display:inline-flex;align-items:center;gap:9px}
+.tone-filter .tone-label{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3)}
+.tone-seg{display:inline-flex;border:1.5px solid var(--ink)}
+.tone-seg button{font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;background:none;border:none;border-right:1px solid var(--line);color:var(--ink-2);padding:6px 11px;cursor:pointer;transition:all .15s;line-height:1}
+.tone-seg button:last-child{border-right:none}
+.tone-seg button:hover{color:var(--ink)}
+.tone-seg button.active{background:var(--accent);color:#fff}
+
 footer{padding:0 0 56px;position:relative;z-index:1}
 .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1.5px solid var(--ink);padding-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3)}
 .foot-inner b{color:var(--ink);font-weight:400}
@@ -1360,6 +1369,7 @@ const CATS = ['All','Minimal','Maximal','Retro','Modern','UI Style','Experimenta
 let activeCat = 'All';
 let query = '';
 let showFavs = false;
+let toneFilter = 'all';
 
 const grid = document.getElementById('grid');
 const filtersEl = document.getElementById('filters');
@@ -1402,6 +1412,10 @@ CATS.forEach(c=>{
 
 /* Stable catalogue numbers + masthead count */
 STYLES.forEach((s,i)=>{ s.n=String(i+1).padStart(2,'0'); });
+
+/* Tone classification — designs whose demo reads dark-backed; the rest are light */
+const DARK_TONE = new Set(['pixel','glass','artdeco','vapor','synth','cyber','editorial','glitch','grunge','techgeo','aurora','noir','artnouveau','steampunk','streetwear','liquid','darkacademia','duotone','bento','deconstructed','terminal','afro','guochao','blackletter','fluent','typographic','blueprint','acid','chrome','geocities','sigilism','circus','punk','tropical']);
+STYLES.forEach(s=>{ s.tone = DARK_TONE.has(s.id) ? 'dark' : 'light'; });
 const metacount=document.getElementById('metacount');
 if(metacount) metacount.textContent=String(STYLES.length).padStart(3,'0')+' entries';
 const foottotal=document.getElementById('foottotal');
@@ -1420,6 +1434,18 @@ exportBtn.onclick=exportMoodboard;
 toolbarEl.insertBefore(exportBtn, favChip.nextSibling);
 function updateFavChip(){ favChip.innerHTML=`<span class="fc-star">★</span> Shortlist (${favs.length})`; exportBtn.style.display = favs.length ? 'inline-flex' : 'none'; }
 updateFavChip();
+
+/* Tone filter (All / Light / Dark designs) */
+const toneWrap=document.createElement('div');
+toneWrap.className='tone-filter';
+toneWrap.innerHTML=`<span class="tone-label">Tone</span><div class="tone-seg">`+
+  `<button data-tone="all" class="active">All</button>`+
+  `<button data-tone="light">Light</button>`+
+  `<button data-tone="dark">Dark</button></div>`;
+toolbarEl.insertBefore(toneWrap, noteEl);
+toneWrap.querySelectorAll('.tone-seg button').forEach(b=>{
+  b.onclick=()=>{ toneFilter=b.dataset.tone; toneWrap.querySelectorAll('.tone-seg button').forEach(x=>x.classList.toggle('active',x===b)); render(); };
+});
 
 /* ---- Optional reference images ----
    Drop a file named after the style id into the /images folder, e.g. images/brutalism.jpg
@@ -1527,6 +1553,7 @@ async function exportMoodboard(){
 
 function match(s){
   if(showFavs && !isFav(s.id)) return false;
+  if(toneFilter!=='all' && s.tone!==toneFilter) return false;
   if(activeCat!=='All' && !s.cat.includes(activeCat)) return false;
   if(!query) return true;
   const hay=(s.name+' '+s.era+' '+s.cat.join(' ')+' '+s.tags.join(' ')+' '+s.blurb+' '+s.mood+' '+s.use+' '+s.fonts).toLowerCase();

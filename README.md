@@ -7,6 +7,7 @@ A visual reference library of **76 design styles** — each one rendered *live i
 - **76 design styles**, from Brutalism, Memphis and Bauhaus to Glassmorphism, Y2K, Vaporwave, Guochao, Solarpunk and more — each with a hand-built CSS demo in that exact style.
 - **Live search** across names, eras, traits, moods and use-cases.
 - **Category filters** — Minimal, Maximal, Retro, Modern, UI Style, Experimental, Cultural.
+- **Tone filter** — show all designs, or only light- or dark-backed ones.
 - **Light & dark mode** — persisted, respects your OS preference.
 - **Favorites / Shortlist** ⭐ — save the styles you like (persisted in your browser).
 - **Compare mode** — pin up to 3 styles and view their demos, palettes and traits side by side.
