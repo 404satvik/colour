@@ -434,7 +434,7 @@ header p b{color:var(--ink);font-weight:600}
 .demo--comic .cm-bubble{position:relative;z-index:2;background:#fff;border:3px solid #111;border-radius:20px;padding:8px 18px;font-size:18px;color:#d7263d;box-shadow:4px 4px 0 #111}
 
 /* Bento grid */
-.demo--bento{background:#0e0e12;padding:12px;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:8px}
+.demo--bento{background:#0e0e12;padding:12px;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:8px;place-items:stretch}
 .demo--bento i{border-radius:13px;background:#1b1b22;border:1px solid rgba(255,255,255,.05)}
 .demo--bento .bn-a{grid-row:span 2;background:linear-gradient(135deg,#6366f1,#22d3ee)}
 .demo--bento .bn-c{background:#26262e}
@@ -608,6 +608,169 @@ header p b{color:var(--ink);font-weight:600}
 .demo--lightacademia .la-h{font-style:italic;font-size:24px;color:#5a4a32}
 .demo--lightacademia .la-rule{width:56px;height:1px;background:#b3a684}
 .demo--lightacademia .la-sub{font-family:var(--fb);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#a3956f}
+
+/* ===== SET FOUR ===== */
+/* Suprematism */
+.demo--suprematism{background:#f4f1ea;overflow:hidden}
+.demo--suprematism i{position:absolute}
+.demo--suprematism .su-sq{width:54px;height:54px;background:#111;top:28px;left:48px;transform:rotate(12deg)}
+.demo--suprematism .su-bar{width:130px;height:16px;background:#e23b2e;top:92px;left:54px;transform:rotate(-26deg)}
+.demo--suprematism .su-cir{width:34px;height:34px;border-radius:50%;background:#f5b30b;top:36px;right:48px}
+.demo--suprematism .su-line{width:88px;height:5px;background:#111;bottom:30px;right:26px;transform:rotate(20deg)}
+
+/* Italian Futurism */
+.demo--futurism{background:#e8e2d4;overflow:hidden;font-family:'Archivo Black',sans-serif}
+.demo--futurism::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 13px,rgba(20,20,20,.12) 13px 15px)}
+.demo--futurism .fu-h{z-index:2;font-size:30px;font-style:italic;transform:skewX(-14deg) rotate(-6deg);letter-spacing:-1px;color:#d12b1f}
+
+/* Cubism */
+.demo--cubism{background:#cdbfa3;overflow:hidden}
+.demo--cubism i{position:absolute}
+.demo--cubism .cb1{width:92px;height:92px;background:#8a6f4e;clip-path:polygon(0 0,100% 20%,70% 100%,0 80%);top:18px;left:38px}
+.demo--cubism .cb2{width:84px;height:104px;background:#3f4a55;clip-path:polygon(20% 0,100% 0,80% 100%,0 70%);top:28px;left:108px}
+.demo--cubism .cb3{width:72px;height:72px;background:#b08968;clip-path:polygon(0 30%,80% 0,100% 80%,30% 100%);bottom:12px;left:78px}
+.demo--cubism .cb4{width:52px;height:64px;background:#2a2a2a;clip-path:polygon(0 0,100% 30%,60% 100%);top:58px;left:166px}
+
+/* Surrealism */
+.demo--surrealism{background:linear-gradient(180deg,#6db3e2,#cfe8f3 68%,#e9d8a6);overflow:hidden}
+.demo--surrealism .sr-eye{position:relative;z-index:2;width:74px;height:46px;background:#fff;border-radius:50%;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.demo--surrealism .sr-eye::after{content:'';width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#6aa0c8,#143a5c)}
+.demo--surrealism .sr-cloud{position:absolute;width:50px;height:18px;background:#fff;border-radius:20px;top:28px;left:34px}
+.demo--surrealism .sr-cloud2{position:absolute;width:40px;height:14px;background:#fff;border-radius:20px;bottom:28px;right:40px}
+
+/* Pointillism */
+.demo--pointillism{background:#f0ead9;overflow:hidden}
+.demo--pointillism::before{content:'';position:absolute;inset:0;background:radial-gradient(circle,#e07a3f 35%,transparent 36%) 0 0/10px 10px}
+.demo--pointillism::after{content:'';position:absolute;inset:0;background:radial-gradient(circle,#3a6ea5 32%,transparent 33%) 5px 5px/10px 10px;mix-blend-mode:multiply;opacity:.7}
+.demo--pointillism .pt-l{position:relative;z-index:2;background:#f0ead9;font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:#3a3a3a;padding:4px 14px}
+
+/* Rococo / Baroque */
+.demo--rococo{background:#f3e7ee;overflow:hidden;font-family:'Playfair Display',serif;flex-direction:column;gap:4px}
+.demo--rococo::before{content:'';position:absolute;inset:12px;border:2px solid #c9a24b;border-radius:46% 46% 46% 46%/30% 30% 30% 30%}
+.demo--rococo .rc-orn{z-index:2;font-size:24px;color:#c9a24b}
+.demo--rococo .rc-h{z-index:2;font-style:italic;font-size:23px;color:#9b6a8f}
+
+/* Stained Glass */
+.demo--stainedglass{background:#0c0c0c;overflow:hidden;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:4px;padding:7px;place-items:stretch}
+.demo--stainedglass i{display:block}
+.demo--stainedglass i:nth-child(1){background:#c0392b}.demo--stainedglass i:nth-child(2){background:#2980b9}.demo--stainedglass i:nth-child(3){background:#f1c40f}.demo--stainedglass i:nth-child(4){background:#27ae60}.demo--stainedglass i:nth-child(5){background:#8e44ad}.demo--stainedglass i:nth-child(6){background:#e67e22}.demo--stainedglass i:nth-child(7){background:#16a085}.demo--stainedglass i:nth-child(8){background:#c0392b}.demo--stainedglass i:nth-child(9){background:#2980b9}.demo--stainedglass i:nth-child(10){background:#f1c40f}.demo--stainedglass i:nth-child(11){background:#8e44ad}.demo--stainedglass i:nth-child(12){background:#27ae60}
+
+/* Illuminated Manuscript */
+.demo--illuminated{background:#f2e8d0;overflow:hidden;flex-direction:row;align-items:center;gap:12px;padding:16px}
+.demo--illuminated .il-cap{font-family:'UnifrakturMaguntia',serif;font-size:58px;line-height:1;color:#b3122a;border:3px solid #c9a227;background:#fff7e0;padding:0 10px}
+.demo--illuminated .il-tx{font-family:'UnifrakturMaguntia',serif;font-size:17px;color:#2a2418;line-height:1.35;max-width:150px}
+
+/* Linocut / Woodcut */
+.demo--linocut{background:#efe7d3;overflow:hidden;flex-direction:column;gap:12px}
+.demo--linocut::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 7px,rgba(26,26,26,.06) 7px 8px)}
+.demo--linocut .lc-sun{position:relative;z-index:2;width:64px;height:64px;border-radius:50%;background:#1a1a1a}
+.demo--linocut .lc-sun::after{content:'';position:absolute;inset:-14px;border-radius:50%;background:repeating-conic-gradient(#1a1a1a 0 7deg,transparent 7deg 14deg);-webkit-mask:radial-gradient(circle,transparent 32px,#000 33px);mask:radial-gradient(circle,transparent 32px,#000 33px)}
+.demo--linocut .lc-h{position:relative;z-index:2;font-family:'Archivo Black',sans-serif;font-size:16px;color:#1a1a1a;letter-spacing:1px}
+
+/* Engraving / Banknote */
+.demo--engraving{background:#e9efe4;overflow:hidden;font-family:'Playfair Display',serif;color:#1f5132}
+.demo--engraving::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(31,81,50,.18) 0 1px,transparent 1px 5px),repeating-linear-gradient(-45deg,rgba(31,81,50,.12) 0 1px,transparent 1px 6px)}
+.demo--engraving .en-oval{position:relative;z-index:2;width:120px;height:82px;border:2px solid #1f5132;border-radius:50%;display:grid;place-items:center;background:rgba(233,239,228,.65)}
+.demo--engraving .en-oval b{font-size:30px;font-weight:700}
+
+/* VHS / Analog */
+.demo--vhs{background:#0a0a12;overflow:hidden;font-family:'Space Mono',monospace;color:#fff}
+.demo--vhs::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 3px)}
+.demo--vhs .vh-h{z-index:2;font-size:26px;font-weight:700;letter-spacing:2px;text-shadow:2px 0 #ff003c,-2px 0 #00e0ff}
+.demo--vhs .vh-play{position:absolute;top:12px;left:14px;z-index:2;font-size:12px}
+.demo--vhs .vh-tc{position:absolute;bottom:12px;right:14px;z-index:2;font-size:12px}
+
+/* Teletext */
+.demo--teletext{background:#000;overflow:hidden;font-family:'Space Mono',monospace;align-items:flex-start;justify-content:center;flex-direction:column;gap:5px;padding:14px;font-weight:700}
+.demo--teletext .tt1{color:#fff;background:#0000aa;padding:1px 5px;font-size:11px}
+.demo--teletext .tt2{color:#ffff00;font-size:19px}
+.demo--teletext .tt3{color:#00ffff;font-size:12px}
+.demo--teletext .tt4{color:#00ff00;font-size:12px}
+
+/* Isometric */
+.demo--isometric{background:#eef1f6;overflow:hidden}
+.demo--isometric::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(80,90,160,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(80,90,160,.08) 1px,transparent 1px);background-size:18px 18px}
+.demo--isometric .iso{position:relative;z-index:2;width:96px;height:96px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:conic-gradient(from -30deg,#a9b6ff 0 120deg,#6f7fe0 120deg 240deg,#4d5bb8 240deg 360deg)}
+
+/* Low Poly */
+.demo--lowpoly{background:linear-gradient(#0f1c3a,#2a4a7a);overflow:hidden}
+.demo--lowpoly .lp{position:absolute;bottom:0;width:0;height:0;border-style:solid}
+.demo--lowpoly .lp1{border-width:0 60px 92px 60px;border-color:transparent transparent #3e6ea5 transparent;left:6px}
+.demo--lowpoly .lp2{border-width:0 50px 70px 50px;border-color:transparent transparent #2f5688 transparent;left:88px}
+.demo--lowpoly .lp3{border-width:0 72px 112px 72px;border-color:transparent transparent #5b8fc0 transparent;left:150px}
+.demo--lowpoly .lp-sun{position:absolute;top:22px;right:40px;width:40px;height:40px;border-radius:50%;background:#ffd479}
+
+/* Voxel */
+.demo--voxel{background:#13131a;overflow:hidden}
+.demo--voxel i{position:absolute;width:50px;height:50px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.demo--voxel .v1{top:44px;left:88px;background:conic-gradient(from -30deg,#8be36b 0 120deg,#56b53f 120deg 240deg,#3c8a2b 240deg 360deg)}
+.demo--voxel .v2{top:70px;left:64px;background:conic-gradient(from -30deg,#9bd0ff 0 120deg,#5aa0e0 120deg 240deg,#3a72b0 240deg 360deg)}
+.demo--voxel .v3{top:70px;left:112px;background:conic-gradient(from -30deg,#ffd27a 0 120deg,#e0a23f 120deg 240deg,#b07a2b 240deg 360deg)}
+
+/* Wireframe / Lo-fi */
+.demo--wireframe{background:#fbfbfb;overflow:hidden;align-items:stretch;justify-content:center;flex-direction:column;padding:16px;gap:9px;font-family:'Space Mono',monospace}
+.demo--wireframe .wf-bar{height:14px;background:#e4e4e4;border:1px solid #c2c2c2;width:55%}
+.demo--wireframe .wf-row{display:flex;gap:10px}
+.demo--wireframe .wf-box{width:54px;height:54px;border:1px solid #c2c2c2;background:#eee;display:grid;place-items:center;color:#c2c2c2;font-size:20px;flex:none}
+.demo--wireframe .wf-lines{flex:1;display:flex;flex-direction:column;gap:6px;justify-content:center}
+.demo--wireframe .wf-lines span{height:7px;background:#e4e4e4}
+
+/* Retro GUI / Windows 95 */
+.demo--retrogui{background:#018786;overflow:hidden}
+.demo--retrogui .win{width:188px;background:#c0c0c0;border:2px solid #fff;border-right-color:#404040;border-bottom-color:#404040}
+.demo--retrogui .tb{background:#000080;color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;padding:3px 4px 3px 6px;display:flex;justify-content:space-between;align-items:center}
+.demo--retrogui .tb b{background:#c0c0c0;color:#000;width:16px;height:14px;display:grid;place-items:center;border:1px solid #fff;border-right-color:#404040;border-bottom-color:#404040;font-size:10px}
+.demo--retrogui .bd{padding:12px;font-family:'Space Mono',monospace;font-size:11px;color:#000}
+.demo--retrogui .btn{margin-top:9px;display:inline-block;background:#c0c0c0;border:2px solid #fff;border-right-color:#404040;border-bottom-color:#404040;padding:3px 14px;font-size:11px;color:#000}
+
+/* McBling */
+.demo--mcbling{background:linear-gradient(135deg,#ff3aa5,#ff8ec9);overflow:hidden;font-family:'Archivo Black',sans-serif;color:#fff}
+.demo--mcbling .mb-h{z-index:2;font-size:25px;font-style:italic;letter-spacing:-1px;text-shadow:0 2px 0 #c0007a,2px 5px 7px rgba(0,0,0,.25)}
+.demo--mcbling .mb-spark{position:absolute;color:#fff;text-shadow:0 0 8px #fff}
+.demo--mcbling .s1{top:24px;left:42px;font-size:22px}
+.demo--mcbling .s2{bottom:28px;right:46px;font-size:16px}
+.demo--mcbling .s3{top:42px;right:58px;font-size:13px}
+
+/* Cassette Futurism */
+.demo--cassette{background:#d8cdb0;overflow:hidden;font-family:'Space Mono',monospace;color:#3a3326;flex-direction:column;gap:12px}
+.demo--cassette .cs-screen{background:#1a1408;color:#ffb000;border:4px solid #8a7d5a;border-radius:4px;padding:10px 16px;font-size:13px;box-shadow:inset 0 0 12px rgba(255,176,0,.3)}
+.demo--cassette .cs-btns{display:flex;gap:7px}
+.demo--cassette .cs-btns i{width:24px;height:13px;background:#9a8d68;border:1px solid #6e6243;border-radius:2px;box-shadow:0 2px 0 #6e6243}
+
+/* Dieselpunk */
+.demo--dieselpunk{background:linear-gradient(#3a3a3a,#1e1e1e);overflow:hidden;font-family:'Archivo Black',sans-serif;color:#c8a24a;flex-direction:column;gap:10px}
+.demo--dieselpunk .dp-plate{position:relative;background:linear-gradient(#5a5a5a,#3a3a3a);border:3px solid #222;padding:9px 22px;box-shadow:inset 0 1px 0 #777}
+.demo--dieselpunk .dp-plate::before,.demo--dieselpunk .dp-plate::after{content:'';position:absolute;width:6px;height:6px;border-radius:50%;background:#7a7a7a;top:6px}
+.demo--dieselpunk .dp-plate::before{left:6px}.demo--dieselpunk .dp-plate::after{right:6px}
+.demo--dieselpunk .dp-h{font-size:21px;letter-spacing:1px}
+.demo--dieselpunk .dp-sub{font-family:'Space Mono',monospace;font-size:9px;color:#9a8a5a;letter-spacing:2px}
+
+/* Talavera / Mexican Folk */
+.demo--talavera{background:#f5f0e1;overflow:hidden}
+.demo--talavera::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#2e6fb0 17%,transparent 18%) 0 0/40px 40px,radial-gradient(circle at 0 0,#e0a800 9%,transparent 10%) 0 0/40px 40px,radial-gradient(circle at 100% 100%,#c0392b 9%,transparent 10%) 0 0/40px 40px}
+.demo--talavera .tv-h{position:relative;z-index:2;font-family:'Playfair Display',serif;font-weight:700;font-size:21px;color:#fff;background:#c0392b;padding:6px 16px;border:2px solid #fff;box-shadow:0 0 0 2px #2e6fb0}
+
+/* Islamic Geometric / Arabesque */
+.demo--islamicgeo{background:#0d4f4a;overflow:hidden}
+.demo--islamicgeo::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,.16) 1px,transparent 1px);background-size:26px 26px}
+.demo--islamicgeo .ig-star{position:relative;z-index:2;width:84px;height:84px;background:#d4af37;clip-path:polygon(50% 0,61% 22%,85% 15%,78% 39%,100% 50%,78% 61%,85% 85%,61% 78%,50% 100%,39% 78%,15% 85%,22% 61%,0 50%,22% 39%,15% 15%,39% 22%)}
+.demo--islamicgeo .ig-star::after{content:'';position:absolute;inset:16px;background:#0d4f4a;clip-path:polygon(50% 0,61% 22%,85% 15%,78% 39%,100% 50%,78% 61%,85% 85%,61% 78%,50% 100%,39% 78%,15% 85%,22% 61%,0 50%,22% 39%,15% 15%,39% 22%)}
+
+/* Southwestern / Desert */
+.demo--southwestern{background:#dca06a;overflow:hidden;font-family:'Archivo Black',sans-serif;color:#7a3b1d}
+.demo--southwestern::before{content:'';position:absolute;bottom:0;left:0;right:0;height:38px;background:repeating-linear-gradient(90deg,#1f9e93 0 16px,#c0392b 16px 32px,#f2c14e 32px 48px)}
+.demo--southwestern .sw2-sun{width:46px;height:46px;border-radius:50%;background:#e6552f;box-shadow:0 0 0 6px #f2c14e}
+.demo--southwestern .sw2-h{position:absolute;top:26px;font-size:18px;letter-spacing:1px}
+
+/* Polaroid */
+.demo--polaroid{background:#cfcabd;overflow:hidden}
+.demo--polaroid .pl{position:absolute;background:#fff;padding:8px 8px 26px;box-shadow:0 7px 16px rgba(0,0,0,.28)}
+.demo--polaroid .pl .img{width:92px;height:74px;display:block}
+.demo--polaroid .pl .cap{position:absolute;bottom:7px;left:0;right:0;text-align:center;font-family:'Space Mono',monospace;font-size:9px;color:#666}
+.demo--polaroid .p1{transform:rotate(-7deg);top:28px;left:48px}
+.demo--polaroid .p1 .img{background:linear-gradient(#88b04b,#5a7d3a)}
+.demo--polaroid .p2{transform:rotate(6deg);top:42px;left:150px}
+.demo--polaroid .p2 .img{background:linear-gradient(#e0884f,#b85c2e)}
 
 /* Favorite button */
 .fav-btn{position:absolute;top:9px;right:9px;z-index:8;width:30px;height:30px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:13px;line-height:1;padding:0;transition:transform .15s,background .2s,color .2s;-webkit-tap-highlight-color:transparent}
@@ -1389,6 +1552,174 @@ const STYLES = [
    tags:['Cream','Soft serif','Scholarly','Calm'],
    palette:[['#efe7d6','CREAM'],['#6b5d44','SEPIA'],['#b3a684','LINEN'],['#5a4a32','OAK']],
    fonts:'Garamond / Playfair',mood:'Gentle, literary, warm',use:'Books, education, lifestyle, editorial'},
+
+  {id:'suprematism',name:'Suprematism',era:'1915–1930s',cat:['Retro','Minimal'],demo:'suprematism',ref:'malevich suprematism art',
+   demoHTML:`<i class="su-sq"></i><i class="su-bar"></i><i class="su-cir"></i><i class="su-line"></i>`,
+   blurb:'Malevich’s pure abstraction: a few weightless geometric forms floating in tense, dynamic balance.',
+   tags:['Floating forms','Geometric','Dynamic','Abstract'],
+   palette:[['#f4f1ea','GROUND'],['#111111','BLACK'],['#e23b2e','RED'],['#f5b30b','GOLD']],
+   fonts:'Heavy grotesque / Futura',mood:'Bold, weightless, radical',use:'Posters, branding, art prints'},
+
+  {id:'futurism',name:'Italian Futurism',era:'1909–1944',cat:['Retro','Experimental'],demo:'futurism',ref:'italian futurism marinetti design',
+   demoHTML:`<div class="fu-h">VELOCITÀ</div>`,
+   blurb:'A cult of speed and the machine: diagonal force-lines, dynamism and type set in violent motion.',
+   tags:['Speed','Diagonals','Dynamism','Machine age'],
+   palette:[['#e8e2d4','PAPER'],['#d12b1f','RED'],['#1a1a1a','INK'],['#9a8f78','GREY']],
+   fonts:'Italic display / heavy sans',mood:'Aggressive, kinetic, loud',use:'Posters, editorial, manifestos'},
+
+  {id:'cubism',name:'Cubism',era:'1907–1920s',cat:['Retro','Experimental'],demo:'cubism',ref:'cubism picasso braque art',
+   demoHTML:`<i class="cb1"></i><i class="cb2"></i><i class="cb3"></i><i class="cb4"></i>`,
+   blurb:'One subject seen from many angles at once: fractured, overlapping planes in muted earthen tones.',
+   tags:['Fractured planes','Multi-angle','Muted','Geometric'],
+   palette:[['#cdbfa3','SAND'],['#8a6f4e','OCHRE'],['#3f4a55','SLATE'],['#b08968','TAN']],
+   fonts:'Geometric sans / stencil',mood:'Analytical, abstract, layered',use:'Art, posters, album covers'},
+
+  {id:'surrealism',name:'Surrealism',era:'1920s–present',cat:['Experimental','Maximal'],demo:'surrealism',ref:'surrealism dali magritte design',
+   demoHTML:`<div class="sr-cloud"></div><div class="sr-eye"></div><div class="sr-cloud2"></div>`,
+   blurb:'Dreamlogic made visible: floating eyes, skies and impossible objects with a calm, uncanny stillness.',
+   tags:['Dreamlike','Uncanny','Juxtaposition','Symbolic'],
+   palette:[['#6db3e2','SKY'],['#cfe8f3','HAZE'],['#e9d8a6','SAND'],['#143a5c','PUPIL']],
+   fonts:'Classic serif / hand script',mood:'Dreamy, strange, poetic',use:'Art, editorial, music, fashion'},
+
+  {id:'pointillism',name:'Pointillism',era:'1880s–90s',cat:['Retro','Experimental'],demo:'pointillism',ref:'pointillism seurat art',
+   demoHTML:`<div class="pt-l">Seurat</div>`,
+   blurb:'Whole images built from tiny separate dots of pure colour that blend only in the viewer’s eye.',
+   tags:['Dots','Optical mixing','Pure colour','Textured'],
+   palette:[['#f0ead9','GROUND'],['#e07a3f','ORANGE'],['#3a6ea5','BLUE'],['#3a3a3a','INK']],
+   fonts:'Classic serif / Playfair',mood:'Luminous, patient, soft',use:'Art prints, packaging, editorial'},
+
+  {id:'rococo',name:'Rococo / Baroque',era:'1700s',cat:['Retro','Maximal'],demo:'rococo',ref:'rococo baroque ornate design',
+   demoHTML:`<div class="rc-orn">&#10087;</div><div class="rc-h">Rococo</div>`,
+   blurb:'Aristocratic excess: gilded scrollwork, pastel froth and curvaceous ornament with no empty space.',
+   tags:['Gilded','Scrollwork','Pastel','Ornate'],
+   palette:[['#f3e7ee','BLUSH'],['#c9a24b','GOLD'],['#9b6a8f','MAUVE'],['#7d9b7a','SAGE']],
+   fonts:'Ornate serif / script',mood:'Opulent, playful, decorative',use:'Beauty, weddings, luxury, packaging'},
+
+  {id:'stainedglass',name:'Stained Glass',era:'Medieval revival',cat:['Retro','Cultural'],demo:'stainedglass',ref:'stained glass window design',
+   demoHTML:`<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>`,
+   blurb:'Jewel-bright panels held in black leading, glowing like a cathedral window lit from behind.',
+   tags:['Jewel tones','Black leading','Panels','Luminous'],
+   palette:[['#c0392b','RUBY'],['#2980b9','SAPPHIRE'],['#f1c40f','AMBER'],['#27ae60','EMERALD']],
+   fonts:'Blackletter / classic serif',mood:'Sacred, radiant, ornate',use:'Branding, packaging, music, art'},
+
+  {id:'illuminated',name:'Illuminated Manuscript',era:'Medieval',cat:['Retro','Cultural'],demo:'illuminated',ref:'illuminated manuscript medieval design',
+   demoHTML:`<div class="il-cap">Q</div><div class="il-tx">uod erat demonstrandum, anno domini.</div>`,
+   blurb:'Hand-lettered medieval pages: gilded drop-cap initials, red and blue ink and ornate marginalia.',
+   tags:['Drop caps','Gold leaf','Hand-lettered','Ornate'],
+   palette:[['#f2e8d0','VELLUM'],['#b3122a','RUBRIC'],['#c9a227','GILT'],['#2a2418','INK']],
+   fonts:'Blackletter / uncial',mood:'Sacred, crafted, historic',use:'Books, branding, packaging, certificates'},
+
+  {id:'linocut',name:'Linocut / Woodcut',era:'Timeless',cat:['Retro','Experimental'],demo:'linocut',ref:'linocut woodcut relief print design',
+   demoHTML:`<div class="lc-sun"></div><div class="lc-h">WOODCUT</div>`,
+   blurb:'Carved relief printing: bold high-contrast black shapes with gouged texture and rough, handmade edges.',
+   tags:['Relief print','High contrast','Carved texture','Handmade'],
+   palette:[['#efe7d3','PAPER'],['#1a1a1a','INK'],['#7a6f55','SHADOW'],['#c25430','SPOT']],
+   fonts:'Heavy slab / Archivo',mood:'Bold, rustic, expressive',use:'Posters, packaging, editorial, merch'},
+
+  {id:'engraving',name:'Engraving / Banknote',era:'Timeless',cat:['Retro','Experimental'],demo:'engraving',ref:'engraving banknote guilloche design',
+   demoHTML:`<div class="en-oval"><b>C</b></div>`,
+   blurb:'The fine line-work of currency and certificates: cross-hatching, guilloché and an air of officialdom.',
+   tags:['Line hatching','Guilloché','Intricate','Official'],
+   palette:[['#e9efe4','PAPER'],['#1f5132','GREEN'],['#7a8a6f','SAGE'],['#143a22','DEEP']],
+   fonts:'Engraved serif / Playfair',mood:'Refined, official, vintage',use:'Finance, certificates, spirits, luxury'},
+
+  {id:'vhs',name:'VHS / Analog',era:'1980s–90s',cat:['Retro','Experimental'],demo:'vhs',ref:'vhs analog tape glitch design',
+   demoHTML:`<div class="vh-play">&#9654; PLAY</div><div class="vh-h">VHS</div><div class="vh-tc">0:00:24</div>`,
+   blurb:'Worn videotape: chroma bleed, scanlines, tracking errors and an on-screen-display timecode.',
+   tags:['Scanlines','Chroma bleed','Tracking','Timecode'],
+   palette:[['#0a0a12','TAPE'],['#ff003c','CHROMA R'],['#00e0ff','CHROMA B'],['#ffffff','OSD']],
+   fonts:'Monospace / OSD type',mood:'Nostalgic, lo-fi, eerie',use:'Music, film, streetwear, posters'},
+
+  {id:'teletext',name:'Teletext',era:'1974–2000s',cat:['Retro','Experimental'],demo:'teletext',ref:'teletext ceefax broadcast design',
+   demoHTML:`<div class="tt1">P100 COLOURS CEEFAX</div><div class="tt2">&#9612; DESIGN INDEX</div><div class="tt3">76 styles online</div><div class="tt4">press REVEAL &#9654;</div>`,
+   blurb:'Broadcast text TV: chunky block characters in seven bright colours on flat black, page by page.',
+   tags:['Block text','7 colours','Broadcast','Blocky'],
+   palette:[['#000000','SCREEN'],['#ffff00','YELLOW'],['#00ffff','CYAN'],['#00ff00','GREEN']],
+   fonts:'Blocky monospace',mood:'Nostalgic, utilitarian, retro',use:'Music, broadcast, nostalgia, games'},
+
+  {id:'isometric',name:'Isometric',era:'Contemporary',cat:['Modern','UI Style'],demo:'isometric',ref:'isometric illustration design',
+   demoHTML:`<div class="iso"></div>`,
+   blurb:'Pseudo-3D without perspective: clean isometric cubes and scenes on a tidy diagonal grid.',
+   tags:['Pseudo-3D','30° grid','Clean','Constructed'],
+   palette:[['#eef1f6','GRID'],['#a9b6ff','TOP'],['#6f7fe0','SIDE'],['#4d5bb8','FACE']],
+   fonts:'Geometric sans / Outfit',mood:'Clean, technical, friendly',use:'Tech, explainer, infographics, SaaS'},
+
+  {id:'lowpoly',name:'Low Poly',era:'2010s–present',cat:['Modern','Experimental'],demo:'lowpoly',ref:'low poly faceted 3d design',
+   demoHTML:`<div class="lp-sun"></div><div class="lp lp3"></div><div class="lp lp1"></div><div class="lp lp2"></div>`,
+   blurb:'Faceted geometry: forms broken into flat triangular planes for a crystalline, rendered 3D look.',
+   tags:['Triangulated','Faceted','Gradient','3D'],
+   palette:[['#0f1c3a','NIGHT'],['#3e6ea5','FACET'],['#5b8fc0','LIGHT'],['#ffd479','SUN']],
+   fonts:'Geometric sans / Outfit',mood:'Modern, crisp, digital',use:'Games, tech, wallpapers, branding'},
+
+  {id:'voxel',name:'Voxel',era:'2010s–present',cat:['Modern','Experimental'],demo:'voxel',ref:'voxel art 3d cubes design',
+   demoHTML:`<i class="v2"></i><i class="v3"></i><i class="v1"></i>`,
+   blurb:'3D pixels: little cubes stacked into blocky, toy-like models with a clean rendered finish.',
+   tags:['3D cubes','Blocky','Playful','Rendered'],
+   palette:[['#13131a','VOID'],['#56b53f','GREEN'],['#5aa0e0','BLUE'],['#e0a23f','GOLD']],
+   fonts:'Rounded sans / pixel',mood:'Playful, toy-like, modern',use:'Games, NFT, tech, mascots'},
+
+  {id:'wireframe',name:'Wireframe / Lo-fi',era:'Timeless',cat:['UI Style','Minimal'],demo:'wireframe',ref:'wireframe lo-fi ux design',
+   demoHTML:`<div class="wf-bar"></div><div class="wf-row"><div class="wf-box">&#10005;</div><div class="wf-lines"><span></span><span style="width:80%"></span><span style="width:55%"></span></div></div>`,
+   blurb:'The skeleton before the skin: grey boxes, placeholder lines and image crosses, structure over style.',
+   tags:['Greyscale','Placeholders','Structure','Lo-fi'],
+   palette:[['#fbfbfb','CANVAS'],['#e4e4e4','FILL'],['#c2c2c2','STROKE'],['#8a8a8a','TEXT']],
+   fonts:'Monospace / system sans',mood:'Functional, neutral, raw',use:'UX, prototyping, agencies, docs'},
+
+  {id:'retrogui',name:'Retro GUI',era:'1990s',cat:['Retro','UI Style'],demo:'retrogui',ref:'windows 95 retro gui design',
+   demoHTML:`<div class="win"><div class="tb">colours.exe <b>&#10005;</b></div><div class="bd">Ready.<div class="btn">OK</div></div></div>`,
+   blurb:'The classic desktop: grey beveled chrome, title bars, system fonts and that unmistakable teal void.',
+   tags:['Beveled chrome','Title bars','Pixel fonts','Nostalgic'],
+   palette:[['#018786','DESKTOP'],['#c0c0c0','CHROME'],['#000080','TITLE'],['#404040','SHADOW']],
+   fonts:'System / pixel sans',mood:'Nostalgic, utilitarian, fun',use:'Indie, music, dev tools, parody'},
+
+  {id:'mcbling',name:'McBling',era:'2003–2008',cat:['Retro','Maximal'],demo:'mcbling',ref:'mcbling y2k bling aesthetic',
+   demoHTML:`<div class="mb-spark s1">&#10022;</div><div class="mb-spark s3">&#10022;</div><div class="mb-h">FABULOUS</div><div class="mb-spark s2">&#10022;</div>`,
+   blurb:'Mid-2000s glamour: hot pink, rhinestone sparkle, glossy gradients and unapologetic celebrity bling.',
+   tags:['Bling','Hot pink','Sparkle','Glossy'],
+   palette:[['#ff3aa5','PINK'],['#ff8ec9','BUBBLE'],['#c0007a','MAGENTA'],['#ffffff','SHINE']],
+   fonts:'Glossy italic display',mood:'Glam, flashy, fun',use:'Fashion, beauty, pop, nightlife'},
+
+  {id:'cassette',name:'Cassette Futurism',era:'Contemporary',cat:['Retro','Experimental'],demo:'cassette',ref:'cassette futurism retro tech design',
+   demoHTML:`<div class="cs-screen">SYSTEM READY&#9614;</div><div class="cs-btns"><i></i><i></i><i></i></div>`,
+   blurb:'The future as imagined in 1979: beige hardware, amber CRT glow and chunky tactile controls.',
+   tags:['Beige tech','Amber CRT','Chunky','Analog'],
+   palette:[['#d8cdb0','CASING'],['#ffb000','PHOSPHOR'],['#1a1408','SCREEN'],['#8a7d5a','TRIM']],
+   fonts:'Monospace / dot matrix',mood:'Retro, tactile, utilitarian',use:'Sci-fi, music, tech, games'},
+
+  {id:'dieselpunk',name:'Dieselpunk',era:'Contemporary',cat:['Retro','Experimental'],demo:'dieselpunk',ref:'dieselpunk 1940s industrial design',
+   demoHTML:`<div class="dp-plate"><span class="dp-h">DIESEL</span></div><div class="dp-sub">MOTOR WORKS · 1942</div>`,
+   blurb:'The machine age between the wars: riveted steel, brass plates and bold industrial Art-Deco muscle.',
+   tags:['Riveted steel','Brass','Industrial','Deco'],
+   palette:[['#3a3a3a','STEEL'],['#1e1e1e','IRON'],['#c8a24a','BRASS'],['#7a7a7a','RIVET']],
+   fonts:'Heavy slab / industrial sans',mood:'Rugged, industrial, bold',use:'Games, film, branding, automotive'},
+
+  {id:'talavera',name:'Talavera / Mexican Folk',era:'Contemporary',cat:['Cultural','Maximal'],demo:'talavera',ref:'talavera mexican folk tile design',
+   demoHTML:`<div class="tv-h">¡Fiesta!</div>`,
+   blurb:'Mexican folk craft: hand-painted Talavera tiles, papel-picado brights and joyful, dense pattern.',
+   tags:['Tile pattern','Vivid','Folk','Festive'],
+   palette:[['#2e6fb0','TALAVERA'],['#c0392b','RED'],['#e0a800','GOLD'],['#f5f0e1','CLAY']],
+   fonts:'Ornate serif / brush',mood:'Joyful, vibrant, handmade',use:'Food, hospitality, events, packaging'},
+
+  {id:'islamicgeo',name:'Islamic Geometric',era:'Timeless',cat:['Cultural','Maximal'],demo:'islamicgeo',ref:'islamic geometric arabesque pattern design',
+   demoHTML:`<div class="ig-star"></div>`,
+   blurb:'Infinite geometry: interlocking stars and tessellations in gold and jewel tones, mathematically pure.',
+   tags:['Tessellation','Star geometry','Gold','Infinite'],
+   palette:[['#0d4f4a','TEAL'],['#d4af37','GOLD'],['#0a3a36','DEEP'],['#e8d8a0','SAND']],
+   fonts:'Kufic / refined serif',mood:'Ornate, meditative, precise',use:'Branding, packaging, architecture, decor'},
+
+  {id:'southwestern',name:'Southwestern / Desert',era:'Contemporary',cat:['Cultural','Retro'],demo:'southwestern',ref:'southwestern desert santa fe design',
+   demoHTML:`<div class="sw2-h">SANTA FE</div><div class="sw2-sun"></div>`,
+   blurb:'Sun-baked desert palette: adobe terracotta, turquoise and bright serape stripes under a hot sun.',
+   tags:['Adobe','Turquoise','Serape stripes','Warm'],
+   palette:[['#dca06a','ADOBE'],['#1f9e93','TURQUOISE'],['#c0392b','CHILE'],['#f2c14e','SUN']],
+   fonts:'Slab serif / bold sans',mood:'Warm, earthy, sunny',use:'Hospitality, food, travel, branding'},
+
+  {id:'polaroid',name:'Polaroid',era:'Contemporary',cat:['Retro','Modern'],demo:'polaroid',ref:'polaroid instant photo scrapbook design',
+   demoHTML:`<div class="pl p1"><span class="img"></span><span class="cap">summer &#39;98</span></div><div class="pl p2"><span class="img"></span><span class="cap">road trip</span></div>`,
+   blurb:'Instant-film nostalgia: white-bordered snapshots, handwritten captions and a casual tilted scatter.',
+   tags:['Instant film','White frame','Handwritten','Nostalgic'],
+   palette:[['#cfcabd','TABLE'],['#ffffff','FRAME'],['#88b04b','PHOTO'],['#666666','CAPTION']],
+   fonts:'Handwritten / mono caption',mood:'Nostalgic, personal, warm',use:'Lifestyle, social, weddings, travel'},
 ];
 
 const CATS = ['All','Minimal','Maximal','Retro','Modern','UI Style','Experimental','Cultural'];
@@ -1444,7 +1775,7 @@ CATS.forEach(c=>{
 STYLES.forEach((s,i)=>{ s.n=String(i+1).padStart(2,'0'); });
 
 /* Tone classification · designs whose demo reads dark-backed; the rest are light */
-const DARK_TONE = new Set(['pixel','glass','artdeco','vapor','synth','cyber','editorial','glitch','grunge','techgeo','aurora','noir','artnouveau','steampunk','streetwear','liquid','darkacademia','duotone','bento','deconstructed','terminal','afro','guochao','blackletter','fluent','typographic','blueprint','acid','chrome','geocities','sigilism','circus','punk','tropical']);
+const DARK_TONE = new Set(['pixel','glass','artdeco','vapor','synth','cyber','editorial','glitch','grunge','techgeo','aurora','noir','artnouveau','steampunk','streetwear','liquid','darkacademia','duotone','bento','deconstructed','terminal','afro','guochao','blackletter','fluent','typographic','blueprint','acid','chrome','geocities','sigilism','circus','punk','tropical','stainedglass','vhs','teletext','lowpoly','voxel','retrogui','dieselpunk','islamicgeo']);
 STYLES.forEach(s=>{ s.tone = DARK_TONE.has(s.id) ? 'dark' : 'light'; });
 const metacount=document.getElementById('metacount');
 if(metacount) metacount.textContent=String(STYLES.length).padStart(3,'0')+' entries';
