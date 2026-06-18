@@ -1,5 +1,7 @@
 # colours
 
+**Live: [1colours.vercel.app](https://1colours.vercel.app)**
+
 A visual reference library of **76 design styles**: each one rendered *live in its own aesthetic*, so you can actually see the look before you pick it. Built for designers who need to browse and shortlist visual languages quickly.
 
 ## Features
@@ -25,6 +27,10 @@ It's a single self-contained `index.html` (only external dependency is Google Fo
 python3 -m http.server 4599
 # then open http://localhost:4599
 ```
+
+## Deployment
+
+Hosted on **Vercel** at [1colours.vercel.app](https://1colours.vercel.app). It is a static site (no build step), so Vercel serves `index.html` from the repo root directly. Every push to `master` redeploys automatically.
 
 ## Adding your own reference images
 
