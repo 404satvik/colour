@@ -3,34 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>colours — The Design Index</title>
+<title>colours · The Design Index</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=Playfair+Display:wght@500;700;900&family=Archivo+Black&family=Poppins:wght@400;600;800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#e8e3d7;           /* page — slightly deeper for gentle depth */
+  --bg:#e8e3d7;           /* page · slightly deeper for gentle depth */
   --paper:#f3efe7;        /* lifted surfaces: cards, nav, modal */
   --paper-2:#ebe5d9;      /* hover / panel */
-  --ink:#2c2824;          /* soft warm charcoal (not pure black — gentler) */
+  --ink:#2c2824;          /* soft warm charcoal (not pure black · gentler) */
   --ink-2:#6a6155;        /* secondary text */
   --ink-3:#9c9283;        /* muted labels */
   --line:rgba(44,40,36,0.12);
   --line-2:rgba(44,40,36,0.26);
-  --accent:#c75b3f;       /* muted terracotta — calmer than vermillion */
+  --accent:#c75b3f;       /* muted terracotta · calmer than vermillion */
   --accent-deep:#a8472f;
   /* chrome type */
   --serif:'Fraunces',Georgia,'Times New Roman',serif;
   --sans:'Space Grotesk',system-ui,sans-serif;
   --mono:'Space Mono',ui-monospace,monospace;
-  /* demo type (used by the 61 style demos — do not remove) */
+  /* demo type (used by the 61 style demos · do not remove) */
   --fd:'Outfit',sans-serif;--fb:'DM Sans',sans-serif;
-  --gutter:32px;          /* shared content gutter — keeps every rule aligned */
+  --gutter:32px;          /* shared content gutter · keeps every rule aligned */
   color-scheme:light;
 }
 /* ===== Dark mode (warm ink-paper) ===== */
 [data-theme="dark"]{
-  --bg:#16130f;           /* page — deepest */
+  --bg:#16130f;           /* page · deepest */
   --paper:#211d17;        /* lifted surfaces: cards, nav, modal */
   --paper-2:#2a251c;      /* hover / panel */
   --ink:#ece5d7;          /* soft warm off-white */
@@ -38,7 +38,7 @@
   --ink-3:#766d5d;        /* muted labels */
   --line:rgba(236,229,215,0.12);
   --line-2:rgba(236,229,215,0.26);
-  --accent:#e0714f;       /* warm coral — calmer than vermillion */
+  --accent:#e0714f;       /* warm coral · calmer than vermillion */
   --accent-deep:#c45a3c;
   color-scheme:dark;
 }
@@ -76,12 +76,13 @@ nav{position:sticky;top:0;z-index:50;background:var(--paper)}
 header{padding:46px 0 0}
 .masthead-meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:0.13em;text-transform:uppercase;color:var(--ink-2);padding-bottom:16px;border-bottom:1px solid var(--line)}
 .masthead-meta .mm-r{color:var(--ink-3)}
-header h1{font-family:var(--serif);font-weight:600;font-size:clamp(42px,7.6vw,92px);letter-spacing:-0.03em;line-height:0.95;margin:30px 0 22px;max-width:15ch;font-optical-sizing:auto}
+header h1{font-family:var(--serif);font-weight:600;font-size:clamp(42px,7.6vw,92px);letter-spacing:-0.03em;line-height:0.95;margin:30px 0 22px;max-width:18ch;font-optical-sizing:auto}
 header h1 em{font-style:italic;color:var(--accent);font-weight:600}
+header h1 .dot{color:var(--accent)}
 header p{max-width:560px;color:var(--ink-2);font-size:16px;line-height:1.6}
 header p b{color:var(--ink);font-weight:600}
 
-/* Filters — index tabs */
+/* Filters · index tabs */
 .filters{display:flex;flex-wrap:wrap;margin:34px 0 0;border-top:1px solid var(--line)}
 .chip{font-family:var(--mono);font-size:11px;letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-2);background:none;border:none;border-right:1px solid var(--line);padding:13px 17px;cursor:pointer;transition:color .18s,background .18s;line-height:1}
 .chip:first-child{padding-left:0}
@@ -90,7 +91,7 @@ header p b{color:var(--ink);font-weight:600}
 .toolbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:12px 0;border-top:1px solid var(--line);border-bottom:1.5px solid var(--ink)}
 .result-note{font-family:var(--mono);font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-3);margin-left:auto}
 
-/* Grid — ruled ledger of specimen plates */
+/* Grid · ruled ledger of specimen plates */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--line);margin:0 0 70px}
 @media(max-width:1080px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.grid{grid-template-columns:1fr}}
@@ -633,7 +634,7 @@ header p b{color:var(--ink);font-weight:600}
 .ref-link.alt:hover{background:var(--ink-2);border-color:var(--ink-2);color:var(--paper)}
 .modal-actions{display:flex;flex-wrap:wrap;gap:10px;margin:2px 0 4px}
 
-/* Modal — catalogue spread */
+/* Modal · catalogue spread */
 .modal-bg{position:fixed;inset:0;z-index:200;background:rgba(23,20,17,.55);display:none;align-items:flex-start;justify-content:center;padding:42px 22px;overflow-y:auto}
 .modal-bg.open{display:flex}
 .modal{background:var(--paper);border:1.5px solid var(--ink);max-width:720px;width:100%;overflow:hidden;position:relative;animation:up .35s;box-shadow:13px 13px 0 rgba(23,20,17,.16)}
@@ -752,7 +753,7 @@ header p,.blurb,.mdesc,.cc-v,.empty{text-wrap:pretty}
 /* tactile press on controls */
 .chip:active,.fav-chip:active,.theme-toggle:active,.export-btn:active,.ref-link:active,.modal-fav:active,.tone-seg button:active,.fav-btn:active,.cmp-btn:active,.cmp-go:active{transform:translateY(1px)}
 .fav-btn:active{transform:scale(1.04)}
-/* keyboard focus — shown for keyboard users only */
+/* keyboard focus · shown for keyboard users only */
 a:focus-visible,button:focus-visible,.card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .card:focus-visible{outline-offset:-2px}
 .search:focus-within{border-color:var(--accent)}
@@ -827,8 +828,8 @@ try{var _t=localStorage.getItem('colours_theme')||((window.matchMedia&&matchMedi
     <span>A visual index of design languages</span>
     <span class="mm-r" id="metacount"></span>
   </div>
-  <h1>What does a&nbsp;<em>style</em> actually look like?</h1>
-  <p>Every aesthetic here is rendered <b>live in its own visual language</b> — so you see the look, not just the name. Search, filter, shortlist your picks, and open any plate for its palette, type and references.</p>
+  <h1>Every design style,<br>in its own colours<span class="dot">.</span></h1>
+  <p>A working catalogue of design aesthetics. See how each one actually looks, then shortlist and compare your picks.</p>
   <div class="filters" id="filters"></div>
   <div class="toolbar"><span class="result-note" id="note"></span></div>
 </header>
@@ -839,7 +840,7 @@ try{var _t=localStorage.getItem('colours_theme')||((window.matchMedia&&matchMedi
 
 <footer class="wrap">
   <div class="foot-inner">
-    <span class="fi-brand">colours<span class="dot">.</span> — a designer's pick-list</span>
+    <span class="fi-brand">colours<span class="dot">.</span> · a designer's pick-list</span>
     <span><b id="footcount"></b> of <span id="foottotal"></span> plates shown · click any for details</span>
   </div>
 </footer>
@@ -888,14 +889,14 @@ const STYLES = [
 
   {id:'maximalism',name:'Maximalism',era:'Cyclical',cat:['Maximal','Experimental'],demo:'maximal',
    demoHTML:`<div class="mx-h">MORE!</div><div class="mx-b">everything everywhere</div>`,
-   blurb:'More is more. Clashing colour, dense pattern, layered type — abundance as a statement.',
+   blurb:'More is more. Clashing colour, dense pattern, layered type: abundance as a statement.',
    tags:['Clash','Dense','Patterned','Bold'],
    palette:[['#ff006e','MAGENTA'],['#ffbe0b','AMBER'],['#3a86ff','BLUE'],['#8338ec','VIOLET']],
    fonts:'Mixed display faces',mood:'Energetic, expressive, loud',use:'Fashion, music, festivals, editorial'},
 
   {id:'memphis',name:'Memphis Design',era:'1980s revival',cat:['Retro','Maximal'],demo:'memphis',
    demoHTML:`<div class="mem-shape c1"></div><div class="mem-shape c2"></div><div class="mem-shape c3"></div><div class="mem-shape c4"></div><div class="sq">POP</div>`,
-   blurb:'Milan, 1981. Squiggles, confetti, primary shapes and zig-zags — playful postmodern chaos.',
+   blurb:'Milan, 1981. Squiggles, confetti, primary shapes and zig-zags: playful postmodern chaos.',
    tags:['Geometric confetti','Squiggles','Primary colors','80s'],
    palette:[['#ff5d73','CORAL'],['#ffd23f','YELLOW'],['#3bceac','MINT'],['#22223b','NAVY']],
    fonts:'Poppins / geometric sans',mood:'Playful, nostalgic, youthful',use:'Kids brands, events, retro products'},
@@ -923,7 +924,7 @@ const STYLES = [
 
   {id:'skeuo',name:'Skeuomorphism',era:'2007–2013',cat:['Retro','UI Style'],demo:'skeuo',
    demoHTML:`<div class="sk-note"></div><div class="sk-btn">Save</div>`,
-   blurb:'Digital objects mimic real-world materials — leather, paper, brushed metal, stitching.',
+   blurb:'Digital objects mimic real-world materials: leather, paper, brushed metal, stitching.',
    tags:['Realistic textures','Shadows','Gradients','Tactile'],
    palette:[['#d9d4c8','LINEN'],['#fffdf5','PAPER'],['#9a9a9a','METAL'],['#f1a9a0','MARGIN']],
    fonts:'Helvetica Neue / Outfit',mood:'Familiar, tactile, warm',use:'Early iOS, note apps, retro UI'},
@@ -958,7 +959,7 @@ const STYLES = [
 
   {id:'bauhaus',name:'Bauhaus',era:'1919–1933',cat:['Retro','Minimal'],demo:'bauhaus',
    demoHTML:`<div class="bh1"></div><div class="bh2"></div><div class="bh3"></div><div class="bh4"></div>`,
-   blurb:'Primary colours and pure geometry — circle, square, triangle. Form follows function.',
+   blurb:'Primary colours and pure geometry: circle, square, triangle. Form follows function.',
    tags:['Primary colors','Geometric','Functional','Modernist'],
    palette:[['#e63946','RED'],['#ffd23f','YELLOW'],['#1d3557','BLUE'],['#f2ede4','PAPER']],
    fonts:'Futura / geometric sans',mood:'Bold, rational, foundational',use:'Posters, branding, architecture'},
@@ -993,7 +994,7 @@ const STYLES = [
 
   {id:'japandi',name:'Japandi / Asian Store',era:'Contemporary',cat:['Minimal','Cultural'],demo:'japandi',
    demoHTML:`<div class="jp-circle"></div><div class="jp-h">和</div><div class="jp-line"><i></i><i></i><i></i></div>`,
-   blurb:'Japanese minimalism meets Scandinavian warmth — natural tones, negative space, a single bold accent.',
+   blurb:'Japanese minimalism meets Scandinavian warmth: natural tones, negative space, a single bold accent.',
    tags:['Negative space','Earth tones','Calm','Crafted'],
    palette:[['#ece7df','SAND'],['#b34233','VERMILION'],['#3d3a34','SUMI'],['#8a8170','CLAY']],
    fonts:'Noto Sans JP / light geometric',mood:'Serene, balanced, premium',use:'Lifestyle, ceramics, retail, wellness'},
@@ -1014,14 +1015,14 @@ const STYLES = [
 
   {id:'clay',name:'Claymorphism',era:'2021–present',cat:['UI Style','Modern'],demo:'clay',
    demoHTML:`<div class="cl-blob"></div><div class="cl-btn">Squishy</div>`,
-   blurb:'Soft, puffy 3D shapes with inner shadows — like friendly modelling clay.',
+   blurb:'Soft, puffy 3D shapes with inner shadows, like friendly modelling clay.',
    tags:['Puffy 3D','Inner shadow','Pastel','Friendly'],
    palette:[['#dcd3ff','LILAC'],['#a78bfa','VIOLET'],['#ffb4c8','BLUSH'],['#7a2e4a','PLUM']],
    fonts:'Nunito / Quicksand / Outfit',mood:'Friendly, soft, playful',use:'Apps, onboarding, kids, 3D illustration'},
 
   {id:'anti',name:'Anti-Design',era:'2017–present',cat:['Experimental','Maximal'],demo:'anti',
    demoHTML:`<div class="an1">UGLY?</div><div class="an3">on purpose</div><div class="an4">default link</div><div class="an2">~vibes~</div>`,
-   blurb:'Breaks every rule on purpose — clashing fonts, default styles, intentional “ugliness”.',
+   blurb:'Breaks every rule on purpose: clashing fonts, default styles, intentional “ugliness”.',
    tags:['Rule-breaking','Clashing','Ironic','Default styles'],
    palette:[['#00ff66','SLIME'],['#ff00ff','MAGENTA'],['#ffff00','YELLOW'],['#0000ff','BLUE']],
    fonts:'Times + Comic Sans + system',mood:'Ironic, rebellious, raw',use:'Art, music, Gen-Z, counter-culture'},
@@ -1056,7 +1057,7 @@ const STYLES = [
 
   {id:'techgeo',name:'Technological Geometry',era:'Contemporary',cat:['Modern','Experimental'],demo:'techgeo',
    demoHTML:`<div class="tg-corner"></div><div class="tg-hex"></div><div class="tg-meta">SYS // 0xA4 · ONLINE</div>`,
-   blurb:'Precision grids, hexagons, wireframes and mono labels — an engineered, high-tech feel.',
+   blurb:'Precision grids, hexagons, wireframes and mono labels: an engineered, high-tech feel.',
    tags:['Grid','Hexagons','Wireframe','Mono labels'],
    palette:[['#0a0e17','VOID'],['#22c55e','GREEN'],['#0ea5e9','BLUE'],['#38bdf8','SKY']],
    fonts:'Space Mono / Rajdhani',mood:'Precise, futuristic, technical',use:'Dev tools, hardware, AI, crypto'},
@@ -1112,7 +1113,7 @@ const STYLES = [
 
   {id:'steampunk',name:'Steampunk',era:'Contemporary',cat:['Retro','Experimental'],demo:'steampunk',ref:'steampunk design brass gears',
    demoHTML:`<div class="sp-gear"></div><div class="sp-h">CLOCKWORK</div>`,
-   blurb:'Victorian sci-fi: brass, cogs, leather and sepia — the future as imagined in 1890.',
+   blurb:'Victorian sci-fi: brass, cogs, leather and sepia. The future as imagined in 1890.',
    tags:['Brass','Gears','Sepia','Victorian'],
    palette:[['#241b10','LEATHER'],['#b8860b','BRASS'],['#e8c98a','GOLD'],['#5a4632','WOOD']],
    fonts:'Ornate serif / slab',mood:'Vintage, mechanical, adventurous',use:'Games, events, fiction, props'},
@@ -1182,7 +1183,7 @@ const STYLES = [
 
   {id:'duotone',name:'Duotone',era:'Contemporary',cat:['Modern','UI Style'],demo:'duotone',ref:'duotone design spotify',
    demoHTML:`<div class="dt-circ"></div><div class="dt-h">DUOTONE</div>`,
-   blurb:'Two-tone colour mapping (Spotify-style) — images reduced to a bold colour duo.',
+   blurb:'Two-tone colour mapping (Spotify-style): images reduced to a bold colour duo.',
    tags:['Two-tone','High contrast','Bold','Photographic'],
    palette:[['#2d00f7','BLUE'],['#ff006e','PINK'],['#ff4dd2','MAGENTA'],['#150578','NAVY']],
    fonts:'Bold sans / Archivo',mood:'Bold, modern, punchy',use:'Music, campaigns, posters'},
@@ -1245,7 +1246,7 @@ const STYLES = [
 
   {id:'blackletter',name:'Blackletter / Gothic',era:'Medieval revival',cat:['Retro','Experimental'],demo:'blackletter',ref:'blackletter gothic typography design',
    demoHTML:`<div class="bl-h">Gothik</div><div class="bl-sub">anno domini</div>`,
-   blurb:'Medieval Gothic script weight — ornate, dense, heavy. From manuscripts to metal & merch.',
+   blurb:'Medieval Gothic script weight: ornate, dense, heavy. From manuscripts to metal & merch.',
    tags:['Gothic script','Ornate','Heavy','Dramatic'],
    palette:[['#0d0d0d','BLACK'],['#ededed','BONE'],['#888888','GREY'],['#7a1f1f','BLOOD']],
    fonts:'Fraktur / Blackletter',mood:'Dark, dramatic, historic',use:'Music, fashion, tattoos, logos'},
@@ -1287,7 +1288,7 @@ const STYLES = [
 
   {id:'typographic',name:'Typographic Poster',era:'Timeless',cat:['Minimal','Modern'],demo:'typographic',ref:'typographic poster type as image',
    demoHTML:`<div class="ty-h">TYPE<br>IS THE<br><em>IMAGE</em></div>`,
-   blurb:'Type as the hero: oversized words fill the frame, no images needed — letterforms do it all.',
+   blurb:'Type as the hero: oversized words fill the frame, no images needed. Letterforms do it all.',
    tags:['Big type','No imagery','Bold','Editorial'],
    palette:[['#111111','BLACK'],['#ffffff','WHITE'],['#818cf8','ACCENT'],['#222222','GREY']],
    fonts:'Druk / Outfit / heavy sans',mood:'Bold, confident, editorial',use:'Posters, covers, hero sections'},
@@ -1300,7 +1301,7 @@ const STYLES = [
    fonts:'Heavy grotesque / Archivo',mood:'Hypnotic, sharp, kinetic',use:'Posters, fashion, album art'},
 
   {id:'blueprint',name:'Blueprint / Technical',era:'Timeless',cat:['Modern','Experimental'],demo:'blueprint',ref:'blueprint technical drawing design',
-   demoHTML:`<div class="bp-circle"></div><div class="bp-label">FIG.01 — Ø 70mm</div>`,
+   demoHTML:`<div class="bp-circle"></div><div class="bp-label">FIG.01 · Ø 70mm</div>`,
    blurb:'Engineering drawing aesthetic: cyan ground, white grid and precise line work with mono annotations.',
    tags:['Grid','Line work','Annotations','Technical'],
    palette:[['#0b3d91','BLUEPRINT'],['#dbe7ff','CHALK'],['#5a82d6','STEEL'],['#08306b','DEEP']],
@@ -1308,7 +1309,7 @@ const STYLES = [
 
   {id:'acid',name:'Acid / Rave',era:'1990s revival',cat:['Experimental','Maximal'],demo:'acid',ref:'acid graphics rave flyer design',
    demoHTML:`<div class="ac-h">ACID</div><div class="ac-sub">▲ RAVE ▲</div>`,
-   blurb:'Warped, melting type in toxic greens — the distorted chrome energy of 90s rave flyers.',
+   blurb:'Warped, melting type in toxic greens: the distorted chrome energy of 90s rave flyers.',
    tags:['Warped type','Toxic green','Distortion','Rave'],
    palette:[['#7cff00','ACID'],['#0a0a0a','BLACK'],['#caffa0','LIME'],['#2a8a00','DEEP']],
    fonts:'Distorted display / Archivo',mood:'Loud, hypnotic, underground',use:'Music, flyers, fashion, posters'},
@@ -1378,7 +1379,7 @@ const STYLES = [
 
   {id:'barbiecore',name:'Barbiecore',era:'2020s',cat:['Maximal','Modern'],demo:'barbiecore',ref:'barbiecore hot pink maximalist design',
    demoHTML:`<div class="bc-h">PINK!</div><div class="bc-heart">♥</div>`,
-   blurb:'Unapologetic hot-pink maximalism — glossy, girly, playful and turned all the way up.',
+   blurb:'Unapologetic hot-pink maximalism: glossy, girly, playful and turned all the way up.',
    tags:['Hot pink','Glossy','Playful','Bold'],
    palette:[['#ff1f8e','BARBIE'],['#ffffff','WHITE'],['#d10071','MAGENTA'],['#ffd1e8','BLUSH']],
    fonts:'Bold italic display',mood:'Playful, bold, fun',use:'Fashion, beauty, events, pop'},
@@ -1450,7 +1451,7 @@ CATS.forEach(c=>{
 /* Stable catalogue numbers + masthead count */
 STYLES.forEach((s,i)=>{ s.n=String(i+1).padStart(2,'0'); });
 
-/* Tone classification — designs whose demo reads dark-backed; the rest are light */
+/* Tone classification · designs whose demo reads dark-backed; the rest are light */
 const DARK_TONE = new Set(['pixel','glass','artdeco','vapor','synth','cyber','editorial','glitch','grunge','techgeo','aurora','noir','artnouveau','steampunk','streetwear','liquid','darkacademia','duotone','bento','deconstructed','terminal','afro','guochao','blackletter','fluent','typographic','blueprint','acid','chrome','geocities','sigilism','circus','punk','tropical']);
 STYLES.forEach(s=>{ s.tone = DARK_TONE.has(s.id) ? 'dark' : 'light'; });
 const metacount=document.getElementById('metacount');
@@ -1584,7 +1585,7 @@ async function exportMoodboard(){
     ctx.fillStyle=ink2; ctx.font='11px "Space Mono", monospace'; ctx.fillText(s.tags.join('   ·   ').toUpperCase(), padX, y+rowH-22);
     ctx.strokeStyle=line; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(padX,y+rowH-6); ctx.lineTo(W-padX,y+rowH-6); ctx.stroke();
   });
-  ctx.fillStyle=ink3; ctx.font='11px "Space Mono", monospace'; ctx.fillText('COLOURS — A VISUAL INDEX OF DESIGN LANGUAGES', padX, H-26);
+  ctx.fillStyle=ink3; ctx.font='11px "Space Mono", monospace'; ctx.fillText('COLOURS · A VISUAL INDEX OF DESIGN LANGUAGES', padX, H-26);
   cv.toBlob(blob=>{ if(!blob){ toast('Export failed'); return; } const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='colours-shortlist.png'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); toast('Moodboard downloaded'); },'image/png');
 }
 
@@ -1607,8 +1608,8 @@ function render(){
     : (activeCat==='All'&&!query) ? `${list.length} entries` : `${list.length} match${list.length===1?'':'es'}`;
   if(!list.length){
     grid.innerHTML = showFavs
-      ? '<div class="empty">Your shortlist is empty — tap the ★ on any plate to save it here.</div>'
-      : '<div class="empty">No styles match — try another search or category.</div>';
+      ? '<div class="empty">Your shortlist is empty. Tap the ★ on any plate to save it here.</div>'
+      : '<div class="empty">No styles match. Try another search or category.</div>';
     return;
   }
   list.forEach((s,i)=>{
@@ -1636,7 +1637,7 @@ function render(){
     card.onclick=()=>openModal(s);
     card.tabIndex=0;
     card.setAttribute('role','button');
-    card.setAttribute('aria-label',`${s.name} — view palette and details`);
+    card.setAttribute('aria-label',`${s.name}: view palette and details`);
     card.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal(s); } };
     grid.appendChild(card);
   });
@@ -1664,7 +1665,7 @@ function openModal(s){
         <a class="ref-link alt" target="_blank" rel="noopener" href="${pin}">Pinterest ↗</a>
       </div>
       <div class="msec"><h4>Characteristics</h4><div class="mtags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>
-      <div class="msec"><h4>Palette <span style="text-transform:none;letter-spacing:0;color:var(--ink-3)">— click to copy</span></h4><div class="mpalette">${s.palette.map(p=>`<div class="mswatch" title="Copy ${p[0]}" onclick="copyHex('${p[0]}')"><span style="background:${p[0]}"></span><small>${p[0]}</small></div>`).join('')}</div></div>
+      <div class="msec"><h4>Palette <span style="text-transform:none;letter-spacing:0;color:var(--ink-3)">· click to copy</span></h4><div class="mpalette">${s.palette.map(p=>`<div class="mswatch" title="Copy ${p[0]}" onclick="copyHex('${p[0]}')"><span style="background:${p[0]}"></span><small>${p[0]}</small></div>`).join('')}</div></div>
       <div class="msec minfo-grid">
         <div><div class="k">Typography</div><div class="v">${s.fonts}</div></div>
         <div><div class="k">Mood</div><div class="v">${s.mood}</div></div>
